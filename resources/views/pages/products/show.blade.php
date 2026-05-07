@@ -26,25 +26,12 @@
         <div class="grid lg:grid-cols-2 gap-12">
             <!-- Image Gallery -->
             <div class="space-y-4">
-                <div class="aspect-square rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+                <div class="aspect-square rounded-[40px] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
                     <img id="main-image" src="{{ $product->image_url ?? 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=800&q=80' }}" 
                          alt="{{ $product->name }}" 
                          class="w-full h-full object-cover">
                 </div>
-                <div class="grid grid-cols-4 gap-3">
-                    <button onclick="changeImage('https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=400&q=80')" class="aspect-square rounded-xl overflow-hidden border-2 border-lime-400 bg-white/5 shadow-md">
-                        <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=200&q=80" class="w-full h-full object-cover">
-                    </button>
-                    <button onclick="changeImage('https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&q=80')" class="aspect-square rounded-xl overflow-hidden border-2 border-transparent hover:border-white/50 bg-white/5 shadow-md transition-colors">
-                        <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=200&q=80" class="w-full h-full object-cover">
-                    </button>
-                    <button onclick="changeImage('https://images.unsplash.com/photo-1466692476868-0e96c3e6a5ce?w=400&q=80')" class="aspect-square rounded-xl overflow-hidden border-2 border-transparent hover:border-white/50 bg-white/5 shadow-md transition-colors">
-                        <img src="https://images.unsplash.com/photo-1466692476868-0e96c3e6a5ce?w=200&q=80" class="w-full h-full object-cover">
-                    </button>
-                    <button onclick="changeImage('https://images.unsplash.com/photo-1501004318641-b39ac6497518?w=400&q=80')" class="aspect-square rounded-xl overflow-hidden border-2 border-transparent hover:border-white/50 bg-white/5 shadow-md transition-colors">
-                        <img src="https://images.unsplash.com/photo-1501004318641-b39ac6497518?w=200&q=80" class="w-full h-full object-cover">
-                    </button>
-                </div>
+
             </div>
             
             <!-- Product Info -->
@@ -81,7 +68,7 @@
                 </div>
                 
                 <!-- Price -->
-                <div class="p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
+                <div class="p-8 bg-white/10 backdrop-blur-md rounded-[40px] border border-white/20 shadow-xl">
                     <div class="flex items-baseline gap-3">
                         <span class="text-3xl md:text-4xl font-bold text-white">{{ $product->formatted_price }}</span>
                         @if($product->original_price)
@@ -104,25 +91,25 @@
                 <!-- Specs -->
                 <div class="grid grid-cols-2 gap-4">
                     @if($product->size)
-                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-sm">
+                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-[24px] border border-white/10 shadow-sm">
                         <p class="text-xs text-white/40 mb-1">Ukuran</p>
                         <p class="text-white font-bold">{{ $product->size }}</p>
                     </div>
                     @endif
                     @if($product->age_months)
-                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-sm">
+                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-[24px] border border-white/10 shadow-sm">
                         <p class="text-xs text-white/40 mb-1">Umur</p>
                         <p class="text-white font-bold">{{ $product->age_months }} bulan</p>
                     </div>
                     @endif
                     @if($product->origin)
-                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-sm">
+                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-[24px] border border-white/10 shadow-sm">
                         <p class="text-xs text-white/40 mb-1">Asal</p>
                         <p class="text-white font-bold">{{ $product->origin }}</p>
                     </div>
                     @endif
                     @if($product->pot_size)
-                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-sm">
+                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-[24px] border border-white/10 shadow-sm">
                         <p class="text-xs text-white/40 mb-1">Ukuran Pot</p>
                         <p class="text-white font-bold">{{ $product->pot_size }}</p>
                     </div>
@@ -132,14 +119,14 @@
                 <!-- CTA Buttons -->
                 <div class="flex flex-col gap-3">
                     @auth
-                    <a href="{{ route('orders.create', $product) }}" class="flex items-center justify-center gap-3 px-8 py-4 bg-white text-emerald-900 hover:bg-lime-50 font-bold rounded-xl text-lg shadow-xl transition-all">
+                    <a href="{{ route('orders.create', $product) }}" class="flex items-center justify-center gap-3 px-8 py-4 bg-white text-emerald-900 hover:bg-lime-50 font-bold rounded-full text-lg shadow-xl transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                         </svg>
                         Pesan Sekarang
                     </a>
                     @else
-                    <a href="{{ route('login') }}" class="flex items-center justify-center gap-3 px-8 py-4 bg-white text-emerald-900 hover:bg-lime-50 font-bold rounded-xl text-lg shadow-xl transition-all">
+                    <a href="{{ route('login') }}" class="flex items-center justify-center gap-3 px-8 py-4 bg-white text-emerald-900 hover:bg-lime-50 font-bold rounded-full text-lg shadow-xl transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                         </svg>
@@ -147,7 +134,7 @@
                     </a>
                     @endauth
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="{{ $product->whatsapp_link }}" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-6 py-3 border-2 border-white/30 hover:border-white text-white font-bold rounded-xl transition-all bg-white/10 backdrop-blur-sm">
+                        <a href="{{ $product->whatsapp_link }}" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-6 py-4 border-2 border-white/30 hover:border-white text-white font-bold rounded-full transition-all bg-white/10 backdrop-blur-sm">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/>
                             </svg>
@@ -220,9 +207,7 @@
 </section>
 
 <script>
-function changeImage(src) {
-    document.getElementById('main-image').src = src;
-}
+
 
 function showTab(tabName) {
     // Hide all content

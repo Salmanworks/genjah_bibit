@@ -19,10 +19,10 @@
         :root {
             --broken-white: #F4F1EA;
             --sand-beige: #EBE6DC;
-            --sage-dark: #2B3A28;    /* Almost black-green for text */
-            --sage-main: #6B8269;    /* Main green */
-            --sage-light: #94A692;   /* Muted green for subtitles */
-            --accent-warm: #D48C70;  /* Terracotta */
+            --sage-dark: #1A2419;    /* Deeper green for better contrast */
+            --sage-main: #5A7058;    /* Slightly darker green */
+            --sage-light: #7A8F78;   /* Muted green */
+            --accent-warm: #C67B5C;  /* Terracotta */
         }
 
         body {
@@ -32,13 +32,13 @@
         }
         
         /* Background Overrides */
-        .bg-forest-950, .bg-emerald-950, .bg-emerald-900\/50, .bg-emerald-800\/20 { 
+        [class*="bg-forest-950"], [class*="bg-emerald-950"], [class*="bg-emerald-900/50"], [class*="bg-emerald-800/20"] { 
             background-color: var(--sand-beige) !important; 
         }
-        .bg-forest-900, .bg-emerald-900, .bg-emerald-800 { 
+        [class*="bg-forest-900"], [class*="bg-emerald-900"], [class*="bg-emerald-800"] { 
             background-color: var(--sage-main) !important; 
         }
-        .bg-lime-500, .bg-green-500, .from-green-500, .to-green-600 { 
+        [class*="bg-lime-500"], [class*="bg-green-500"], [class*="from-green-500"], [class*="to-green-600"] { 
             background-color: var(--sage-main) !important; 
             background-image: none !important; /* Remove bright gradients */
         }
@@ -48,10 +48,10 @@
         
         /* Text Color Overrides */
         /* Mute neon greens for readability on light background, catching opacity variants */
-        [class*="text-emerald-100"], [class*="text-emerald-200"], [class*="text-emerald-300"], [class*="text-emerald-400"] { 
+        [class*="text-emerald-100"], [class*="text-emerald-200"], [class*="text-emerald-300"] { 
             color: var(--sage-light) !important; 
         }
-        [class*="text-lime-400"], [class*="text-lime-500"] { 
+        [class*="text-lime-400"], [class*="text-lime-500"], [class*="text-green-500"] { 
             color: var(--sage-main) !important; 
         }
         [class*="text-emerald-950"], [class*="text-emerald-900"] { 
@@ -59,6 +59,36 @@
         }
         [class*="text-yellow-400"], [class*="text-yellow-500"] {
             color: var(--accent-warm) !important;
+        }
+        
+        /* Protect white and specific light colors */
+        .text-white { color: #ffffff !important; }
+        .text-white\/90 { color: rgba(255, 255, 255, 0.9) !important; }
+        .text-white\/80 { color: rgba(255, 255, 255, 0.8) !important; }
+        .text-white\/70 { color: rgba(255, 255, 255, 0.7) !important; }
+        .text-white\/60 { color: rgba(255, 255, 255, 0.6) !important; }
+        .text-white\/50 { color: rgba(255, 255, 255, 0.5) !important; }
+        .text-white\/40 { color: rgba(255, 255, 255, 0.4) !important; }
+        .text-lime-400 { color: #A3E635 !important; } 
+        .text-lime-300 { color: #BEF264 !important; }
+
+        /* Specific override for elements inside a dark section */
+        .bg-emerald-900 h1, 
+        .bg-emerald-900 h2, 
+        .bg-emerald-900 h3, 
+        .bg-emerald-900 p:not(.bg-white *), 
+        .bg-emerald-900 span:not(.bg-white *),
+        .bg-emerald-900 a:not(.btn-lime):not(.bg-white) {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        .bg-emerald-900 a.bg-white,
+        .bg-emerald-900 button.bg-white {
+            color: var(--sage-dark) !important;
+        }
+        .bg-emerald-900 .text-white\/40, 
+        .bg-emerald-900 .text-emerald-900\/40, 
+        .bg-emerald-900 .text-emerald-950\/40 {
+            color: rgba(255, 255, 255, 0.4) !important;
         }
 
         /* Border Overrides */
@@ -87,12 +117,11 @@
         
         /* Glassmorphism Overrides */
         .glass, .glass-card, .glass-dark, .glass-light {
-            background: rgba(235, 230, 220, 0.7) !important; /* sand-beige */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6) !important;
-            box-shadow: 0 10px 30px rgba(43, 58, 40, 0.05) !important;
-            color: var(--sage-dark);
+            background: rgba(255, 255, 255, 0.4) !important;
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 8px 32px rgba(43, 58, 40, 0.08) !important;
         }
         
         .card-hover {

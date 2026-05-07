@@ -9,16 +9,23 @@
     <div class="absolute inset-0 bg-gradient-to-b from-emerald-950/95 via-emerald-900/90 to-emerald-950/95 backdrop-blur-md"></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-lime-500/30 bg-emerald-900/50 mb-5">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-lime-500/30 bg-emerald-900/50 mb-8">
             <span class="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse"></span>
             <span class="text-xs font-medium text-lime-400 tracking-wider uppercase">Semua Kategori</span>
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-emerald-950 mb-4 drop-shadow-2xl tracking-tight">
-            Kategori <span class="text-lime-400">Produk</span>
-        </h1>
-        <p class="text-base md:text-lg text-emerald-100/80 max-w-xl mx-auto font-light">
-            Jelajahi berbagai pilihan kategori bibit tanaman berkualitas untuk kebun impian Anda.
-        </p>
+        
+        <div class="max-w-[95%] mx-auto mt-4">
+            <div class="w-full px-8 md:px-20 py-16 md:py-24 bg-emerald-900/90 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center" 
+                 style="border-radius: 9999px;">
+                <h1 class="font-black text-white mb-6 drop-shadow-2xl tracking-tighter leading-none uppercase"
+                    style="font-size: clamp(3rem, 12vw, 8.5rem);">
+                    Kategori <span class="text-lime-400">Produk</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
+                    Jelajahi berbagai pilihan kategori bibit tanaman berkualitas untuk kebun impian Anda.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 

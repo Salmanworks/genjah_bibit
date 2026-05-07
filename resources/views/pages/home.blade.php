@@ -24,7 +24,7 @@
                 <!-- Badge -->
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card">
                     <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
-                    <span class="text-sm text-emerald-200">Bibit Berkualitas Premium</span>
+                    <span class="text-sm text-emerald-900 font-medium">Bibit Berkualitas Premium</span>
                 </div>
                 
                 <!-- Title -->
@@ -34,7 +34,7 @@
                 </h1>
                 
                 <!-- Subtitle -->
-                <p class="text-lg text-emerald-200/80 max-w-lg leading-relaxed">
+                <p class="text-lg text-emerald-900/70 max-w-lg leading-relaxed">
                     Temukan bibit tanaman terbaik untuk kebun impian Anda. Sehat, unggul, dan siap tanam. Konsultasi gratis via WhatsApp.
                 </p>
                 
@@ -64,7 +64,7 @@
                         </div>
                         <div>
                             <p class="text-sm font-medium text-emerald-950">Bibit Unggul</p>
-                            <p class="text-xs text-emerald-300/70">Berkualitas Tinggi</p>
+                            <p class="text-xs text-emerald-900/50">Berkualitas Tinggi</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -75,7 +75,7 @@
                         </div>
                         <div>
                             <p class="text-sm font-medium text-emerald-950">Pengiriman Aman</p>
-                            <p class="text-xs text-emerald-300/70">Dan Cepat</p>
+                            <p class="text-xs text-emerald-900/50">Dan Cepat</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -86,7 +86,7 @@
                         </div>
                         <div>
                             <p class="text-sm font-medium text-emerald-950">Konsultasi Gratis</p>
-                            <p class="text-xs text-emerald-950">Via WhatsApp</p>
+                            <p class="text-xs text-emerald-900/50">Via WhatsApp</p>
                         </div>
                     </div>
                 </div>
@@ -131,31 +131,7 @@
     </div>
 </section>
 
-<!-- Categories Section -->
-<section class="relative py-20 bg-emerald-900">
-    <div class="absolute inset-0 section-overlay pointer-events-none"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Jelajahi Kategori</h2>
-            <p class="text-white/80">Pilih kategori tanaman yang Anda butuhkan</p>
-        </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            @foreach($categories as $category)
-            <a href="{{ route('categories.show', $category->slug) }}" class="group relative overflow-hidden rounded-2xl aspect-square card-hover bg-white/10 border border-white/10 backdrop-blur-sm">
-                <img src="https://images.unsplash.com/photo-{{ $loop->iteration % 5 == 1 ? '1459411552884-841db9b3cc2a' : ($loop->iteration % 5 == 2 ? '1466692476868-0e96c3e6a5ce' : ($loop->iteration % 5 == 3 ? '1518531933807-3b8360c5a59a' : ($loop->iteration % 5 == 4 ? '1477554193778-1894d0b3dd95' : '1501004318641-b39ac6497518'))) }}?w=400&q=80" 
-                     alt="{{ $category->name }}" 
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
-                    <h3 class="text-sm font-semibold text-white mb-1 drop-shadow-md">{{ $category->name }}</h3>
-                    <p class="text-xs text-white/90 drop-shadow-md">{{ $category->product_count }}+ Jenis</p>
-                </div>
-            </a>
-            @endforeach
-        </div>
-    </div>
-</section>
+
 
 <!-- Bestseller Products Section -->
 <section class="relative py-20">
@@ -192,22 +168,23 @@
 </section>
 
 <!-- Why Choose Us Section -->
-<section class="relative py-20">
-    <div class="absolute inset-0 section-overlay pointer-events-none"></div>
+<section class="relative py-20 bg-emerald-900">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-emerald-950 mb-4">Mengapa Memilih Kami?</h2>
-            <p class="text-emerald-900/60 max-w-2xl mx-auto">Kami berkomitmen memberikan bibit terbaik dan pelayanan terbaik untuk Anda</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Mengapa Memilih Kami?</h2>
+            <p class="text-white/70 max-w-2xl mx-auto">Kami berkomitmen memberikan bibit terbaik dan pelayanan terbaik untuk Anda</p>
         </div>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($features as $feature)
-            <div class="glass-card p-6 rounded-2xl card-hover text-center">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-lime-500/20 to-emerald-500/20 flex items-center justify-center mx-auto mb-4 border border-lime-500/30">
-                    {!! $feature['icon'] !!}
+            <div class="glass-card p-8 rounded-[40px] card-hover text-center border-white/10 shadow-xl">
+                <div class="w-16 h-16 rounded-[24px] bg-white/10 flex items-center justify-center mx-auto mb-5 border border-white/20">
+                    <span class="text-lime-400">
+                        {!! $feature['icon'] !!}
+                    </span>
                 </div>
-                <h3 class="text-lg font-semibold text-emerald-950 mb-2">{{ $feature['title'] }}</h3>
-                <p class="text-sm text-emerald-900/60">{{ $feature['description'] }}</p>
+                <h3 class="text-lg font-bold text-white mb-3">{{ $feature['title'] }}</h3>
+                <p class="text-sm text-white/60 leading-relaxed">{{ $feature['description'] }}</p>
             </div>
             @endforeach
         </div>
@@ -215,36 +192,35 @@
 </section>
 
 <!-- Testimonials Section -->
-<section class="relative py-20">
-    <div class="absolute inset-0 section-overlay pointer-events-none"></div>
+<section class="relative py-20 bg-emerald-900">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-emerald-950 mb-4">Testimoni Pelanggan</h2>
-            <p class="text-emerald-900/60">Kepuasan pelanggan adalah prioritas kami</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Testimoni Pelanggan</h2>
+            <p class="text-white/70">Kepuasan pelanggan adalah prioritas kami</p>
         </div>
         
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-3 gap-8">
             @foreach($testimonials as $testimonial)
-            <div class="glass-card p-6 rounded-2xl card-hover">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-lime-400 to-emerald-500 flex items-center justify-center text-emerald-950 font-bold text-lg">
+            <div class="glass-card p-8 rounded-[40px] card-hover border-white/10 shadow-xl">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-xl border border-white/20">
                         {{ substr($testimonial->name, 0, 1) }}
                     </div>
                     <div>
-                        <h4 class="font-semibold text-emerald-950">{{ $testimonial->name }}</h4>
-                        <p class="text-xs text-emerald-900/60">{{ $testimonial->location }}</p>
+                        <h4 class="font-bold text-white">{{ $testimonial->name }}</h4>
+                        <p class="text-xs text-white/50 tracking-wide">{{ $testimonial->location }}</p>
                     </div>
                 </div>
-                <div class="flex gap-1 mb-3">
+                <div class="flex gap-1 mb-4">
                     @for($i = 1; $i <= 5; $i++)
-                        <svg class="w-4 h-4 {{ $i <= $testimonial->rating ? 'text-yellow-400' : 'text-gray-600' }}" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-4 h-4 {{ $i <= $testimonial->rating ? 'text-yellow-400' : 'text-white/10' }}" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                         </svg>
                     @endfor
                 </div>
-                <p class="text-sm text-emerald-950/80 italic">"{{ $testimonial->content }}"</p>
+                <p class="text-base text-white/80 italic leading-relaxed">"{{ $testimonial->content }}"</p>
                 @if($testimonial->product_purchased)
-                <p class="mt-3 text-xs text-emerald-800 font-medium">Dibeli: {{ $testimonial->product_purchased }}</p>
+                <p class="mt-4 inline-block px-3 py-1 rounded-full bg-white/5 text-[10px] text-lime-400 font-bold border border-white/5">Dibeli: {{ $testimonial->product_purchased }}</p>
                 @endif
             </div>
             @endforeach

@@ -112,8 +112,14 @@ class Product extends Model
 
     public function getWhatsappLinkAttribute(): string
     {
-        $phone = setting('whatsapp_number', '6281234567890');
-        $message = urlencode($this->whatsapp_message);
-        return "https://wa.me/{$phone}?text={$message}";
+        return whatsapp_link($this->whatsapp_message);
+    }
+
+    public function getImageUrlAttribute(): string
+    {
+        if ($this->main_image) {
+            return asset('storage/' . $this->main_image);
+        }
+        return 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=800&q=80';
     }
 }

@@ -9,16 +9,23 @@
     <div class="absolute inset-0 bg-gradient-to-b from-emerald-950/95 via-emerald-900/90 to-emerald-950/95 backdrop-blur-md"></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-lime-500/30 bg-emerald-900/50 mb-5">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-lime-500/30 bg-emerald-900/50 mb-8">
             <span class="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse"></span>
             <span class="text-xs font-medium text-lime-400 tracking-wider uppercase">Koleksi Lengkap</span>
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-emerald-950 mb-4 drop-shadow-2xl tracking-tight">
-            Katalog <span class="text-lime-400">Produk</span>
-        </h1>
-        <p class="text-base md:text-lg text-emerald-100/80 max-w-xl mx-auto font-light">
-            Pilihan bibit unggul dan berkualitas premium untuk hasil panen terbaik Anda.
-        </p>
+        
+        <div class="max-w-[95%] mx-auto mt-4">
+            <div class="w-full px-8 md:px-20 py-16 md:py-24 bg-emerald-900/90 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center" 
+                 style="border-radius: 9999px;">
+                <h1 class="font-black text-white mb-6 drop-shadow-2xl tracking-tighter leading-none uppercase"
+                    style="font-size: clamp(3rem, 12vw, 8.5rem);">
+                    Katalog <span class="text-lime-400">Produk</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
+                    Pilihan bibit unggul dan berkualitas premium untuk hasil panen terbaik Anda.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -33,7 +40,7 @@
                     Semua
                 </a>
                 @foreach($categories as $category)
-                <a href="{{ route('products.index', ['category' => $category->slug]) }}" class="px-4 py-2 rounded-full text-sm font-medium {{ (request('category') == $category->slug || (is_array(request('category')) && in_array($category->slug, request('category')))) ? 'bg-lime-500 text-emerald-950' : 'glass-card text-emerald-950 hover:bg-emerald-800/10' }} transition-colors">
+                <a href="{{ route('products.index', ['category' => $category->slug]) }}" class="px-4 py-2 rounded-full text-sm font-medium {{ (request('category') == $category->slug) ? 'bg-lime-500 text-emerald-950' : 'glass-card text-emerald-950 hover:bg-emerald-800/10' }} transition-colors">
                     {{ $category->name }}
                 </a>
                 @endforeach
@@ -41,20 +48,13 @@
             
             <form action="{{ route('products.index') }}" method="GET" class="flex gap-2">
                 @if(request('category'))
-                @if(is_array(request('category')))
-                    @foreach(request('category') as $cat)
-                        <input type="hidden" name="category[]" value="{{ $cat }}">
-                    @endforeach
-                @else
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @endif
-                @endif
-                <select name="sort" onchange="this.form.submit()" class="glass-card px-4 py-2 rounded-xl text-sm text-emerald-950 border border-emerald-900/20 outline-none focus:ring-2 focus:ring-lime-500 focus:border-lime-500 appearance-none bg-transparent">
+                <select name="sort" onchange="this.form.submit()" class="glass-card px-6 py-2.5 rounded-full text-sm font-bold text-emerald-900 border border-emerald-900/10 outline-none focus:ring-2 focus:ring-lime-500/30 focus:border-lime-500 transition-all cursor-pointer shadow-sm">
                     <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Terbaru</option>
                     <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Harga Terendah</option>
                     <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Harga Tertinggi</option>
                     <option value="bestseller" {{ request('sort') == 'bestseller' ? 'selected' : '' }}>Terlaris</option>
-                    <option value="rating" {{ request('sort') == 'rating' ? 'selected' : '' }}>Rating Tertinggi</option>
                 </select>
             </form>
         </div>
