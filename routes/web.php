@@ -1,0 +1,62 @@
+<?php
+
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
+
+// Home Route
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Product Routes
+Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
+Route::get('/produk/{slug}', [ProductController::class, 'show'])->name('products.show');
+
+// Category Routes
+Route::get('/kategori', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/kategori/{slug}', [CategoryController::class, 'show'])->name('categories.show');
+
+// Blog Routes
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+// Page Routes
+Route::get('/tentang-kami', [PageController::class, 'about'])->name('about');
+Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
+Route::post('/kontak', [PageController::class, 'contactSubmit'])->name('contact.submit');
+Route::get('/wishlist', [PageController::class, 'wishlist'])->name('wishlist');
+
+// Order Routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pesanan', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/produk/{product}/pesan', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/pesanan', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/pesanan/{order}', [OrderController::class, 'show'])->name('orders.show');
+    Route::patch('/pesanan/{order}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
+});
+
+// Admin Routes
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+});
+
+// Auth Routes
+Route::get('/masuk', [\App\Http\Controllers\Auth\LoginController::class, 'create'])->name('login');
+Route::post('/masuk', [\App\Http\Controllers\Auth\LoginController::class, 'store'])->name('login.store');
+Route::post('/keluar', [\App\Http\Controllers\Auth\LoginController::class, 'destroy'])->name('logout');
+
+Route::get('/daftar', [\App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');
+Route::post('/daftar', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('register.store');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+});
+
+// Orders are already defined above with auth middleware
+
+require __DIR__.'/settings.php';
