@@ -4,188 +4,184 @@
 
 @section('content')
 <!-- Admin Header -->
-<section class="relative pt-28 pb-8">
-    <div class="absolute inset-0 bg-gradient-to-b from-emerald-950 via-emerald-900/90 to-emerald-950"></div>
-    
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center">
-            <div>
-                <h1 class="text-2xl md:text-3xl font-bold text-white">Admin Dashboard</h1>
-                <p class="text-emerald-200/70">Kelola produk, pesanan, dan konten website</p>
-            </div>
-            <a href="{{ route('home') }}" class="px-4 py-2 btn-outline rounded-lg text-sm">
-                Kembali ke Website
-            </a>
+<section class="relative py-8">
+    <div class="relative flex justify-between items-center">
+        <div class="animate-fade-up">
+            <h1 class="text-3xl font-extrabold text-white tracking-tight">Dashboard Overview</h1>
+            <p class="text-emerald-100/40 text-sm">Statistik dan aktivitas terbaru di Genjah Rumah Bibit</p>
         </div>
+        <a href="{{ route('home') }}" class="px-6 py-2 border border-white/10 rounded-full text-sm text-white hover:bg-white/5 transition-all flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            Lihat Website
+        </a>
     </div>
 </section>
 
 <!-- Stats Cards -->
-<section class="relative py-6">
-    <div class="absolute inset-0 bg-gradient-to-b from-emerald-950 via-emerald-900/50 to-emerald-950"></div>
-    
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-lime-500/20 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-                        </svg>
-                    </div>
-                    <span class="text-xs text-emerald-300/50">Total</span>
+<section class="relative mb-8 animate-fade-up" style="animation-delay: 0.1s">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-card p-6 rounded-3xl relative overflow-hidden group">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
                 </div>
-                <p class="text-2xl font-bold text-white">{{ $stats['products'] ?? 0 }}</p>
-                <p class="text-sm text-emerald-200/70">Produk</p>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-100/30">Produk</span>
             </div>
-            
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                        </svg>
-                    </div>
-                    <span class="text-xs text-emerald-300/50">Total</span>
+            <p class="text-4xl font-black text-white leading-none mb-1">{{ $stats['products'] ?? 0 }}</p>
+            <p class="text-xs text-emerald-100/40">Total Koleksi Bibit</p>
+        </div>
+        
+        <div class="glass-card p-6 rounded-3xl relative overflow-hidden group">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                    </svg>
                 </div>
-                <p class="text-2xl font-bold text-white">{{ $stats['categories'] ?? 0 }}</p>
-                <p class="text-sm text-emerald-200/70">Kategori</p>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-100/30">Kategori</span>
             </div>
-            
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
-                        </svg>
-                    </div>
-                    <span class="text-xs text-emerald-300/50">Total</span>
+            <p class="text-4xl font-black text-white leading-none mb-1">{{ $stats['categories'] ?? 0 }}</p>
+            <p class="text-xs text-emerald-100/40">Kelompok Tanaman</p>
+        </div>
+        
+        <div class="glass-card p-6 rounded-3xl relative overflow-hidden group">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl group-hover:bg-orange-500/20 transition-all"></div>
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-orange-500/20 flex items-center justify-center text-orange-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
                 </div>
-                <p class="text-2xl font-bold text-white">{{ $stats['blogs'] ?? 0 }}</p>
-                <p class="text-sm text-emerald-200/70">Artikel</p>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-100/30">Pesanan</span>
             </div>
-            
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                    <span class="text-xs text-emerald-300/50">Total</span>
+            <p class="text-4xl font-black text-white leading-none mb-1">{{ $stats['orders'] ?? 0 }}</p>
+            <p class="text-xs text-emerald-100/40">Pesanan WhatsApp</p>
+        </div>
+        
+        <div class="glass-card p-6 rounded-3xl relative overflow-hidden group">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all"></div>
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
                 </div>
-                <p class="text-2xl font-bold text-white">{{ $stats['orders'] ?? 0 }}</p>
-                <p class="text-sm text-emerald-200/70">Pesanan</p>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-100/30">Pengguna</span>
             </div>
+            <p class="text-4xl font-black text-white leading-none mb-1">{{ $stats['users'] ?? 0 }}</p>
+            <p class="text-xs text-emerald-100/40">Pelanggan Terdaftar</p>
         </div>
     </div>
 </section>
 
 <!-- Quick Actions -->
-<section class="relative py-6">
-    <div class="absolute inset-0 bg-gradient-to-b from-emerald-950 via-emerald-900/30 to-emerald-950"></div>
-    
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-xl font-semibold text-white mb-6">Menu Cepat</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="#" class="glass-card p-6 rounded-2xl text-center card-hover group">
-                <div class="w-14 h-14 rounded-xl bg-lime-500/20 flex items-center justify-center mx-auto mb-3 group-hover:bg-lime-500 transition-all">
-                    <svg class="w-7 h-7 text-lime-400 group-hover:text-emerald-950 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                    </svg>
-                </div>
-                <h3 class="font-medium text-white">Tambah Produk</h3>
-            </a>
-            
-            <a href="#" class="glass-card p-6 rounded-2xl text-center card-hover group">
-                <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-500 transition-all">
-                    <svg class="w-7 h-7 text-blue-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
-                </div>
-                <h3 class="font-medium text-white">Tambah Artikel</h3>
-            </a>
-            
-            <a href="#" class="glass-card p-6 rounded-2xl text-center card-hover group">
-                <div class="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mx-auto mb-3 group-hover:bg-purple-500 transition-all">
-                    <svg class="w-7 h-7 text-purple-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                </div>
-                <h3 class="font-medium text-white">Data Pelanggan</h3>
-            </a>
-            
-            <a href="#" class="glass-card p-6 rounded-2xl text-center card-hover group">
-                <div class="w-14 h-14 rounded-xl bg-orange-500/20 flex items-center justify-center mx-auto mb-3 group-hover:bg-orange-500 transition-all">
-                    <svg class="w-7 h-7 text-orange-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                </div>
-                <h3 class="font-medium text-white">Pengaturan</h3>
-            </a>
-        </div>
+<section class="relative mb-8 animate-fade-up" style="animation-delay: 0.2s">
+    <h2 class="text-lg font-bold text-white mb-6 tracking-tight">Menu Cepat</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <a href="{{ route('admin.products.create') }}" class="glass-card p-8 rounded-3xl text-center card-hover group">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-500 transition-all duration-500">
+                <svg class="w-8 h-8 text-emerald-400 group-hover:text-emerald-950 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                </svg>
+            </div>
+            <h3 class="font-bold text-white text-sm">Tambah Produk</h3>
+        </a>
+        
+        <a href="{{ route('admin.categories.create') }}" class="glass-card p-8 rounded-3xl text-center card-hover group">
+            <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-500 transition-all duration-500">
+                <svg class="w-8 h-8 text-blue-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                </svg>
+            </div>
+            <h3 class="font-bold text-white text-sm">Tambah Kategori</h3>
+        </a>
+        
+        <a href="{{ route('admin.users.index') }}" class="glass-card p-8 rounded-3xl text-center card-hover group">
+            <div class="w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-500 transition-all duration-500">
+                <svg class="w-8 h-8 text-purple-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+            </div>
+            <h3 class="font-bold text-white text-sm">Data Pelanggan</h3>
+        </a>
+        
+        <a href="{{ route('admin.settings.index') }}" class="glass-card p-8 rounded-3xl text-center card-hover group">
+            <div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-500 transition-all duration-500">
+                <svg class="w-8 h-8 text-orange-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                </svg>
+            </div>
+            <h3 class="font-bold text-white text-sm">Pengaturan</h3>
+        </a>
     </div>
 </section>
 
 <!-- Recent Orders -->
-<section class="relative py-6">
-    <div class="absolute inset-0 bg-gradient-to-b from-emerald-950 via-emerald-900/40 to-emerald-950"></div>
+<section class="relative mb-8 animate-fade-up" style="animation-delay: 0.3s">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg font-bold text-white tracking-tight">Pesanan WhatsApp Terbaru</h2>
+        <a href="{{ route('admin.orders.index') }}" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors uppercase tracking-widest">Lihat Semua</a>
+    </div>
     
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-xl font-semibold text-white mb-6">Pesanan WhatsApp Terbaru</h2>
-        
-        <div class="glass-card rounded-2xl overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead>
-                        <tr class="border-b border-emerald-500/20">
-                            <th class="text-left px-6 py-4 text-sm font-medium text-emerald-300">Produk</th>
-                            <th class="text-left px-6 py-4 text-sm font-medium text-emerald-300">Pelanggan</th>
-                            <th class="text-left px-6 py-4 text-sm font-medium text-emerald-300">Tanggal</th>
-                            <th class="text-left px-6 py-4 text-sm font-medium text-emerald-300">Status</th>
-                            <th class="text-left px-6 py-4 text-sm font-medium text-emerald-300">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($recentOrders ?? [] as $order)
-                        <tr class="border-b border-emerald-500/10 hover:bg-white/5 transition-colors">
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-lg bg-emerald-800/50 flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-                                        </svg>
-                                    </div>
-                                    <span class="text-white">{{ $order->product_name ?? 'Bibit Tanaman' }}</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-emerald-200/80">{{ $order->customer_name ?? 'Pelanggan' }}</td>
-                            <td class="px-6 py-4 text-emerald-200/80">{{ $order->created_at ?? now()->format('d M Y') }}</td>
-                            <td class="px-6 py-4">
-                                <span class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-500/20 text-yellow-400">
-                                    {{ $order->status ?? 'Pending' }}
-                                </span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <button class="text-lime-400 hover:text-lime-300 text-sm">Detail</button>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="5" class="px-6 py-12 text-center">
-                                <div class="w-16 h-16 rounded-full bg-emerald-800/50 flex items-center justify-center mx-auto mb-4">
-                                    <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+    <div class="glass-card rounded-3xl overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full admin-table">
+                <thead>
+                    <tr class="text-left text-[10px] font-bold uppercase tracking-widest text-emerald-100/30 border-b border-white/5">
+                        <th class="px-8 py-5">Produk</th>
+                        <th class="px-8 py-5">Pelanggan</th>
+                        <th class="px-8 py-5">Tanggal</th>
+                        <th class="px-8 py-5 text-center">Status</th>
+                        <th class="px-8 py-5 text-right">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm">
+                    @forelse($recentOrders ?? [] as $order)
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="px-8 py-5">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center border border-white/5">
+                                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                                     </svg>
                                 </div>
-                                <p class="text-emerald-200/70">Belum ada pesanan</p>
-                            </td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
+                                <span class="font-bold text-white">{{ $order->product?->name ?? 'Bibit Tanaman' }}</span>
+                            </div>
+                        </td>
+                        <td class="px-8 py-5">
+                            <div class="text-white font-medium">{{ $order->user?->name ?? 'Guest' }}</div>
+                            <div class="text-xs text-emerald-100/30">{{ $order->phone ?? '08xxx' }}</div>
+                        </td>
+                        <td class="px-8 py-5 text-emerald-100/40">{{ $order->created_at->format('d M, H:i') }}</td>
+                        <td class="px-8 py-5">
+                            <div class="flex justify-center">
+                                <span class="px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-{{ $order->status_color ?? 'yellow' }}-500/10 text-{{ $order->status_color ?? 'yellow' }}-400 border border-{{ $order->status_color ?? 'yellow' }}-500/20">
+                                    {{ $order->status_label ?? 'Pending' }}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-right">
+                            <a href="{{ route('admin.orders.show', $order) }}" class="text-emerald-400 hover:text-emerald-300 font-bold text-xs">Detail</a>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="5" class="px-8 py-20 text-center">
+                            <div class="w-20 h-20 rounded-full bg-emerald-500/5 flex items-center justify-center mx-auto mb-6">
+                                <svg class="w-10 h-10 text-emerald-500/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                                </svg>
+                            </div>
+                            <p class="text-emerald-100/30 font-medium">Belum ada pesanan masuk hari ini</p>
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
 </section>

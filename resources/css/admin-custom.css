@@ -1,0 +1,164 @@
+/* Genjah Admin Premium Theme */
+:root {
+    --admin-bg: #030a08;
+    --admin-card: rgba(10, 25, 20, 0.6);
+    --admin-border: rgba(52, 211, 153, 0.15);
+    --admin-accent: #10b981;
+    --admin-accent-glow: rgba(16, 185, 129, 0.25);
+    --admin-text: #f5fdfa;
+    --admin-text-dim: #94a3b8;
+}
+
+/* Base Body Styles */
+.admin-body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--admin-bg);
+    color: var(--admin-text);
+    background-image: 
+        radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(6, 78, 59, 0.1) 0%, transparent 50%);
+    background-attachment: fixed;
+}
+
+/* Premium Glass Cards */
+.glass-card {
+    background: var(--admin-card);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid var(--admin-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(52, 211, 153, 0.3);
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.1);
+}
+
+/* Sidebar Custom Styling */
+.admin-sidebar {
+    background: linear-gradient(180deg, #051a14 0%, #030a08 100%);
+    border-right: 1px solid var(--admin-border);
+}
+
+.sidebar-link {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.sidebar-link.active {
+    background: rgba(16, 185, 129, 0.1) !important;
+    color: #10b981 !important;
+}
+
+.sidebar-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 3px;
+    background: #10b981;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 0 10px #10b981;
+}
+
+/* Table Custom Styling */
+.admin-table thead tr {
+    background: rgba(16, 185, 129, 0.05) !important;
+}
+
+.admin-table tbody tr {
+    border-bottom: 1px solid rgba(52, 211, 153, 0.05);
+    transition: background 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Button Premium Styles */
+.btn-premium {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #031c15;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+    filter: brightness(1.1);
+}
+
+/* Form Styling */
+.admin-input {
+    background: rgba(15, 23, 42, 0.5) !important;
+    border: 1px solid rgba(52, 211, 153, 0.1) !important;
+    color: #f8fafc !important;
+    transition: all 0.3s ease;
+}
+
+.admin-input:focus {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.4);
+}
+
+/* Badge & Status Styles */
+.status-badge {
+    @apply px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border;
+}
+
+/* Custom Alert Styles */
+.admin-alert {
+    @apply glass-card rounded-2xl p-4 flex items-center gap-3 border-l-4;
+}
+.admin-alert-success { @apply border-l-emerald-500 bg-emerald-500/10 text-emerald-100; }
+.admin-alert-error { @apply border-l-red-500 bg-red-500/10 text-red-100; }
+
+/* Micro-animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Sidebar Custom Scrollbar */
+.admin-sidebar::-webkit-scrollbar {
+    display: none;
+}
+.admin-sidebar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

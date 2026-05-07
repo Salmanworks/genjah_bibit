@@ -3,74 +3,76 @@
 @section('title', 'Kelola Pengguna')
 
 @section('content')
-    <div class="mb-6">
-        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Daftar Pengguna</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Total {{ $users->total() }} pengguna terdaftar</p>
+    <div class="flex justify-between items-center mb-8 animate-fade-up">
+        <div>
+            <h3 class="text-2xl font-extrabold text-white tracking-tight">Manajemen Pengguna</h3>
+            <p class="text-sm text-lime-100/40">Total {{ $users->total() }} pengguna dalam sistem</p>
+        </div>
     </div>
 
     <!-- Filters -->
-    <div class="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-gray-200 dark:border-zinc-700 p-4 mb-6">
+    <div class="glass-card rounded-3xl p-6 mb-8 animate-fade-up" style="animation-delay: 0.1s">
         <form method="GET" action="{{ route('admin.users.index') }}" class="flex flex-wrap gap-4">
             <div class="flex-1 min-w-[200px]">
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama atau email..." class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-gray-800 dark:text-white focus:ring-2 focus:ring-emerald-500">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama atau email..." class="admin-input w-full px-6 py-3 rounded-2xl focus:ring-2 focus:ring-lime-500">
             </div>
-            <select name="role" class="px-4 py-2 rounded-lg border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-gray-800 dark:text-white">
+            <select name="role" class="admin-input px-6 py-3 rounded-2xl min-w-[150px]">
                 <option value="">Semua Role</option>
                 <option value="admin" {{ request('role') === 'admin' ? 'selected' : '' }}>Admin</option>
-                <option value="user" {{ request('role') === 'user' ? 'selected' : '' }}>User</option>
+                <option value="user" {{ request('role') === 'user' ? 'selected' : '' }}>Pelanggan</option>
             </select>
-            <button type="submit" class="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors">Filter</button>
+            <button type="submit" class="px-8 py-3 bg-lime-500/10 text-lime-400 font-bold rounded-2xl hover:bg-lime-500 hover:text-lime-950 transition-all border border-lime-500/20">Filter</button>
             @if(request()->hasAny(['search', 'role']))
-                <a href="{{ route('admin.users.index') }}" class="px-4 py-2 bg-gray-200 dark:bg-zinc-600 text-gray-700 dark:text-white rounded-lg hover:bg-gray-300 transition-colors">Reset</a>
+                <a href="{{ route('admin.users.index') }}" class="px-8 py-3 bg-white/5 text-white font-bold rounded-2xl hover:bg-white/10 transition-all border border-white/5">Reset</a>
             @endif
         </form>
     </div>
 
     <!-- Users Table -->
-    <div class="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-gray-200 dark:border-zinc-700 overflow-hidden">
+    <div class="glass-card rounded-3xl overflow-hidden animate-fade-up" style="animation-delay: 0.2s">
         <div class="overflow-x-auto">
-            <table class="w-full">
+            <table class="w-full admin-table">
                 <thead>
-                    <tr class="text-left text-sm text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-900">
-                        <th class="px-6 py-3">Pengguna</th>
-                        <th class="px-6 py-3">Email</th>
-                        <th class="px-6 py-3">Role</th>
-                        <th class="px-6 py-3">Terdaftar</th>
-                        <th class="px-6 py-3">Aksi</th>
+                    <tr class="text-left text-[10px] font-bold uppercase tracking-widest text-lime-100/30 border-b border-white/5">
+                        <th class="px-8 py-5">Pengguna</th>
+                        <th class="px-8 py-5">Email</th>
+                        <th class="px-8 py-5">Role</th>
+                        <th class="px-8 py-5">Terdaftar</th>
+                        <th class="px-8 py-5 text-right">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="text-sm">
                     @forelse($users as $user)
-                        <tr class="border-b border-gray-100 dark:border-zinc-700 hover:bg-gray-50 dark:hover:bg-zinc-750 transition-colors">
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-bold">
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-8 py-5">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 font-bold text-sm">
                                         {{ $user->initials() }}
                                     </div>
-                                    <div class="font-medium text-gray-800 dark:text-white">{{ $user->name }}</div>
+                                    <div class="font-bold text-white">{{ $user->name }}</div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-gray-600 dark:text-gray-300">{{ $user->email }}</td>
-                            <td class="px-6 py-4">
+                            <td class="px-8 py-5 text-lime-100/60">{{ $user->email }}</td>
+                            <td class="px-8 py-5">
                                 @if($user->is_admin)
-                                    <span class="px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300">Admin</span>
+                                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-purple-500/10 text-purple-400 border border-purple-500/20">Admin</span>
                                 @else
-                                    <span class="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-zinc-700 dark:text-gray-300">Pelanggan</span>
+                                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/5 text-lime-100/30 border border-white/5">Pelanggan</span>
                                 @endif
                             </td>
-                            <td class="px-6 py-4 text-gray-600 dark:text-gray-300">
+                            <td class="px-8 py-5 text-lime-100/40 font-medium">
                                 {{ $user->created_at->format('d M Y') }}
                             </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-2">
-                                    <a href="{{ route('admin.users.edit', $user) }}" class="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg transition-colors" title="Edit">
+                            <td class="px-8 py-5">
+                                <div class="flex items-center justify-end gap-3">
+                                    <a href="{{ route('admin.users.edit', $user) }}" class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition-all border border-blue-500/20" title="Edit">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                                     </a>
                                     @if(auth()->id() !== $user->id)
                                         <form action="{{ route('admin.users.destroy', $user) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus pengguna ini?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors" title="Hapus">
+                                            <button type="submit" class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500 hover:text-white transition-all border border-red-500/20" title="Hapus">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                                             </button>
                                         </form>
@@ -80,9 +82,13 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
-                                <svg class="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                                <p>Belum ada pengguna terdaftar</p>
+                            <td colspan="5" class="px-8 py-20 text-center">
+                                <div class="w-20 h-20 rounded-full bg-lime-500/5 flex items-center justify-center mx-auto mb-6">
+                                    <svg class="w-10 h-10 text-lime-500/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                                    </svg>
+                                </div>
+                                <p class="text-lime-100/30 font-medium">Belum ada pengguna terdaftar</p>
                             </td>
                         </tr>
                     @endforelse
@@ -90,7 +96,7 @@
             </table>
         </div>
         @if($users->hasPages())
-            <div class="px-6 py-4 border-t border-gray-200 dark:border-zinc-700">
+            <div class="px-8 py-6 border-t border-white/5 bg-white/5">
                 {{ $users->withQueryString()->links() }}
             </div>
         @endif
