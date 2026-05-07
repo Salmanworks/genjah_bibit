@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-8 animate-fade-up">
-        <a href="{{ route('admin.orders.index') }}" class="group inline-flex items-center gap-2 text-lime-100/40 hover:text-lime-400 transition-colors font-bold text-xs uppercase tracking-widest">
+        <a href="{{ route('admin.orders.index') }}" class="group admin-back-link">
             <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
             Kembali ke Antrean Pesanan
         </a>
@@ -104,7 +104,7 @@
                                 <option value="cancelled" {{ $order->status === 'cancelled' ? 'selected' : '' }}>Dibatalkan</option>
                             </select>
                         </div>
-                        <button type="submit" class="w-full py-4 bg-white/5 text-white hover:bg-white/10 border border-white/10 rounded-2xl font-bold transition-all flex items-center justify-center gap-2">
+                        <button type="submit" class="admin-action-btn w-full py-4 rounded-2xl">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             Simpan Perubahan
                         </button>

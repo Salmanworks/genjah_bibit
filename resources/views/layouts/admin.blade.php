@@ -33,48 +33,48 @@
             </a>
         </div>
         
-        <nav class="p-6 space-y-2 flex-1 overflow-y-auto custom-scrollbar">
-            <a href="{{ route('admin.dashboard') }}" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.dashboard') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <nav class="p-8 space-y-4 flex-1 overflow-y-auto custom-scrollbar">
+            <a href="{{ route('admin.dashboard') }}" class="sidebar-link flex items-center gap-4 px-5 py-4 rounded-2xl {{ request()->routeIs('admin.dashboard') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
                 </svg>
-                <span class="font-semibold text-sm">Dashboard</span>
+                <span class="font-semibold text-base">Dashboard</span>
             </a>
             
-            <a href="{{ route('admin.products.index') }}" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.products.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="{{ route('admin.products.index') }}" class="sidebar-link flex items-center gap-4 px-5 py-4 rounded-2xl {{ request()->routeIs('admin.products.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                 </svg>
-                <span class="font-semibold text-sm">Produk</span>
+                <span class="font-semibold text-base">Produk</span>
             </a>
             
-            <a href="{{ route('admin.categories.index') }}" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.categories.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="{{ route('admin.categories.index') }}" class="sidebar-link flex items-center gap-4 px-5 py-4 rounded-2xl {{ request()->routeIs('admin.categories.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
                 </svg>
-                <span class="font-semibold text-sm">Kategori</span>
+                <span class="font-semibold text-base">Kategori</span>
             </a>
             
-            <a href="{{ route('admin.orders.index') }}" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.orders.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="{{ route('admin.orders.index') }}" class="sidebar-link flex items-center gap-4 px-5 py-4 rounded-2xl {{ request()->routeIs('admin.orders.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
-                <span class="font-semibold text-sm">Pesanan</span>
+                <span class="font-semibold text-base">Pesanan</span>
             </a>
             
-            <a href="{{ route('admin.users.index') }}" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.users.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="{{ route('admin.users.index') }}" class="sidebar-link flex items-center gap-4 px-5 py-4 rounded-2xl {{ request()->routeIs('admin.users.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                 </svg>
-                <span class="font-semibold text-sm">Pengguna</span>
+                <span class="font-semibold text-base">Pengguna</span>
             </a>
             
-            <a href="{{ route('admin.settings.index') }}" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.settings.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="{{ route('admin.settings.index') }}" class="sidebar-link flex items-center gap-4 px-5 py-4 rounded-2xl {{ request()->routeIs('admin.settings.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
-                <span class="font-semibold text-sm">Pengaturan</span>
+                <span class="font-semibold text-base">Pengaturan</span>
             </a>
         </nav>
         
@@ -89,9 +89,9 @@
     </aside>
     
     <!-- Main Wrapper -->
-    <div class="min-h-screen lg:pl-72 flex flex-col">
+    <div class="admin-main-wrapper min-h-screen flex flex-col">
         <!-- Header (Sticky) -->
-        <header class="sticky top-0 z-30 bg-admin-bg/80 backdrop-blur-xl border-b border-white/5 py-4 px-4 lg:px-10 flex items-center justify-between">
+        <header class="admin-header sticky top-0 z-30 py-4 px-4 lg:px-10 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <button id="sidebarToggle" class="lg:hidden p-2 text-lime-400 hover:bg-white/5 rounded-xl transition-all">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -102,21 +102,21 @@
                 </div>
             </div>
             
-            <div class="flex items-center gap-4 lg:gap-8">
-                <div class="flex items-center gap-3 pr-4 border-r border-white/5">
-                    <div class="w-9 h-9 rounded-xl bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 font-bold text-xs shadow-inner">
+            <div class="flex items-center gap-6 lg:gap-12">
+                <div class="flex items-center gap-4 pr-6 border-r border-white/10">
+                    <div class="w-11 h-11 rounded-2xl bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 font-bold text-sm shadow-inner">
                         {{ substr(auth()->user()?->name ?? 'A', 0, 1) }}
                     </div>
                     <div class="hidden md:block">
-                        <p class="text-xs font-bold text-white leading-none mb-1">{{ auth()->user()?->name ?? 'Admin' }}</p>
-                        <p class="text-[9px] font-black text-lime-500/60 uppercase tracking-widest">Super Admin</p>
+                        <p class="text-sm font-bold text-white leading-none mb-1.5">{{ auth()->user()?->name ?? 'Admin' }}</p>
+                        <p class="text-[10px] font-black text-lime-500/60 uppercase tracking-widest">Super Admin</p>
                     </div>
                 </div>
                 
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
-                    <button type="submit" class="group p-2 text-white/20 hover:text-red-400 transition-all" title="Keluar">
-                        <svg class="w-6 h-6 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button type="submit" class="group p-3 text-white/20 hover:text-red-400 transition-all" title="Keluar">
+                        <svg class="w-7 h-7 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                         </svg>
                     </button>
@@ -125,8 +125,8 @@
         </header>
         
         <!-- Content -->
-        <main class="flex-1 p-6 lg:p-10">
-            <div class="max-w-7xl mx-auto">
+        <main class="admin-content flex-1 p-6 lg:px-10 lg:py-10 xl:px-14">
+            <div class="max-w-[1240px] mx-auto space-y-10 lg:space-y-12">
                 @if(session('success'))
                     <div class="mb-8 admin-alert admin-alert-success animate-fade-up">
                         <svg class="w-5 h-5 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -146,7 +146,7 @@
         </main>
         
         <!-- Footer -->
-        <footer class="mt-auto py-8 px-10 border-t border-white/5 opacity-30">
+        <footer class="admin-footer mt-auto py-8 px-10">
             <p class="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white">
                 &copy; {{ date('Y') }} {{ setting('store_name', 'Genjah Rumah Bibit') }} &bull; Digital Horticulture Dashboard
             </p>

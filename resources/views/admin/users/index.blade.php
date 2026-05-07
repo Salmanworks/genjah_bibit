@@ -3,15 +3,15 @@
 @section('title', 'Kelola Pengguna')
 
 @section('content')
-    <div class="flex justify-between items-center mb-8 animate-fade-up">
+    <div class="admin-page-header animate-fade-up">
         <div>
-            <h3 class="text-2xl font-extrabold text-white tracking-tight">Manajemen Pengguna</h3>
-            <p class="text-sm text-lime-100/40">Total {{ $users->total() }} pengguna dalam sistem</p>
+            <h3 class="admin-page-title">Manajemen Pengguna</h3>
+            <p class="admin-page-subtitle">Total {{ $users->total() }} pengguna dalam sistem</p>
         </div>
     </div>
 
     <!-- Filters -->
-    <div class="glass-card rounded-3xl p-6 mb-8 animate-fade-up" style="animation-delay: 0.1s">
+    <div class="glass-card admin-filter-panel rounded-3xl mb-8 animate-fade-up" style="animation-delay: 0.1s">
         <form method="GET" action="{{ route('admin.users.index') }}" class="flex flex-wrap gap-4">
             <div class="flex-1 min-w-[200px]">
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama atau email..." class="admin-input w-full px-6 py-3 rounded-2xl focus:ring-2 focus:ring-lime-500">
@@ -21,15 +21,15 @@
                 <option value="admin" {{ request('role') === 'admin' ? 'selected' : '' }}>Admin</option>
                 <option value="user" {{ request('role') === 'user' ? 'selected' : '' }}>Pelanggan</option>
             </select>
-            <button type="submit" class="px-8 py-3 bg-lime-500/10 text-lime-400 font-bold rounded-2xl hover:bg-lime-500 hover:text-lime-950 transition-all border border-lime-500/20">Filter</button>
+            <button type="submit" class="admin-action-btn">Filter</button>
             @if(request()->hasAny(['search', 'role']))
-                <a href="{{ route('admin.users.index') }}" class="px-8 py-3 bg-white/5 text-white font-bold rounded-2xl hover:bg-white/10 transition-all border border-white/5">Reset</a>
+                <a href="{{ route('admin.users.index') }}" class="admin-action-btn admin-reset-btn">Reset</a>
             @endif
         </form>
     </div>
 
     <!-- Users Table -->
-    <div class="glass-card rounded-3xl overflow-hidden animate-fade-up" style="animation-delay: 0.2s">
+    <div class="glass-card admin-table-shell rounded-3xl overflow-hidden animate-fade-up" style="animation-delay: 0.2s">
         <div class="overflow-x-auto">
             <table class="w-full admin-table">
                 <thead>
@@ -65,14 +65,14 @@
                             </td>
                             <td class="px-8 py-5">
                                 <div class="flex items-center justify-end gap-3">
-                                    <a href="{{ route('admin.users.edit', $user) }}" class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition-all border border-blue-500/20" title="Edit">
+                                    <a href="{{ route('admin.users.edit', $user) }}" class="admin-icon-btn text-blue-300 hover:bg-blue-500 hover:text-white hover:border-blue-400/40" title="Edit">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                                     </a>
                                     @if(auth()->id() !== $user->id)
                                         <form action="{{ route('admin.users.destroy', $user) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus pengguna ini?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500 hover:text-white transition-all border border-red-500/20" title="Hapus">
+                                            <button type="submit" class="admin-icon-btn text-red-300 hover:bg-red-500 hover:text-white hover:border-red-400/40" title="Hapus">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                                             </button>
                                         </form>
@@ -96,7 +96,7 @@
             </table>
         </div>
         @if($users->hasPages())
-            <div class="px-8 py-6 border-t border-white/5 bg-white/5">
+            <div class="admin-pagination-shell">
                 {{ $users->withQueryString()->links() }}
             </div>
         @endif

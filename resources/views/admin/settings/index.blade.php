@@ -3,19 +3,19 @@
 @section('title', 'Pengaturan Toko')
 
 @section('content')
-    <div class="flex justify-between items-center mb-8 animate-fade-up">
+    <div class="admin-page-header animate-fade-up">
         <div>
-            <h3 class="text-2xl font-extrabold text-white tracking-tight">Pengaturan Toko</h3>
-            <p class="text-sm text-lime-100/40">Konfigurasi identitas dan integrasi Genjah Rumah Bibit</p>
+            <h3 class="admin-page-title">Pengaturan Toko</h3>
+            <p class="admin-page-subtitle">Konfigurasi identitas dan integrasi Genjah Rumah Bibit</p>
         </div>
     </div>
 
     <form action="{{ route('admin.settings.update') }}" method="POST">
         @csrf
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-2 space-y-8">
+        <div class="admin-settings-layout grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+            <div class="admin-settings-main lg:col-span-8">
                 <!-- General Info -->
-                <div class="glass-card rounded-3xl p-8 animate-fade-up" style="animation-delay: 0.1s">
+                <div class="admin-settings-card glass-card p-8 animate-fade-up" style="animation-delay: 0.1s">
                     <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
                         <svg class="w-5 h-5 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         Informasi Identitas
@@ -37,7 +37,7 @@
                 </div>
 
                 <!-- Contact Info -->
-                <div class="glass-card rounded-3xl p-8 animate-fade-up" style="animation-delay: 0.2s">
+                <div class="admin-settings-card glass-card p-8 animate-fade-up" style="animation-delay: 0.2s">
                     <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
                         <svg class="w-5 h-5 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         Kontak & Lokasi
@@ -62,7 +62,7 @@
                 </div>
 
                 <!-- WhatsApp Message -->
-                <div class="glass-card rounded-3xl p-8 animate-fade-up" style="animation-delay: 0.3s">
+                <div class="admin-settings-card glass-card p-8 animate-fade-up" style="animation-delay: 0.3s">
                     <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
                         <svg class="w-5 h-5 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
                         Integrasi Checkout
@@ -73,8 +73,8 @@
             </div>
 
             <!-- Social Media & Save -->
-            <div class="space-y-8">
-                <div class="glass-card rounded-3xl p-8 animate-fade-up" style="animation-delay: 0.4s">
+            <div class="admin-settings-sidebar lg:col-span-4">
+                <div class="admin-settings-card glass-card p-8 animate-fade-up" style="animation-delay: 0.4s">
                     <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
                         <svg class="w-5 h-5 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.828a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
                         Media Sosial
@@ -95,7 +95,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-premium w-full py-4 rounded-3xl font-bold flex items-center justify-center gap-2 text-lg shadow-2xl shadow-lime-500/20">
+                <button type="submit" class="btn-premium w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-2 text-lg shadow-2xl shadow-lime-500/20">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
                     Simpan Perubahan
                 </button>
