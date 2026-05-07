@@ -83,8 +83,18 @@
                     @error('main_image') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Galeri (opsional)</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Galeri / Katalog (opsional)</label>
+                    @if(isset($product) && $product->gallery_images)
+                        <div class="grid grid-cols-4 gap-2 mb-2">
+                            @foreach($product->gallery_images as $img)
+                                <div class="relative group aspect-square rounded-lg overflow-hidden bg-gray-100">
+                                    <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover">
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                     <input type="file" name="gallery_images[]" accept="image/*" multiple class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-gray-800 dark:text-white file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-emerald-50 file:text-emerald-700">
+                    <p class="text-xs text-gray-500 mt-1">Anda dapat memilih beberapa gambar sekaligus.</p>
                 </div>
             </div>
         </div>

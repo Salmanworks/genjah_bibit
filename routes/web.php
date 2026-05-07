@@ -43,6 +43,13 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+    
+    Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
+    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('orders', \App\Http\Controllers\Admin\OrderController::class);
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+    Route::get('settings', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
+    Route::post('settings', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('settings.update');
 });
 
 // Auth Routes
