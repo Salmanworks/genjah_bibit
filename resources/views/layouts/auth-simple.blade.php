@@ -10,7 +10,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -18,139 +18,136 @@
         * { font-family: 'Plus Jakarta Sans', sans-serif; }
 
         body {
-            background-color: #F4F1EA;
+            background-image: url('/images/nature1.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
-        /* Left panel decorative blobs */
-        .blob-1 { background: radial-gradient(circle, rgba(163, 230, 53, 0.35) 0%, transparent 70%); }
-        .blob-2 { background: radial-gradient(circle, rgba(52, 211, 153, 0.25) 0%, transparent 70%); }
+        .page-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 78, 59, 0.95);
+            z-index: 1;
+        }
 
-        /* Organic input styling */
+        .auth-card {
+            width: 100%;
+            max-width: 320px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
         .auth-input {
             width: 100%;
-            padding: 14px 20px 14px 48px;
-            border-radius: 999px;
-            border: 2px solid rgba(26, 36, 25, 0.08);
-            background: white;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 1.5px solid #eee;
+            background: #fdfdfd;
             color: #1A2419;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             outline: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(26, 36, 25, 0.04);
+            transition: all 0.2s ease;
         }
 
         .auth-input:focus {
-            border-color: #5A7058;
-            box-shadow: 0 0 0 4px rgba(90, 112, 88, 0.1), 0 2px 8px rgba(26, 36, 25, 0.04);
-        }
-
-        .auth-input::placeholder {
-            color: rgba(26, 36, 25, 0.25);
-            font-weight: 400;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
         .auth-btn {
             width: 100%;
-            padding: 15px 20px;
-            border-radius: 999px;
+            padding: 11px 20px;
+            border-radius: 10px;
             background: #1A2419;
-            color: white;
+            color: #ffffff;
             font-weight: 800;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            font-size: 0.85rem;
             border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(26, 36, 25, 0.2);
+            transition: all 0.2s ease;
+            margin-top: 8px;
         }
 
         .auth-btn:hover {
             background: #84cc16;
             color: #1A2419;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(26, 36, 25, 0.15);
         }
 
-        .left-panel {
-            background: #1A2419;
+        .logo-small {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            margin: 0 auto 16px;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Illustration leaf decorations */
-        .leaf-deco {
+        /* Password Toggle Styles */
+        .password-container {
+            position: relative;
+        }
+        .password-toggle {
             position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            pointer-events: none;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            padding: 0;
         }
+        .password-toggle:hover { color: #1A2419; }
     </style>
 </head>
-<body class="min-h-screen flex">
+<body>
+    <div class="page-overlay"></div>
 
-    <!-- LEFT PANEL: Decorative Brand Side -->
-    <div class="left-panel hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col items-center justify-center p-16 text-white">
-        <!-- Glowing blobs -->
-        <div class="leaf-deco blob-1 w-96 h-96 top-[-10%] left-[-10%] opacity-60"></div>
-        <div class="leaf-deco blob-2 w-80 h-80 bottom-[-5%] right-[-5%] opacity-50"></div>
-        <div class="leaf-deco blob-1 w-64 h-64 bottom-[20%] left-[10%] opacity-30"></div>
+    <div class="auth-card">
+        <img src="{{ asset('images/logo1.jpeg') }}" alt="Logo" class="logo-small">
+        
+        <h3 class="text-lg font-black text-emerald-950 tracking-tight mb-1">@yield('heading')</h3>
+        <p class="text-[10px] font-bold text-emerald-900/40 uppercase tracking-widest mb-6">@yield('subheading')</p>
 
-        <!-- Brand Content -->
-        <div class="relative z-10 text-center">
-            <div class="w-24 h-24 rounded-[28px] overflow-hidden mx-auto mb-8 shadow-2xl ring-4 ring-white/10">
-                <img src="{{ asset('images/logo1.jpeg') }}" alt="Logo" class="w-full h-full object-cover">
-            </div>
+        @yield('content')
 
-            <h1 class="text-4xl font-black text-white tracking-tight leading-tight mb-4">
-                Genjah<br><span class="text-lime-400">Rumah Bibit</span>
-            </h1>
-            <p class="text-white/50 font-medium text-base max-w-xs leading-relaxed">
-                Pusat bibit tanaman unggul bersertifikat untuk kebun impian Anda.
-            </p>
-
-            <!-- Feature Badges -->
-            <div class="mt-12 space-y-3">
-                @foreach([['🌱', 'Bibit Premium Bersertifikat'], ['📦', 'Pengiriman Aman ke Seluruh Indonesia'], ['💬', 'Konsultasi Gratis via WhatsApp']] as $feat)
-                <div class="flex items-center gap-3 px-5 py-3 rounded-full bg-white/5 border border-white/10 text-left">
-                    <span class="text-lg">{{ $feat[0] }}</span>
-                    <span class="text-sm text-white/70 font-medium">{{ $feat[1] }}</span>
-                </div>
-                @endforeach
-            </div>
+        <div class="mt-8">
+            <a href="{{ route('home') }}" class="text-[9px] font-black text-emerald-950/30 hover:text-emerald-950 uppercase tracking-widest flex items-center justify-center gap-1">
+                ← Ke Beranda
+            </a>
         </div>
     </div>
 
-    <!-- RIGHT PANEL: Auth Form -->
-    <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 relative">
-        <!-- Mobile Logo (only on small screens) -->
-        <div class="absolute top-6 left-6 flex items-center gap-3 lg:hidden">
-            <div class="w-9 h-9 rounded-xl overflow-hidden shadow">
-                <img src="{{ asset('images/logo1.jpeg') }}" alt="Logo" class="w-full h-full object-cover">
-            </div>
-            <span class="text-sm font-black text-emerald-950">Genjah Rumah Bibit</span>
-        </div>
-
-        <div class="w-full max-w-sm">
-            <!-- Heading -->
-            <div class="mb-10">
-                <h2 class="text-3xl font-black text-emerald-950 tracking-tight mb-2">@yield('heading', 'Selamat Datang')</h2>
-                <p class="text-emerald-900/40 font-medium text-sm">@yield('subheading', 'Masuk ke akun Anda')</p>
-            </div>
-
-            @yield('content')
-
-            <!-- Back to home -->
-            <div class="mt-8 text-center">
-                <a href="{{ route('home') }}" class="inline-flex items-center gap-2 text-xs text-emerald-900/30 hover:text-emerald-950 transition-colors font-bold uppercase tracking-widest">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                    </svg>
-                    Kembali ke Beranda
-                </a>
-            </div>
-        </div>
-    </div>
-
+    <script>
+        function togglePassword(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>';
+            } else {
+                input.type = 'password';
+                icon.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>';
+            }
+        }
+    </script>
 </body>
 </html>
