@@ -3,25 +3,38 @@
 @section('title', 'Tentang Kami - ' . setting('store_name', 'Plant Power'))
 
 @section('content')
-<!-- Header -->
-<section class="relative pt-32 pb-12 overflow-hidden">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900/10 border border-emerald-900/10 mb-8">
-            <span class="w-2 h-2 rounded-full bg-lime-500 animate-pulse"></span>
-            <span class="text-xs font-medium text-emerald-900 tracking-wider uppercase">Mengenal Kami</span>
-        </div>
-        
-        <div class="max-w-[95%] mx-auto mt-4">
-            <div class="w-full px-8 md:px-20 py-16 md:py-24 bg-white/90 backdrop-blur-xl border border-emerald-900/5 shadow-2xl flex flex-col items-center justify-center text-center" 
-                 style="border-radius: 9999px;">
-                <h1 class="font-black text-emerald-950 mb-6 drop-shadow-sm tracking-tighter leading-none uppercase"
-                    style="font-size: clamp(2.5rem, 10vw, 7.5rem);">
-                    Tentang <span class="text-lime-400">Kami</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-emerald-900/70 max-w-3xl mx-auto font-light leading-relaxed">
-                    Komitmen kami dalam menyediakan bibit tanaman berkualitas untuk masa depan hijau Indonesia.
-                </p>
+<!-- Header Section -->
+<section class="relative pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
+    <!-- Elegant gradient background using theme colors -->
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, #2B3A28 0%, #6B8269 50%, #4A5D48 100%);"></div>
+    <!-- Subtle pattern overlay -->
+    <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 mb-6">
+                <span class="w-2 h-2 rounded-full" style="background-color: #D48C70;"></span>
+                <span class="text-xs font-semibold text-white/90 tracking-wider uppercase">Mengenal Kami</span>
+            </div>
+            
+            <!-- Title -->
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight" style="color: #F4F1EA;">
+                Tentang <span style="color: #D48C70;">Kami</span>
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-8" style="color: rgba(244, 241, 234, 0.8);">
+                Komitmen kami dalam menyediakan bibit tanaman berkualitas untuk masa depan hijau Indonesia
+            </p>
+            
+            <!-- Decorative line -->
+            <div class="flex items-center justify-center gap-4">
+                <div class="h-px w-20" style="background: linear-gradient(to right, transparent, rgba(244, 241, 234, 0.4));"></div>
+                <svg class="w-5 h-5" style="color: rgba(244, 241, 234, 0.5);" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                <div class="h-px w-20" style="background: linear-gradient(to left, transparent, rgba(244, 241, 234, 0.4));"></div>
             </div>
         </div>
     </div>
@@ -180,27 +193,35 @@
 </section>
 
 <!-- Call to Action -->
-<section class="relative py-24">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-[95%] mx-auto">
-            <div class="w-full px-8 md:px-20 py-20 md:py-32 bg-white border border-emerald-900/10 shadow-2xl flex flex-col items-center justify-center text-center" 
-                 style="border-radius: 9999px;">
-                <h2 class="font-black text-emerald-950 mb-6 drop-shadow-sm tracking-tighter leading-none uppercase"
-                    style="font-size: clamp(2rem, 8vw, 6rem);">
-                    Mulai <span class="text-lime-500">Berkebun</span> <br/> Hari Ini?
-                </h2>
-                <p class="text-xl md:text-2xl text-emerald-900/70 max-w-3xl mx-auto font-light leading-relaxed mb-12">
-                    Kami siap membantu Anda memilih bibit terbaik untuk kebun impian Anda.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                    <a href="{{ route('products.index') }}" class="px-12 py-5 bg-emerald-950 text-white font-black rounded-full hover:bg-emerald-900 transition-all shadow-xl shadow-emerald-950/20 text-xl">
-                        Lihat Katalog
-                    </a>
-                    <a href="{{ setting('whatsapp_number') }}" target="_blank" class="px-12 py-5 border-2 border-emerald-900/20 text-emerald-900 font-black rounded-full hover:bg-emerald-50 transition-all text-xl">
-                        Konsultasi Gratis
-                    </a>
-                </div>
-            </div>
+<section class="relative py-20 overflow-hidden">
+    <!-- Elegant gradient background -->
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, #2B3A28 0%, #4A5D48 50%, #6B8269 100%);"></div>
+    
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 mb-6">
+            <span class="w-2 h-2 rounded-full" style="background-color: #D48C70;"></span>
+            <span class="text-xs font-semibold text-white/90 tracking-wider uppercase">Ayo Mulai</span>
+        </div>
+        
+        <!-- Title -->
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight" style="color: #F4F1EA;">
+            Mulai <span style="color: #D48C70;">Berkebun</span> Hari Ini?
+        </h2>
+        
+        <!-- Subtitle -->
+        <p class="text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-10" style="color: rgba(244, 241, 234, 0.8);">
+            Kami siap membantu Anda memilih bibit terbaik untuk kebun impian Anda
+        </p>
+        
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="{{ route('products.index') }}" class="px-8 py-4 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl" style="background-color: #D48C70; color: #F4F1EA;">
+                Lihat Katalog
+            </a>
+            <a href="{{ setting('whatsapp_number') }}" target="_blank" class="px-8 py-4 rounded-full font-semibold text-sm border-2 transition-all duration-300 hover:bg-white/10" style="border-color: rgba(244, 241, 234, 0.4); color: #F4F1EA;">
+                Konsultasi Gratis
+            </a>
         </div>
     </div>
 </section>

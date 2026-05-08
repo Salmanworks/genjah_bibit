@@ -3,25 +3,38 @@
 @section('title', 'Kontak - ' . setting('store_name', 'Plant Power'))
 
 @section('content')
-<!-- Header -->
-<section class="relative pt-32 pb-24 overflow-hidden">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900/10 border border-emerald-900/10 mb-8">
-            <span class="w-2 h-2 rounded-full bg-lime-500 animate-pulse"></span>
-            <span class="text-xs font-medium text-emerald-900 tracking-wider uppercase">Hubungi Kami</span>
-        </div>
-        
-        <div class="max-w-[95%] mx-auto mt-4">
-            <div class="w-full px-8 md:px-20 py-16 md:py-24 bg-white/90 backdrop-blur-xl border border-emerald-900/5 shadow-2xl flex flex-col items-center justify-center text-center" 
-                 style="border-radius: 9999px;">
-                <h1 class="font-black text-emerald-950 mb-6 drop-shadow-sm tracking-tighter leading-none uppercase"
-                    style="font-size: clamp(2.5rem, 10vw, 7.5rem);">
-                    Kontak <span class="text-lime-400">Kami</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-emerald-900/70 max-w-3xl mx-auto font-light leading-relaxed">
-                    Kami siap membantu Anda memilih bibit tanaman terbaik untuk kebun impian Anda.
-                </p>
+<!-- Header Section -->
+<section class="relative pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
+    <!-- Elegant gradient background using theme colors -->
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, #2B3A28 0%, #6B8269 50%, #4A5D48 100%);"></div>
+    <!-- Subtle pattern overlay -->
+    <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 mb-6">
+                <span class="w-2 h-2 rounded-full" style="background-color: #D48C70;"></span>
+                <span class="text-xs font-semibold text-white/90 tracking-wider uppercase">Hubungi Kami</span>
+            </div>
+            
+            <!-- Title -->
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight" style="color: #F4F1EA;">
+                Kontak <span style="color: #D48C70;">Kami</span>
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-8" style="color: rgba(244, 241, 234, 0.8);">
+                Kami siap membantu Anda memilih bibit tanaman terbaik untuk kebun impian Anda
+            </p>
+            
+            <!-- Decorative line -->
+            <div class="flex items-center justify-center gap-4">
+                <div class="h-px w-20" style="background: linear-gradient(to right, transparent, rgba(244, 241, 234, 0.4));"></div>
+                <svg class="w-5 h-5" style="color: rgba(244, 241, 234, 0.5);" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                <div class="h-px w-20" style="background: linear-gradient(to left, transparent, rgba(244, 241, 234, 0.4));"></div>
             </div>
         </div>
     </div>
@@ -128,24 +141,32 @@
 </section>
 
 <!-- Section 3: CTA -->
-<section class="relative py-40 bg-white">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-[95%] mx-auto">
-            <div class="w-full px-8 md:px-20 py-24 md:py-40 bg-emerald-900 shadow-2xl flex flex-col items-center justify-center text-center" 
-                 style="border-radius: 9999px;">
-                <h2 class="font-black text-white mb-8 drop-shadow-sm tracking-tighter leading-none uppercase"
-                    style="font-size: clamp(2rem, 8vw, 6rem);">
-                    Butuh <span class="text-lime-400">Bantuan?</span>
-                </h2>
-                <p class="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed mb-16">
-                    Tim ahli kami siap memberikan rekomendasi bibit terbaik secara gratis via WhatsApp.
-                </p>
-                <a href="{{ whatsapp_link() }}" target="_blank" class="px-14 py-6 bg-lime-500 text-emerald-950 font-black rounded-full hover:bg-lime-400 transition-all shadow-xl shadow-lime-500/20 text-2xl flex items-center gap-4">
-                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
-                    Konsultasi Sekarang
-                </a>
-            </div>
+<section class="relative py-20 overflow-hidden">
+    <!-- Elegant gradient background -->
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, #2B3A28 0%, #4A5D48 50%, #6B8269 100%);"></div>
+    
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 mb-6">
+            <span class="w-2 h-2 rounded-full" style="background-color: #D48C70;"></span>
+            <span class="text-xs font-semibold text-white/90 tracking-wider uppercase">Butuh Bantuan?</span>
         </div>
+        
+        <!-- Title -->
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight" style="color: #F4F1EA;">
+            Konsultasi <span style="color: #D48C70;">Gratis</span>
+        </h2>
+        
+        <!-- Subtitle -->
+        <p class="text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-10" style="color: rgba(244, 241, 234, 0.8);">
+            Tim ahli kami siap memberikan rekomendasi bibit terbaik secara gratis via WhatsApp
+        </p>
+        
+        <!-- Button -->
+        <a href="{{ whatsapp_link() }}" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl" style="background-color: #D48C70; color: #F4F1EA;">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            Konsultasi Sekarang
+        </a>
     </div>
 </section>
 @endsection
