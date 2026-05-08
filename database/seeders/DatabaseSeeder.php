@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // Create admin user (only if not exists)
         User::firstOrCreate(
-            ['email' => 'admin@plantpower.id'],
+            ['email' => 'admin@genjah.com'],
             [
-                'name' => 'Admin Plant Power',
-                'password' => bcrypt('password'),
+                'name' => 'Admin Genjah',
+                'password' => bcrypt('admin123'),
             ]
         );
 
