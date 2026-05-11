@@ -229,7 +229,7 @@
 <!-- ═══════════════════════════════════════════
      WHY CHOOSE US
 ═══════════════════════════════════════════ -->
-<section class="relative overflow-hidden" style="background: #3d5c38;">
+<section class="relative overflow-hidden" style="background: #2B3A28;">
 
     {{-- Top wave in --}}
     <div style="line-height:0; display:block;">
@@ -239,7 +239,7 @@
     </div>
 
     {{-- Dot grid --}}
-    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px;"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(212, 140, 112, 0.05) 1px, transparent 1px); background-size: 24px 24px;"></div>
 
     <div class="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12" style="padding-top: 56px; padding-bottom: 72px;">
 
@@ -247,13 +247,13 @@
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
             <div>
                 <div class="flex items-center gap-3 mb-4">
-                    <span style="display:inline-block; width:28px; height:2px; background:#c5e87a;"></span>
-                    <span style="font-size:10px; font-weight:800; letter-spacing:0.25em; color:#c5e87a; text-transform:uppercase;">Keunggulan Kami</span>
+                    <span style="display:inline-block; width:28px; height:2px; background:#D48C70;"></span>
+                    <span style="font-size:10px; font-weight:800; letter-spacing:0.25em; color:#D48C70; text-transform:uppercase;">Keunggulan Kami</span>
                 </div>
                 <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.75rem); font-weight:900; line-height:0.95; letter-spacing:-0.03em; color:#ffffff; margin:0 0 6px 0;">Mengapa Memilih</h2>
-                <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.75rem); font-weight:900; line-height:0.95; letter-spacing:-0.03em; color:#c5e87a; margin:0;">Kami?</h2>
+                <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.75rem); font-weight:900; line-height:0.95; letter-spacing:-0.03em; color:#D48C70; margin:0;">Kami?</h2>
             </div>
-            <p style="font-size:0.875rem; color:rgba(255,255,255,0.4); max-width:320px; line-height:1.7; margin:0;">
+            <p style="font-size:0.875rem; color:rgba(255,255,255,0.6); max-width:320px; line-height:1.7; margin:0;">
                 Kami berkomitmen memberikan bibit terbaik dan pelayanan terbaik untuk Anda.
             </p>
         </div>
@@ -261,17 +261,17 @@
         {{-- Feature cards --}}
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             @foreach($features as $i => $feature)
-            <div style="padding:28px 24px; background:rgba(0,0,0,0.18); border:1px solid rgba(255,255,255,0.1); border-radius:12px; position:relative; overflow:hidden;">
+            <div style="padding:28px 24px; background:rgba(255,255,255,0.05); border:1px solid rgba(212, 140, 112, 0.2); border-radius:12px; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)';">
                 {{-- Number watermark --}}
-                <div style="position:absolute; top:-10px; right:12px; font-size:5rem; font-weight:900; color:rgba(255,255,255,0.03); line-height:1; user-select:none;">{{ str_pad($loop->index + 1, 2, '0', STR_PAD_LEFT) }}</div>
+                <div style="position:absolute; top:-10px; right:12px; font-size:5rem; font-weight:900; color:rgba(212, 140, 112, 0.08); line-height:1; user-select:none;">{{ str_pad($loop->index + 1, 2, '0', STR_PAD_LEFT) }}</div>
                 {{-- Icon --}}
-                <div style="width:44px; height:44px; border-radius:8px; background:rgba(197,232,122,0.12); border:1px solid rgba(197,232,122,0.2); display:flex; align-items:center; justify-content:center; margin-bottom:20px; color:#c5e87a;">
+                <div style="width:44px; height:44px; border-radius:8px; background:rgba(212, 140, 112, 0.15); border:1px solid rgba(212, 140, 112, 0.3); display:flex; align-items:center; justify-content:center; margin-bottom:20px; color:#D48C70;">
                     {!! $feature['icon'] !!}
                 </div>
                 {{-- Divider --}}
-                <div style="width:32px; height:2px; background:#c5e87a; border-radius:2px; margin-bottom:14px; opacity:0.6;"></div>
+                <div style="width:32px; height:2px; background:#D48C70; border-radius:2px; margin-bottom:14px; opacity:0.7;"></div>
                 <h3 style="font-size:0.9375rem; font-weight:800; color:#ffffff; margin:0 0 8px 0; letter-spacing:-0.01em;">{{ $feature['title'] }}</h3>
-                <p style="font-size:0.8125rem; color:rgba(255,255,255,0.45); line-height:1.65; margin:0;">{{ $feature['description'] }}</p>
+                <p style="font-size:0.8125rem; color:rgba(255,255,255,0.6); line-height:1.65; margin:0;">{{ $feature['description'] }}</p>
             </div>
             @endforeach
         </div>
