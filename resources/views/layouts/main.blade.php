@@ -16,6 +16,9 @@
     <!-- Navbar Animations -->
     <link rel="stylesheet" href="{{ asset('css/navbar-animations.css') }}">
     
+    <!-- Contrast Fix - Perbaikan Kontras Warna -->
+    <link rel="stylesheet" href="{{ asset('css/contrast-fix.css') }}">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
