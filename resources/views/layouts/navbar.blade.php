@@ -181,11 +181,11 @@
                            placeholder="Mau cari bibit apa hari ini?" 
                            autocomplete="off"
                            class="w-full px-6 py-4 pr-16 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-950 font-bold placeholder-emerald-950/20 focus:outline-none focus:border-lime-500 focus:ring-4 focus:ring-lime-500/10 transition-all">
-                    <div class="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-950 text-white flex items-center justify-center">
+                    <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-950 text-white flex items-center justify-center pointer-events-none">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                         </svg>
-                    </div>
+                    </button>
                 </div>
 
                 <!-- Search Results -->
@@ -293,19 +293,25 @@
     
     window.addEventListener('scroll', updateNavbar);
     
-    // Quick search function
-    function quickSearch(term) {
-        const input = document.querySelector('#search-modal input[name="search"]');
-        input.value = term;
-        input.closest('form').submit();
-    }
-    
     // Search toggle
     function toggleSearch() {
         const modal = document.getElementById('search-modal');
         modal.classList.toggle('hidden');
         if (!modal.classList.contains('hidden')) {
-            modal.querySelector('input').focus();
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.focus();
+            }
+        }
+    }
+    
+    // Quick search function
+    function quickSearch(term) {
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.value = term;
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
         }
     }
     
