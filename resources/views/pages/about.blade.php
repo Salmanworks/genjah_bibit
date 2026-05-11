@@ -3,151 +3,254 @@
 @section('title', 'Tentang Kami - ' . setting('store_name', 'Plant Power'))
 
 @section('content')
-<!-- Header -->
-<section class="relative pt-32 pb-12 overflow-hidden">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900/10 border border-emerald-900/10 mb-8">
-            <span class="w-2 h-2 rounded-full bg-lime-500 animate-pulse"></span>
-            <span class="text-xs font-medium text-emerald-900 tracking-wider uppercase">Mengenal Kami</span>
-        </div>
-        
-        <div class="max-w-[95%] mx-auto mt-4">
-            <div class="w-full px-8 md:px-20 py-16 md:py-24 bg-white/90 backdrop-blur-xl border border-emerald-900/5 shadow-2xl flex flex-col items-center justify-center text-center" 
-                 style="border-radius: 9999px;">
-                <h1 class="font-black text-emerald-950 mb-6 drop-shadow-sm tracking-tighter leading-none uppercase"
-                    style="font-size: clamp(2.5rem, 10vw, 7.5rem);">
-                    Tentang <span class="text-lime-400">Kami</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-emerald-900/70 max-w-3xl mx-auto font-light leading-relaxed">
-                    Komitmen kami dalam menyediakan bibit tanaman berkualitas untuk masa depan hijau Indonesia.
+
+{{-- PAGE BANNER — Tentang --}}
+<div data-dark-hero class="relative overflow-hidden" style="background: #3d5c38; padding-top: 80px;">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px;"></div>
+    <div class="absolute pointer-events-none hidden lg:block select-none" style="right: -20px; top: 50%; transform: translateY(-50%); font-size: 16rem; font-weight: 900; line-height: 1; color: rgba(255,255,255,0.03); letter-spacing: -0.06em;">TENTANG</div>
+    <div class="absolute pointer-events-none" style="left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, rgba(197,232,122,0.5) 0%, rgba(197,232,122,0.08) 40%, transparent 100%);"></div>
+    <div class="absolute top-0 left-0 right-0" style="height: 2px; background: linear-gradient(90deg, rgba(197,232,122,0.5) 0%, rgba(197,232,122,0.2) 40%, transparent 100%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-8 sm:px-10 lg:px-14" style="padding-top: 36px; padding-bottom: 44px;">
+        <nav class="flex items-center gap-2 mb-8">
+            <a href="{{ route('home') }}" style="font-size: 11px; color: rgba(255,255,255,0.35); text-decoration: none; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;">Beranda</a>
+            <span style="color: rgba(255,255,255,0.2); font-size: 11px; margin: 0 2px;">/</span>
+            <span style="font-size: 11px; color: #c5e87a; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;">Tentang Kami</span>
+        </nav>
+
+        <div class="flex flex-col lg:flex-row lg:items-stretch gap-0">
+            <div class="flex-1 min-w-0 lg:pr-16 lg:border-r" style="border-color: rgba(255,255,255,0.1);">
+                <div class="flex items-center gap-3 mb-5">
+                    <span style="display:inline-block; width:28px; height:2px; background:#c5e87a;"></span>
+                    <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.25em; color: #c5e87a; text-transform: uppercase;">Mengenal Kami</span>
+                </div>
+                <h1 style="font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 900; line-height: 0.92; letter-spacing: -0.04em; color: #ffffff; margin: 0 0 6px 0;">Tentang</h1>
+                <h1 style="font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 900; line-height: 0.92; letter-spacing: -0.04em; color: #c5e87a; margin: 0 0 20px 0;">Kami</h1>
+                <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 20px;"></div>
+                <p style="font-size: 0.875rem; color: rgba(255,255,255,0.38); line-height: 1.7; margin: 0; max-width: 380px; font-style: italic;">
+                    "Komitmen kami dalam menyediakan bibit tanaman berkualitas untuk masa depan hijau Indonesia."
                 </p>
+            </div>
+
+            <div class="hidden lg:flex flex-col justify-center gap-0 flex-shrink-0" style="width: 260px; padding-left: 48px;">
+                <div style="padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <div class="flex items-center gap-3 mb-2">
+                        <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.05em;">4+</div>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Tahun Berdiri</div>
+                </div>
+                <div style="padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <div class="flex items-center gap-3 mb-2">
+                        <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.05em;">10K+</div>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Pelanggan Puas</div>
+                </div>
+                <div style="padding: 20px 0;">
+                    <div class="flex items-center gap-3 mb-2">
+                        <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.05em;">100%</div>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Garansi Kualitas</div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+
+    <div style="line-height: 0; display: block; margin-top: 8px;">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 60px;" preserveAspectRatio="none">
+            <path d="M0,60 L0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 Z" fill="#f4f1ea"/>
+        </svg>
+    </div>
+</div>
 
 <!-- About Content -->
-<section class="relative py-24 bg-white">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-8">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-black text-emerald-950 mb-6 leading-tight">
-                        Dedikasi Untuk <br/> <span class="text-lime-500">Kebun Impian Anda</span>
-                    </h2>
-                    <div class="w-20 h-2 bg-lime-500 rounded-full mb-8"></div>
+<section class="relative" style="background:#f4f1ea; padding-top:64px; padding-bottom:72px;">
+    <div class="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-14">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+            {{-- LEFT: Text --}}
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <span style="display:inline-block; width:28px; height:2px; background:#5a7058;"></span>
+                    <span style="font-size:10px; font-weight:800; letter-spacing:0.25em; color:#5a7058; text-transform:uppercase;">Tentang Kami</span>
                 </div>
-                
-                <div class="space-y-6 text-lg text-emerald-900/70 leading-relaxed font-medium">
-                    <p>
+
+                <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.75rem); font-weight:900; line-height:1.05; letter-spacing:-0.03em; color:#1a2419; margin:0 0 6px 0;">Dedikasi Untuk</h2>
+                <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.75rem); font-weight:900; line-height:1.05; letter-spacing:-0.03em; color:#3d5c38; margin:0 0 20px 0;">Kebun Impian Anda</h2>
+                <div style="width:48px; height:3px; background:linear-gradient(90deg, #5a7058, rgba(90,112,88,0.2)); border-radius:2px; margin-bottom:24px;"></div>
+
+                <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
+                    <p style="font-size:0.9375rem; color:rgba(26,36,25,0.65); line-height:1.8; margin:0;">
                         Genjah Rumah Bibit adalah pusat bibit tanaman berkualitas yang berdiri sejak tahun 2020. Kami lahir dari kecintaan terhadap alam dan keinginan untuk membantu masyarakat memiliki sumber pangan mandiri.
                     </p>
-                    <p>
+                    <p style="font-size:0.9375rem; color:rgba(26,36,25,0.65); line-height:1.8; margin:0;">
                         Dengan pengalaman lebih dari 4 tahun, kami telah melayani ribuan pelanggan di seluruh Indonesia. Setiap bibit yang kami jual telah melalui seleksi ketat dan perawatan optimal oleh tim ahli kami.
                     </p>
                 </div>
-                
-                <!-- Stats Grid -->
-                <div class="grid grid-cols-3 gap-6 pt-6">
-                    <div class="p-6 bg-emerald-900 text-center shadow-xl shadow-emerald-900/20 transform hover:-translate-y-2 transition-transform" style="border-radius: 40px;">
-                        <p class="text-3xl md:text-4xl font-black text-lime-400 mb-1">500+</p>
-                        <p class="text-[10px] text-white/60 uppercase tracking-widest font-bold">Produk</p>
+
+                {{-- Stats row --}}
+                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+                    @foreach([['500+','Produk'],['10K+','Pelanggan'],['4+','Tahun']] as $stat)
+                    <div style="padding:18px 12px; background:#3d5c38; border-radius:10px; text-align:center;">
+                        <div style="font-size:1.6rem; font-weight:900; color:#c5e87a; line-height:1; letter-spacing:-0.04em;">{{ $stat[0] }}</div>
+                        <div style="font-size:9px; font-weight:700; color:rgba(255,255,255,0.5); margin-top:5px; letter-spacing:0.12em; text-transform:uppercase;">{{ $stat[1] }}</div>
                     </div>
-                    <div class="p-6 bg-emerald-900 text-center shadow-xl shadow-emerald-900/20 transform hover:-translate-y-2 transition-transform" style="border-radius: 40px;">
-                        <p class="text-3xl md:text-4xl font-black text-lime-400 mb-1">10k+</p>
-                        <p class="text-[10px] text-white/60 uppercase tracking-widest font-bold">Pelanggan</p>
-                    </div>
-                    <div class="p-6 bg-emerald-900 text-center shadow-xl shadow-emerald-900/20 transform hover:-translate-y-2 transition-transform" style="border-radius: 40px;">
-                        <p class="text-3xl md:text-4xl font-black text-lime-400 mb-1">4+</p>
-                        <p class="text-[10px] text-white/60 uppercase tracking-widest font-bold">Tahun</p>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            
-            <div class="relative group">
-                <!-- Main Image Container -->
-                <div class="aspect-[4/5] overflow-hidden shadow-2xl relative z-10 border-8 border-white" style="border-radius: 60px;">
-                    <img src="https://images.unsplash.com/photo-1466692476868-0e96c3e6a5ce?w=800&q=80" 
-                         alt="Our Garden" 
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/20 to-transparent"></div>
-                </div>
-                
-                <!-- Decorative Oval -->
-                <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-lime-400/20 rounded-full blur-3xl -z-0"></div>
-                
-                <!-- Floating Info Card -->
-                <div class="absolute -bottom-8 -left-8 bg-white p-8 shadow-2xl z-20 border border-emerald-500/10" style="border-radius: 40px;">
-                    <div class="flex items-center gap-5">
-                        <div class="w-16 h-16 rounded-full bg-lime-500 flex items-center justify-center shadow-lg shadow-lime-500/40">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
+
+            {{-- RIGHT: Image frame --}}
+            <div class="relative">
+
+                {{-- Main image frame --}}
+                <div style="position:relative; border-radius:12px; overflow:hidden; border:1px solid rgba(26,36,25,0.1);">
+
+                    {{-- Gambar toko — ganti src dengan foto toko Anda --}}
+                    <img src="{{ asset('images/nature1.png') }}"
+                         alt="Toko Genjah Rumah Bibit"
+                         style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;">
+
+                    {{-- Overlay gradient bottom --}}
+                    <div style="position:absolute; bottom:0; left:0; right:0; height:40%; background:linear-gradient(to top, rgba(26,36,25,0.5), transparent); pointer-events:none;"></div>
+
+                    {{-- Badge overlay bottom-left --}}
+                    <div style="position:absolute; bottom:16px; left:16px; display:flex; align-items:center; gap:10px; padding:10px 14px; background:rgba(255,255,255,0.95); border-radius:8px; border:1px solid rgba(26,36,25,0.08);">
+                        <div style="width:32px; height:32px; border-radius:6px; background:#3d5c38; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <svg width="16" height="16" fill="none" stroke="#c5e87a" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                         </div>
                         <div>
-                            <p class="text-xl font-black text-emerald-950">Bibit Bergaransi</p>
-                            <p class="text-sm text-emerald-900/60 font-bold">100% Kehidupan Terjamin</p>
+                            <div style="font-size:12px; font-weight:800; color:#1a2419; line-height:1.2;">Bibit Bergaransi</div>
+                            <div style="font-size:10px; color:rgba(26,36,25,0.5); font-weight:500;">100% Kehidupan Terjamin</div>
                         </div>
                     </div>
+
+                    {{-- Year badge top-right --}}
+                    <div style="position:absolute; top:16px; right:16px; padding:6px 12px; background:#3d5c38; border-radius:6px;">
+                        <div style="font-size:10px; font-weight:800; color:#c5e87a; letter-spacing:0.1em; text-transform:uppercase;">Sejak 2020</div>
+                    </div>
                 </div>
+
+                {{-- Decorative corner accent --}}
+                <div style="position:absolute; bottom:-8px; right:-8px; width:80px; height:80px; border-right:3px solid rgba(90,112,88,0.3); border-bottom:3px solid rgba(90,112,88,0.3); border-radius:0 0 12px 0; pointer-events:none;"></div>
+                <div style="position:absolute; top:-8px; left:-8px; width:80px; height:80px; border-left:3px solid rgba(90,112,88,0.3); border-top:3px solid rgba(90,112,88,0.3); border-radius:12px 0 0 0; pointer-events:none;"></div>
+
+                {{-- Caption --}}
+                <p style="font-size:11px; color:rgba(26,36,25,0.35); text-align:center; margin-top:10px; font-style:italic; letter-spacing:0.04em;">
+                    Toko Genjah Rumah Bibit — Mlonggo, Jepara
+                </p>
+
             </div>
+
         </div>
     </div>
 </section>
 
 <!-- Vision Mission -->
-<section class="relative py-32 bg-emerald-50">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-12">
-            <!-- Visi -->
-            <div class="bg-white p-12 shadow-2xl border border-emerald-100 hover:scale-[1.02] transition-transform group" style="border-radius: 60px;">
-                <div class="flex items-center gap-6 mb-8">
-                    <div class="w-20 h-20 bg-emerald-900 flex items-center justify-center border border-lime-500/30 group-hover:bg-lime-500 transition-colors" style="border-radius: 28px;">
-                        <svg class="w-10 h-10 text-white group-hover:text-emerald-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<section class="relative overflow-hidden" style="background:#3d5c38;">
+
+    {{-- Top wave in --}}
+    <div style="line-height:0; display:block;">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:60px;" preserveAspectRatio="none">
+            <path d="M0,0 L0,30 C240,0 480,60 720,30 C960,0 1200,60 1440,30 L1440,0 Z" fill="#f4f1ea"/>
+        </svg>
+    </div>
+
+    {{-- Dot grid --}}
+    <div class="absolute inset-0 pointer-events-none" style="background-image:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size:24px 24px;"></div>
+    {{-- Left accent --}}
+    <div class="absolute pointer-events-none" style="left:0; top:0; bottom:0; width:3px; background:linear-gradient(to bottom, rgba(197,232,122,0.5) 0%, rgba(197,232,122,0.08) 50%, transparent 100%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-8 sm:px-10 lg:px-14" style="padding-top:56px; padding-bottom:64px;">
+
+        {{-- Section label --}}
+        <div class="flex items-center gap-3 mb-10">
+            <span style="display:inline-block; width:28px; height:2px; background:#c5e87a;"></span>
+            <span style="font-size:10px; font-weight:800; letter-spacing:0.25em; color:#c5e87a; text-transform:uppercase;">Arah & Tujuan</span>
+        </div>
+
+        {{-- Two columns --}}
+        <div class="grid lg:grid-cols-2 gap-6">
+
+            {{-- VISI --}}
+            <div style="background:rgba(0,0,0,0.18); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:36px 40px; position:relative; overflow:hidden;">
+                {{-- Watermark --}}
+                <div style="position:absolute; bottom:-16px; right:16px; font-size:7rem; font-weight:900; color:rgba(255,255,255,0.03); line-height:1; user-select:none; letter-spacing:-0.06em;">VISI</div>
+
+                {{-- Header --}}
+                <div style="display:flex; align-items:center; gap:14px; margin-bottom:28px;">
+                    <div style="width:40px; height:40px; border-radius:8px; background:rgba(197,232,122,0.12); border:1px solid rgba(197,232,122,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <svg width="18" height="18" fill="none" stroke="#c5e87a" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                         </svg>
                     </div>
-                    <h3 class="text-4xl font-black text-emerald-950 uppercase tracking-tight">Visi</h3>
+                    <div>
+                        <div style="font-size:10px; font-weight:800; letter-spacing:0.2em; color:rgba(197,232,122,0.6); text-transform:uppercase; margin-bottom:2px;">01</div>
+                        <h3 style="font-size:1.5rem; font-weight:900; color:#ffffff; letter-spacing:-0.03em; line-height:1; margin:0;">Visi</h3>
+                    </div>
                 </div>
-                <div class="relative p-8 bg-emerald-50 rounded-[40px] border-l-8 border-lime-500">
-                    <p class="text-2xl text-emerald-900 leading-relaxed font-bold italic">
+
+                {{-- Divider --}}
+                <div style="width:100%; height:1px; background:rgba(255,255,255,0.08); margin-bottom:24px;"></div>
+
+                {{-- Quote --}}
+                <div style="border-left:3px solid #c5e87a; padding-left:20px;">
+                    <p style="font-size:1rem; color:rgba(255,255,255,0.75); line-height:1.8; margin:0; font-style:italic;">
                         "Menjadi pusat bibit tanaman terpercaya dan terdepan di Indonesia yang menyediakan produk berkualitas tinggi dengan layanan pelanggan terbaik."
                     </p>
                 </div>
             </div>
-            
-            <!-- Misi -->
-            <div class="bg-white p-12 shadow-2xl border border-emerald-100 hover:scale-[1.02] transition-transform group" style="border-radius: 60px;">
-                <div class="flex items-center gap-6 mb-8">
-                    <div class="w-20 h-20 bg-emerald-900 flex items-center justify-center border border-lime-500/30 group-hover:bg-lime-500 transition-colors" style="border-radius: 28px;">
-                        <svg class="w-10 h-10 text-white group-hover:text-emerald-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+            {{-- MISI --}}
+            <div style="background:rgba(197,232,122,0.06); border:1px solid rgba(197,232,122,0.15); border-radius:12px; padding:36px 40px; position:relative; overflow:hidden;">
+                {{-- Watermark --}}
+                <div style="position:absolute; bottom:-16px; right:16px; font-size:7rem; font-weight:900; color:rgba(197,232,122,0.04); line-height:1; user-select:none; letter-spacing:-0.06em;">MISI</div>
+
+                {{-- Header --}}
+                <div style="display:flex; align-items:center; gap:14px; margin-bottom:28px;">
+                    <div style="width:40px; height:40px; border-radius:8px; background:rgba(197,232,122,0.12); border:1px solid rgba(197,232,122,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <svg width="18" height="18" fill="none" stroke="#c5e87a" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
                         </svg>
                     </div>
-                    <h3 class="text-4xl font-black text-emerald-950 uppercase tracking-tight">Misi</h3>
+                    <div>
+                        <div style="font-size:10px; font-weight:800; letter-spacing:0.2em; color:rgba(197,232,122,0.6); text-transform:uppercase; margin-bottom:2px;">02</div>
+                        <h3 style="font-size:1.5rem; font-weight:900; color:#ffffff; letter-spacing:-0.03em; line-height:1; margin:0;">Misi</h3>
+                    </div>
                 </div>
-                <ul class="space-y-4">
+
+                {{-- Divider --}}
+                <div style="width:100%; height:1px; background:rgba(255,255,255,0.08); margin-bottom:24px;"></div>
+
+                {{-- Mission list --}}
+                <div style="display:flex; flex-direction:column; gap:12px;">
                     @foreach([
-                        'Menyediakan bibit tanaman unggulan dengan kualitas terbaik',
-                        'Memberikan layanan konsultasi profesional dan gratis',
-                        'Memastikan kepuasan pelanggan dengan garansi penuh',
-                        'Melakukan pengiriman yang aman dan tepat waktu'
-                    ] as $misi)
-                    <li class="flex items-center gap-4 p-4 bg-emerald-50 text-emerald-950 font-bold rounded-full border border-emerald-100 transform hover:translate-x-2 transition-transform">
-                        <div class="w-8 h-8 rounded-full bg-lime-500 flex-shrink-0 flex items-center justify-center shadow-sm">
-                            <svg class="w-5 h-5 text-emerald-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                        </div>
-                        {{ $misi }}
-                    </li>
+                        ['num'=>'01', 'text'=>'Menyediakan bibit tanaman unggulan dengan kualitas terbaik'],
+                        ['num'=>'02', 'text'=>'Memberikan layanan konsultasi profesional dan gratis'],
+                        ['num'=>'03', 'text'=>'Memastikan kepuasan pelanggan dengan garansi penuh'],
+                        ['num'=>'04', 'text'=>'Melakukan pengiriman yang aman dan tepat waktu'],
+                    ] as $item)
+                    <div style="display:flex; align-items:flex-start; gap:14px; padding:14px 16px; background:rgba(0,0,0,0.15); border-radius:8px; border:1px solid rgba(255,255,255,0.06);">
+                        <span style="font-size:10px; font-weight:800; color:rgba(197,232,122,0.5); letter-spacing:0.1em; flex-shrink:0; margin-top:2px;">{{ $item['num'] }}</span>
+                        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); line-height:1.55; font-weight:500;">{{ $item['text'] }}</span>
+                    </div>
                     @endforeach
-                </ul>
+                </div>
+
             </div>
+
         </div>
     </div>
+
+    {{-- Bottom wave out --}}
+    <div style="line-height:0; display:block;">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:60px;" preserveAspectRatio="none">
+            <path d="M0,60 L0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 Z" fill="#f4f1ea"/>
+        </svg>
+    </div>
+
 </section>
 
 <!-- Values -->
@@ -180,28 +283,79 @@
 </section>
 
 <!-- Call to Action -->
-<section class="relative py-24">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-[95%] mx-auto">
-            <div class="w-full px-8 md:px-20 py-20 md:py-32 bg-white border border-emerald-900/10 shadow-2xl flex flex-col items-center justify-center text-center" 
-                 style="border-radius: 9999px;">
-                <h2 class="font-black text-emerald-950 mb-6 drop-shadow-sm tracking-tighter leading-none uppercase"
-                    style="font-size: clamp(2rem, 8vw, 6rem);">
-                    Mulai <span class="text-lime-500">Berkebun</span> <br/> Hari Ini?
-                </h2>
-                <p class="text-xl md:text-2xl text-emerald-900/70 max-w-3xl mx-auto font-light leading-relaxed mb-12">
-                    Kami siap membantu Anda memilih bibit terbaik untuk kebun impian Anda.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                    <a href="{{ route('products.index') }}" class="px-12 py-5 bg-emerald-950 text-white font-black rounded-full hover:bg-emerald-900 transition-all shadow-xl shadow-emerald-950/20 text-xl">
-                        Lihat Katalog
-                    </a>
-                    <a href="{{ setting('whatsapp_number') }}" target="_blank" class="px-12 py-5 border-2 border-emerald-900/20 text-emerald-900 font-black rounded-full hover:bg-emerald-50 transition-all text-xl">
-                        Konsultasi Gratis
-                    </a>
+<section class="relative overflow-hidden" style="background: #3d5c38; margin-top: 0;">
+
+    {{-- Top wave transition from page background --}}
+    <div style="line-height:0; display:block; margin-bottom:-2px;">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:60px;" preserveAspectRatio="none">
+            <path d="M0,0 L0,30 C240,0 480,60 720,30 C960,0 1200,60 1440,30 L1440,0 Z" fill="#f4f1ea"/>
+        </svg>
+    </div>
+
+    {{-- Dot grid --}}
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+    {{-- Watermark --}}
+    <div class="absolute pointer-events-none select-none hidden lg:block" style="right:-30px; top:50%; transform:translateY(-50%); font-size:14rem; font-weight:900; line-height:1; color:rgba(255,255,255,0.03); letter-spacing:-0.06em;">START</div>
+
+    {{-- Left accent bar --}}
+    <div class="absolute pointer-events-none" style="left:0; top:0; bottom:0; width:3px; background:linear-gradient(to bottom, rgba(197,232,122,0.5) 0%, rgba(197,232,122,0.08) 50%, transparent 100%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-8 sm:px-10 lg:px-14" style="padding-top:64px; padding-bottom:72px;">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
+
+            {{-- LEFT: Text --}}
+            <div class="flex-1">
+                <div class="flex items-center gap-3 mb-6">
+                    <span style="display:inline-block; width:28px; height:2px; background:#c5e87a;"></span>
+                    <span style="font-size:10px; font-weight:800; letter-spacing:0.25em; color:#c5e87a; text-transform:uppercase;">Mulai Sekarang</span>
                 </div>
+
+                <h2 style="font-size:clamp(2.2rem, 4.5vw, 3.75rem); font-weight:900; line-height:0.95; letter-spacing:-0.04em; color:#ffffff; margin:0 0 8px 0;">
+                    Mulai
+                </h2>
+                <h2 style="font-size:clamp(2.2rem, 4.5vw, 3.75rem); font-weight:900; line-height:0.95; letter-spacing:-0.04em; color:#c5e87a; margin:0 0 24px 0;">
+                    Berkebun Hari Ini?
+                </h2>
+
+                <div style="width:56px; height:3px; background:linear-gradient(90deg, #c5e87a, rgba(197,232,122,0.2)); border-radius:2px; margin-bottom:24px;"></div>
+
+                <p style="font-size:0.9375rem; color:rgba(255,255,255,0.5); line-height:1.75; max-width:420px; margin:0;">
+                    Kami siap membantu Anda memilih bibit terbaik untuk kebun impian Anda — konsultasi gratis, pengiriman aman ke seluruh Indonesia.
+                </p>
+            </div>
+
+            {{-- RIGHT: Action block --}}
+            <div class="flex-shrink-0 flex flex-col gap-4" style="min-width:260px;">
+
+                <a href="{{ route('products.index') }}"
+                   style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 24px; background:#c5e87a; color:#1a2e18; font-size:14px; font-weight:800; letter-spacing:0.04em; border-radius:8px; text-decoration:none; transition:all 0.2s;">
+                    <span>Lihat Katalog Produk</span>
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+
+                <a href="{{ whatsapp_link() }}" target="_blank"
+                   style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 24px; background:transparent; color:rgba(255,255,255,0.75); font-size:14px; font-weight:700; letter-spacing:0.04em; border:1px solid rgba(255,255,255,0.18); border-radius:8px; text-decoration:none; transition:all 0.2s;">
+                    <span>Konsultasi via WhatsApp</span>
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+                </a>
+
+                {{-- Trust note --}}
+                <div class="flex items-center gap-2 mt-1" style="padding-left:4px;">
+                    <svg width="13" height="13" fill="none" stroke="rgba(197,232,122,0.6)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    <span style="font-size:11px; color:rgba(255,255,255,0.3); font-weight:500;">Garansi kualitas · Pengiriman aman · Gratis konsultasi</span>
+                </div>
+
             </div>
         </div>
     </div>
+
+    {{-- Bottom wave transition to footer --}}
+    <div style="line-height:0; display:block; margin-top:-2px;">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:60px;" preserveAspectRatio="none">
+            <path d="M0,60 L0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 Z" fill="#f4f1ea"/>
+        </svg>
+    </div>
+
 </section>
 @endsection

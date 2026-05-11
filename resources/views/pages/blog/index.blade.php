@@ -3,29 +3,60 @@
 @section('title', 'Blog - ' . setting('store_name', 'Plant Power'))
 
 @section('content')
-<!-- Header -->
-<section class="relative pt-32 pb-12 overflow-hidden">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900/10 border border-emerald-900/10 mb-8">
-            <span class="w-2 h-2 rounded-full bg-lime-500 animate-pulse"></span>
-            <span class="text-xs font-medium text-emerald-900 tracking-wider uppercase">Inspirasi Hijau</span>
-        </div>
-        
-        <div class="max-w-[95%] mx-auto mt-4">
-            <div class="w-full px-8 md:px-20 py-16 md:py-24 bg-white/90 backdrop-blur-xl border border-emerald-900/5 shadow-2xl flex flex-col items-center justify-center text-center" 
-                 style="border-radius: 9999px;">
-                <h1 class="font-black text-emerald-950 mb-6 drop-shadow-sm tracking-tighter leading-none uppercase"
-                    style="font-size: clamp(2.5rem, 10vw, 7.5rem);">
-                    Blog & <span class="text-lime-400">Artikel</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-emerald-900/70 max-w-3xl mx-auto font-light leading-relaxed">
-                    Tips, panduan, dan informasi seputar perawatan tanaman untuk kebun impian Anda.
+
+{{-- PAGE BANNER — Blog --}}
+<div data-dark-hero class="relative overflow-hidden" style="background: #3d5c38; padding-top: 80px;">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px;"></div>
+    <div class="absolute pointer-events-none hidden lg:block select-none" style="right: -20px; top: 50%; transform: translateY(-50%); font-size: 16rem; font-weight: 900; line-height: 1; color: rgba(255,255,255,0.03); letter-spacing: -0.06em;">BLOG</div>
+    <div class="absolute pointer-events-none" style="left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, rgba(197,232,122,0.5) 0%, rgba(197,232,122,0.08) 40%, transparent 100%);"></div>
+    <div class="absolute top-0 left-0 right-0" style="height: 2px; background: linear-gradient(90deg, rgba(197,232,122,0.5) 0%, rgba(197,232,122,0.2) 40%, transparent 100%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-8 sm:px-10 lg:px-14" style="padding-top: 36px; padding-bottom: 44px;">
+        <nav class="flex items-center gap-2 mb-8">
+            <a href="{{ route('home') }}" style="font-size: 11px; color: rgba(255,255,255,0.35); text-decoration: none; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;">Beranda</a>
+            <span style="color: rgba(255,255,255,0.2); font-size: 11px; margin: 0 2px;">/</span>
+            <span style="font-size: 11px; color: #c5e87a; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;">Blog & Artikel</span>
+        </nav>
+
+        <div class="flex flex-col lg:flex-row lg:items-stretch gap-0">
+            <div class="flex-1 min-w-0 lg:pr-16 lg:border-r" style="border-color: rgba(255,255,255,0.1);">
+                <div class="flex items-center gap-3 mb-5">
+                    <span style="display:inline-block; width:28px; height:2px; background:#c5e87a;"></span>
+                    <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.25em; color: #c5e87a; text-transform: uppercase;">Inspirasi Hijau</span>
+                </div>
+                <h1 style="font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 900; line-height: 0.92; letter-spacing: -0.04em; color: #ffffff; margin: 0 0 6px 0;">Blog &</h1>
+                <h1 style="font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 900; line-height: 0.92; letter-spacing: -0.04em; color: #c5e87a; margin: 0 0 20px 0;">Artikel</h1>
+                <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 20px;"></div>
+                <p style="font-size: 0.875rem; color: rgba(255,255,255,0.38); line-height: 1.7; margin: 0; max-width: 380px; font-style: italic;">
+                    "Tips, panduan, dan informasi seputar perawatan tanaman untuk kebun impian Anda."
                 </p>
+            </div>
+
+            <div class="hidden lg:flex flex-col justify-center gap-0 flex-shrink-0" style="width: 260px; padding-left: 48px;">
+                <div style="padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <div class="flex items-center gap-3 mb-2">
+                        <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.05em;">{{ $blogs->total() ?? '0' }}</div>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Total Artikel</div>
+                </div>
+                <div style="padding: 20px 0;">
+                    <div class="flex items-center gap-3 mb-2">
+                        <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.05em;">Tips</div>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Berkebun & Merawat</div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+
+    <div style="line-height: 0; display: block; margin-top: 8px;">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 60px;" preserveAspectRatio="none">
+            <path d="M0,60 L0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 Z" fill="#f4f1ea"/>
+        </svg>
+    </div>
+</div>
 
 <!-- Featured Post -->
 @if($featuredBlog)

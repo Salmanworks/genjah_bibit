@@ -24,6 +24,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+        
+        // Disable SSL verification for development (Google OAuth fix)
+        if (!app()->isProduction()) {
+            \Illuminate\Support\Facades\Http::withOptions([
+                'verify' => false,
+            ]);
+        }
     }
 
     /**

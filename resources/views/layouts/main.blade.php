@@ -10,6 +10,9 @@
     
     @vite(['resources/css/app.css', 'resources/css/plant-theme.css', 'resources/js/app.js'])
     
+    <!-- Navbar Animations -->
+    <link rel="stylesheet" href="{{ asset('css/navbar-animations.css') }}">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +61,7 @@
             color: var(--sage-dark) !important; 
         }
         [class*="text-yellow-400"], [class*="text-yellow-500"] {
-            color: var(--accent-warm) !important;
+            color: #f59e0b !important;
         }
         
         /* Protect white and specific light colors */
@@ -238,6 +241,62 @@
         /* Drop shadow overrides */
         .drop-shadow-2xl, .drop-shadow-lg, .drop-shadow-md {
             filter: drop-shadow(0 4px 6px rgba(43, 58, 40, 0.08)) !important;
+        }
+
+        /* Catalog hero gradient text — protect from global override */
+        .catalog-hero-gradient-text {
+            background: linear-gradient(135deg, #a3e635 0%, #d9f99d 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        /* Navbar on dark hero (transparent state over dark background) */
+        .navbar-on-dark #navbar-bg {
+            background: rgba(50, 75, 40, 0.75) !important;
+            backdrop-filter: blur(16px);
+            opacity: 1 !important;
+            border-bottom: 1px solid rgba(197, 232, 122, 0.15) !important;
+            box-shadow: none !important;
+        }
+        .navbar-on-dark .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+        .navbar-on-dark .nav-link:hover,
+        .navbar-on-dark .nav-link.active {
+            color: #c5e87a !important;
+            background: rgba(197, 232, 122, 0.1) !important;
+        }
+        .navbar-on-dark h1,
+        .navbar-on-dark p {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        .navbar-on-dark .text-emerald-950 {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        .navbar-on-dark .text-emerald-950\/70 {
+            color: rgba(255, 255, 255, 0.55) !important;
+        }
+        /* Desktop menu pill on dark */
+        .navbar-on-dark [class*="bg-emerald-950/5"] {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+        }
+        /* Masuk button on dark */
+        .navbar-on-dark a[href*="login"] {
+            color: rgba(255, 255, 255, 0.85) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+        }
+        .navbar-on-dark a[href*="login"]:hover {
+            background: rgba(255, 255, 255, 0.08) !important;
+        }
+        /* Daftar button on dark */
+        .navbar-on-dark a[href*="register"] {
+            background: #c5e87a !important;
+            color: #2d4a28 !important;
+        }
+        .navbar-on-dark a[href*="register"]:hover {
+            background: #d9f99d !important;
         }
     </style>
 </head>
