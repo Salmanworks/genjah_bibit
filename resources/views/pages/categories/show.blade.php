@@ -2,6 +2,8 @@
 
 @section('title', $category->name . ' - ' . setting('store_name', 'Plant Power'))
 
+@section('body-class', 'category-page')
+
 @section('content')
 <!-- Header -->
 <section class="relative pt-32 pb-12" style="background: linear-gradient(135deg, #F4F1EA 0%, #EBE6DC 100%);">
