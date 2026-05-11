@@ -164,7 +164,7 @@
     <div id="search-modal" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-emerald-950/20 backdrop-blur-md transition-opacity" onclick="toggleSearch()"></div>
         
-        <div class="fixed top-10 left-1/2 -translate-x-1/2 w-[95%] max-w-lg animate-in slide-in-from-top-4 duration-300">
+        <div class="fixed top-10 left-1/2 -translate-x-1/2 w-[95%] max-w-2xl animate-in slide-in-from-top-4 duration-300">
             <div class="bg-white shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] border border-emerald-900/5 p-8" style="border-radius: 40px;">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="text-lg font-black text-emerald-950 uppercase tracking-tight">Cari Bibit</h3>
@@ -175,17 +175,46 @@
                     </button>
                 </div>
 
-                <form action="{{ route('products.index') }}" method="GET" class="relative mb-6">
-                    <input type="text" name="search" placeholder="Mau cari bibit apa hari ini?" 
+                <div class="relative mb-6">
+                    <input type="text" 
+                           id="search-input"
+                           placeholder="Mau cari bibit apa hari ini?" 
+                           autocomplete="off"
                            class="w-full px-6 py-4 pr-16 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-950 font-bold placeholder-emerald-950/20 focus:outline-none focus:border-lime-500 focus:ring-4 focus:ring-lime-500/10 transition-all">
-                    <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-950 text-white hover:bg-lime-500 transition-all flex items-center justify-center">
+                    <div class="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-950 text-white flex items-center justify-center">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                         </svg>
-                    </button>
-                </form>
+                    </div>
+                </div>
 
-                <div class="space-y-3">
+                <!-- Search Results -->
+                <div id="search-results" class="hidden mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm font-bold text-emerald-950">Hasil Pencarian</span>
+                        <span id="result-count" class="text-xs text-emerald-950/50"></span>
+                    </div>
+                    <div id="results-container" class="space-y-2 max-h-96 overflow-y-auto">
+                        <!-- Results will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="search-loading" class="hidden text-center py-8">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-emerald-950/20 border-t-emerald-950"></div>
+                    <p class="text-sm text-emerald-950/50 mt-3">Mencari...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div id="search-empty" class="hidden text-center py-8">
+                    <svg class="w-16 h-16 mx-auto text-emerald-950/20 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <p class="text-sm font-bold text-emerald-950/50">Tidak ada hasil ditemukan</p>
+                </div>
+
+                <!-- Popular Searches -->
+                <div id="popular-searches" class="space-y-3">
                     <span class="text-[10px] font-black text-emerald-900/20 uppercase tracking-widest block ml-2">Populer:</span>
                     <div class="flex flex-wrap gap-2">
                         <button onclick="quickSearch('durian')" class="px-4 py-2 rounded-full bg-white border border-emerald-900/10 text-emerald-950 font-bold text-[11px] hover:bg-lime-500 hover:border-lime-500 transition-all uppercase tracking-wider">Durian</button>

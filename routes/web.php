@@ -7,10 +7,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Search API Route
+Route::get('/api/search', [SearchController::class, 'search'])->name('api.search');
 
 // Product Routes
 Route::get('/produk', [ProductController::class, 'index'])->name('products.index');

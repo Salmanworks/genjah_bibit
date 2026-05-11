@@ -10,6 +10,9 @@
     
     @vite(['resources/css/app.css', 'resources/css/plant-theme.css', 'resources/js/app.js'])
     
+    <!-- Category & Product Page Fix -->
+    <link rel="stylesheet" href="{{ asset('css/category-fix.css') }}">
+    
     <!-- Navbar Animations -->
     <link rel="stylesheet" href="{{ asset('css/navbar-animations.css') }}">
     
@@ -327,6 +330,9 @@
     </a>
     
     @stack('scripts')
+    
+    <!-- Live Search Script -->
+    <script src="{{ asset('js/live-search.js') }}"></script>
     
     <script>
         // Dynamic Background Color on Scroll
