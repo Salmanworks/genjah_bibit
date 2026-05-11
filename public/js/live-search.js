@@ -35,6 +35,17 @@ if (searchInput) {
             performSearch(query);
         }, 300);
     });
+    
+    // Prevent Enter key from submitting or navigating
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const query = e.target.value.trim();
+            if (query.length >= 2) {
+                performSearch(query);
+            }
+        }
+    });
 }
 
 function performSearch(query) {

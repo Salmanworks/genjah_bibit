@@ -1,0 +1,355 @@
+/* ===================================
+   CONTRAST FIX - Perbaikan Kontras Warna
+   =================================== */
+
+/* Perbaiki teks dengan opacity rendah yang sulit dibaca */
+.text-emerald-950\/20,
+.text-emerald-950\/30,
+.text-emerald-900\/20,
+.text-emerald-900\/30 {
+    color: #5A7058 !important; /* Warna hijau yang lebih gelap dan jelas */
+    opacity: 1 !important;
+}
+
+.text-emerald-950\/50,
+.text-emerald-900\/50 {
+    color: #3d4d3b !important; /* Warna hijau gelap yang lebih kontras */
+    opacity: 1 !important;
+}
+
+.text-emerald-950\/60,
+.text-emerald-900\/60 {
+    color: #2d3d2b !important; /* Warna hijau sangat gelap */
+    opacity: 1 !important;
+}
+
+.text-emerald-950\/70 {
+    color: #1A2419 !important; /* Warna hijau hampir hitam */
+    opacity: 1 !important;
+}
+
+/* Perbaiki teks putih dengan opacity rendah */
+.text-white\/20,
+.text-white\/30 {
+    color: #d1d5db !important; /* Abu-abu terang */
+    opacity: 1 !important;
+}
+
+.text-white\/40,
+.text-white\/50 {
+    color: #e5e7eb !important; /* Abu-abu sangat terang */
+    opacity: 1 !important;
+}
+
+.text-white\/60 {
+    color: #f3f4f6 !important; /* Hampir putih */
+    opacity: 1 !important;
+}
+
+/* Perbaiki background dengan opacity rendah */
+.bg-emerald-900\/10,
+.bg-emerald-950\/10 {
+    background-color: #e8ede7 !important; /* Hijau sangat terang */
+    opacity: 1 !important;
+}
+
+.bg-emerald-900\/5,
+.bg-emerald-950\/5 {
+    background-color: #f4f6f4 !important; /* Hijau super terang */
+    opacity: 1 !important;
+}
+
+/* Perbaiki background putih dengan opacity */
+.bg-white\/5 {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Perbaiki border dengan opacity rendah */
+.border-emerald-900\/5,
+.border-emerald-950\/5 {
+    border-color: #d1d9d0 !important;
+    opacity: 1 !important;
+}
+
+.border-emerald-900\/10,
+.border-emerald-950\/10 {
+    border-color: #b8c4b7 !important;
+    opacity: 1 !important;
+}
+
+.border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.border-white\/20 {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Perbaiki placeholder text */
+.placeholder-emerald-950\/20::placeholder {
+    color: #7a8a78 !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki teks pada background gelap (emerald-900) */
+.bg-emerald-900 .text-white\/40,
+.bg-emerald-900 .text-white\/50,
+.bg-emerald-900 .text-white\/60 {
+    color: #ffffff !important;
+    opacity: 0.9 !important;
+}
+
+/* Perbaiki teks pada section dengan background gelap */
+section.bg-emerald-900 h1,
+section.bg-emerald-900 h2,
+section.bg-emerald-900 h3,
+section.bg-emerald-900 p,
+section.bg-emerald-900 span {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Perbaiki kontras pada card dengan background gelap */
+.bg-emerald-900 .bg-white\/10,
+.bg-emerald-900 .bg-white\/5 {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Perbaiki teks pada popular searches */
+#popular-searches .text-emerald-900\/20 {
+    color: #5A7058 !important;
+    opacity: 1 !important;
+    font-weight: 800 !important;
+}
+
+/* Perbaiki result count text */
+#result-count {
+    color: #5A7058 !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki empty state text */
+#search-empty p {
+    color: #5A7058 !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki loading text */
+#search-loading p {
+    color: #5A7058 !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki close button di search modal */
+#search-modal button svg {
+    color: #5A7058 !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki icon pada empty state */
+.text-emerald-950\/20 svg {
+    color: #9ca3af !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki teks pada product detail page */
+.bg-emerald-900 .text-white {
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.bg-emerald-900 .text-white\/40 {
+    color: #e5e7eb !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.bg-emerald-900 .text-white\/50 {
+    color: #f3f4f6 !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.bg-emerald-900 .text-white\/60 {
+    color: #f9fafb !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Perbaiki rating stars */
+.text-white\/20 svg,
+.text-yellow-400 {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Perbaiki separator */
+.text-white\/20 {
+    color: #d1d5db !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki teks pada glass card */
+.glass-card .text-emerald-200\/70 {
+    color: #d1fae5 !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki disabled pagination button */
+.text-emerald-900\/20 {
+    color: #9ca3af !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki hover state untuk better visibility */
+.hover\:bg-emerald-950\/5:hover {
+    background-color: #e8ede7 !important;
+}
+
+/* Perbaiki focus ring untuk accessibility */
+.focus\:ring-lime-500\/10:focus {
+    --tw-ring-color: rgba(132, 204, 22, 0.3) !important;
+}
+
+/* Perbaiki breadcrumb text */
+nav .text-gray-600 {
+    color: #4b5563 !important;
+}
+
+nav .text-gray-400 {
+    color: #9ca3af !important;
+}
+
+/* Perbaiki stats card text */
+.text-gray-500 {
+    color: #6b7280 !important;
+}
+
+.text-gray-600 {
+    color: #4b5563 !important;
+}
+
+.text-gray-700 {
+    color: #374151 !important;
+}
+
+.text-gray-900 {
+    color: #111827 !important;
+}
+
+/* Perbaiki subcategory buttons */
+.text-gray-700 {
+    color: #374151 !important;
+    font-weight: 600 !important;
+}
+
+/* Ensure minimum contrast ratio of 4.5:1 for normal text */
+.text-sm,
+.text-xs {
+    font-weight: 500 !important;
+}
+
+/* Perbaiki icon visibility */
+svg.text-emerald-950\/20,
+svg.text-emerald-900\/20 {
+    color: #9ca3af !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki group hover states */
+.group:hover .group-hover\:text-lime-500 {
+    color: #84cc16 !important;
+}
+
+.group:hover .group-hover\:text-emerald-900 {
+    color: #064e3b !important;
+}
+
+/* Perbaiki profile menu text */
+.text-emerald-950\/60 {
+    color: #3d4d3b !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki admin link text */
+.text-emerald-950 {
+    color: #1A2419 !important;
+}
+
+/* Perbaiki search result category text */
+.text-emerald-950\/50 {
+    color: #3d4d3b !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+}
+
+/* Perbaiki arrow icon pada search results */
+.text-emerald-950\/20 {
+    color: #9ca3af !important;
+    opacity: 1 !important;
+}
+
+/* Perbaiki hover state pada search results */
+.group:hover .text-emerald-950\/20 {
+    color: #84cc16 !important;
+    opacity: 1 !important;
+}
+
+/* ===================================
+   FOOTER CONTRAST FIX
+   =================================== */
+
+/* Perbaiki semua teks di footer */
+footer .text-white\/70,
+footer .text-white\/60,
+footer .text-white\/50 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+/* Perbaiki heading di footer */
+footer h3,
+footer h4 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+/* Perbaiki link di footer */
+footer a {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+}
+
+footer a:hover {
+    color: #bef264 !important;
+}
+
+/* Perbaiki icon di footer */
+footer svg {
+    color: #bef264 !important;
+}
+
+/* Perbaiki social media buttons */
+footer .bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+footer .border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Perbaiki border di footer */
+footer .border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Perbaiki copyright text */
+footer .text-white\/50 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}

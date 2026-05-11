@@ -16,6 +16,9 @@
     <!-- Navbar Animations -->
     <link rel="stylesheet" href="{{ asset('css/navbar-animations.css') }}">
     
+    <!-- Contrast Fix - Perbaikan Kontras Warna -->
+    <link rel="stylesheet" href="{{ asset('css/contrast-fix.css') }}">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -303,7 +306,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-nature">
+<body class="min-h-screen bg-nature @yield('body-class')"
     
     <!-- Dark Overlay -->
     <div class="fixed inset-0 bg-nature-overlay -z-10"></div>

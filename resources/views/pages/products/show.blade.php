@@ -21,12 +21,12 @@
 </section>
 
 <!-- Product Detail -->
-<section class="relative py-12 bg-emerald-900 shadow-inner">
+<section class="relative py-12" style="background: linear-gradient(135deg, #5A7058 0%, #4a5f48 100%);">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-12">
             <!-- Image Gallery -->
             <div class="space-y-4">
-                <div class="aspect-square rounded-[40px] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+                <div class="aspect-square rounded-[40px] overflow-hidden bg-white/20 border border-white/30 backdrop-blur-sm shadow-xl">
                     <img id="main-image" src="{{ $product->image_url ?? 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=800&q=80' }}" 
                          alt="{{ $product->name }}" 
                          class="w-full h-full object-cover">
@@ -39,16 +39,16 @@
                 <!-- Tags -->
                 <div class="flex flex-wrap gap-2">
                     @foreach($product->tags as $tag)
-                    <span class="px-3 py-1 rounded-full bg-white/10 text-white text-sm border border-white/20">{{ $tag->name }}</span>
+                    <span class="px-3 py-1 rounded-full bg-white/20 text-white text-sm border border-white/30 font-semibold">{{ $tag->name }}</span>
                     @endforeach
                 </div>
                 
                 <!-- Title -->
                 <div>
-                    <p class="text-white/60 text-sm mb-1">{{ $product->category->name }} {{ $product->subcategory ? '/ ' . $product->subcategory->name : '' }}</p>
+                    <p class="text-white/90 text-sm mb-1 font-medium">{{ $product->category->name }} {{ $product->subcategory ? '/ ' . $product->subcategory->name : '' }}</p>
                     <h1 class="text-3xl md:text-4xl font-bold text-white drop-shadow-md">{{ $product->name }}</h1>
                     @if($product->scientific_name)
-                    <p class="text-white/50 italic mt-1">{{ $product->scientific_name }}</p>
+                    <p class="text-white/80 italic mt-1 font-medium">{{ $product->scientific_name }}</p>
                     @endif
                 </div>
                 
@@ -56,61 +56,61 @@
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-1">
                         @for($i = 1; $i <= 5; $i++)
-                        <svg class="w-5 h-5 {{ $i <= floor($product->rating) ? 'text-yellow-400' : 'text-white/20' }}" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-5 h-5 {{ $i <= floor($product->rating) ? 'text-yellow-300' : 'text-white/30' }}" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                         </svg>
                         @endfor
                         <span class="text-white font-bold ml-1">{{ $product->rating }}</span>
                     </div>
-                    <span class="text-white/60">({{ $product->review_count }} ulasan)</span>
-                    <span class="text-white/20">|</span>
-                    <span class="text-white font-medium">Terjual {{ $product->sold_count }}+</span>
+                    <span class="text-white/90 font-medium">({{ $product->review_count }} ulasan)</span>
+                    <span class="text-white/50">|</span>
+                    <span class="text-white font-semibold">Terjual {{ $product->sold_count }}+</span>
                 </div>
                 
                 <!-- Price -->
-                <div class="p-8 bg-white/10 backdrop-blur-md rounded-[40px] border border-white/20 shadow-xl">
+                <div class="p-8 bg-white/15 backdrop-blur-md rounded-[40px] border border-white/30 shadow-xl">
                     <div class="flex items-baseline gap-3">
                         <span class="text-3xl md:text-4xl font-bold text-white">{{ $product->formatted_price }}</span>
                         @if($product->original_price)
-                        <span class="text-xl text-white/40 line-through">{{ format_price($product->original_price) }}</span>
-                        <span class="px-3 py-1 rounded-lg bg-red-500/20 text-red-400 text-sm font-bold">-{{ $product->discount_percentage }}%</span>
+                        <span class="text-xl text-white/70 line-through font-medium">{{ format_price($product->original_price) }}</span>
+                        <span class="px-3 py-1 rounded-lg bg-red-500/30 text-red-100 text-sm font-bold">-{{ $product->discount_percentage }}%</span>
                         @endif
                     </div>
                     @if($product->stock > 0)
-                    <p class="text-lime-400 text-sm mt-2 flex items-center gap-2">
+                    <p class="text-lime-300 text-sm mt-2 flex items-center gap-2 font-semibold">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
                         Stok tersedia ({{ $product->stock }} unit)
                     </p>
                     @else
-                    <p class="text-red-400 text-sm mt-2 font-medium">Stok habis</p>
+                    <p class="text-red-300 text-sm mt-2 font-bold">Stok habis</p>
                     @endif
                 </div>
                 
                 <!-- Specs -->
                 <div class="grid grid-cols-2 gap-4">
                     @if($product->size)
-                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-[24px] border border-white/10 shadow-sm">
-                        <p class="text-xs text-white/40 mb-1">Ukuran</p>
+                    <div class="p-4 bg-white/10 backdrop-blur-sm rounded-[24px] border border-white/20 shadow-sm">
+                        <p class="text-xs text-white/80 mb-1 font-semibold">Ukuran</p>
                         <p class="text-white font-bold">{{ $product->size }}</p>
                     </div>
                     @endif
                     @if($product->age_months)
-                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-[24px] border border-white/10 shadow-sm">
-                        <p class="text-xs text-white/40 mb-1">Umur</p>
+                    <div class="p-4 bg-white/10 backdrop-blur-sm rounded-[24px] border border-white/20 shadow-sm">
+                        <p class="text-xs text-white/80 mb-1 font-semibold">Umur</p>
                         <p class="text-white font-bold">{{ $product->age_months }} bulan</p>
                     </div>
                     @endif
                     @if($product->origin)
-                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-[24px] border border-white/10 shadow-sm">
-                        <p class="text-xs text-white/40 mb-1">Asal</p>
+                    <div class="p-4 bg-white/10 backdrop-blur-sm rounded-[24px] border border-white/20 shadow-sm">
+                        <p class="text-xs text-white/80 mb-1 font-semibold">Asal</p>
                         <p class="text-white font-bold">{{ $product->origin }}</p>
                     </div>
                     @endif
                     @if($product->pot_size)
-                    <div class="p-4 bg-white/5 backdrop-blur-sm rounded-[24px] border border-white/10 shadow-sm">
-                        <p class="text-xs text-white/40 mb-1">Ukuran Pot</p>
+                    <div class="p-4 bg-white/10 backdrop-blur-sm rounded-[24px] border border-white/20 shadow-sm">
+                        <p class="text-xs text-white/80 mb-1 font-semibold">Ukuran Pot</p>
                         <p class="text-white font-bold">{{ $product->pot_size }}</p>
                     </div>
                     @endif
