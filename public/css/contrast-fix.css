@@ -297,3 +297,59 @@ svg.text-emerald-900\/20 {
     color: #84cc16 !important;
     opacity: 1 !important;
 }
+
+/* ===================================
+   FOOTER CONTRAST FIX
+   =================================== */
+
+/* Perbaiki semua teks di footer */
+footer .text-white\/70,
+footer .text-white\/60,
+footer .text-white\/50 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+/* Perbaiki heading di footer */
+footer h3,
+footer h4 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+/* Perbaiki link di footer */
+footer a {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+}
+
+footer a:hover {
+    color: #bef264 !important;
+}
+
+/* Perbaiki icon di footer */
+footer svg {
+    color: #bef264 !important;
+}
+
+/* Perbaiki social media buttons */
+footer .bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+footer .border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Perbaiki border di footer */
+footer .border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Perbaiki copyright text */
+footer .text-white\/50 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
