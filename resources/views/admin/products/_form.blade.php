@@ -86,15 +86,18 @@
             <div class="space-y-8">
                 <div>
                     <label class="block text-xs font-bold text-lime-100/30 uppercase tracking-widest mb-4">Gambar Utama {{ isset($product) ? '' : '*' }}</label>
-                    <div class="flex items-center gap-6">
+                    <div class="flex flex-col md:flex-row items-start gap-4">
                         @if(isset($product) && $product->main_image)
-                            <div class="w-24 h-24 rounded-2xl overflow-hidden border border-white/5 shadow-xl flex-shrink-0">
+                            <div class="w-32 h-32 rounded-2xl overflow-hidden border border-white/5 shadow-xl flex-shrink-0">
                                 <img src="{{ asset('storage/' . $product->main_image) }}" alt="Current" class="w-full h-full object-cover">
                             </div>
                         @endif
-                        <div class="flex-1">
+                        <div class="flex-1 w-full">
                             <input type="file" name="main_image" accept="image/*" {{ isset($product) ? '' : 'required' }} class="admin-input w-full px-6 py-3 rounded-2xl file:mr-4 file:py-1 file:px-3 file:rounded-xl file:border-0 file:bg-lime-500/10 file:text-lime-400 file:font-bold file:text-xs">
                             <p class="text-[10px] text-lime-100/20 mt-2 uppercase font-bold tracking-widest italic">Format: JPG, PNG, WEBP. Maks: 2MB</p>
+                            @if(isset($product) && $product->main_image)
+                                <p class="text-[10px] text-lime-400/60 mt-1 font-semibold">Gambar saat ini akan diganti jika Anda upload gambar baru</p>
+                            @endif
                         </div>
                     </div>
                     @error('main_image') <p class="text-red-400 text-xs mt-2 font-medium">{{ $message }}</p> @enderror

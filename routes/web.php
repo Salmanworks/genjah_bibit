@@ -7,10 +7,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Search API Route
+Route::get('/api/search', [SearchController::class, 'search'])->name('api.search');
 
 // Product Routes
 Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
@@ -39,8 +43,8 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/pesanan/{order}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
 });
 
-// Admin Routes
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+// Admin Routes - PROTECTED: Hanya user dengan is_admin = true yang bisa akses
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     
@@ -48,6 +52,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
     Route::resource('orders', \App\Http\Controllers\Admin\OrderController::class);
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+    Route::resource('testimonials', \App\Http\Controllers\Admin\TestimonialController::class);
+    Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
     Route::get('settings', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
     Route::post('settings', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('settings.update');
 });
@@ -57,12 +63,17 @@ Route::get('/masuk', [\App\Http\Controllers\Auth\LoginController::class, 'create
 Route::post('/masuk', [\App\Http\Controllers\Auth\LoginController::class, 'store'])->name('login.store');
 Route::post('/keluar', [\App\Http\Controllers\Auth\LoginController::class, 'destroy'])->name('logout');
 
+// Google OAuth Routes
+Route::get('/auth/google', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback'])->name('auth.google.callback');
+
 Route::get('/daftar', [\App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');
 Route::post('/daftar', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('register.store');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
-});
+// Test Auth Route (untuk debugging)
+Route::get('/test-auth', function () {
+    return view('test_auth');
+})->name('test.auth');
 
 // Orders are already defined above with auth middleware
 
