@@ -117,9 +117,14 @@ class Product extends Model
 
     public function getImageUrlAttribute(): string
     {
-        if ($this->main_image) {
-            return asset('storage/' . $this->main_image);
+        $path = $this->main_image;
+        if (! $path) {
+            return 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=800&q=80';
         }
-        return 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=800&q=80';
+        if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+            return $path;
+        }
+
+        return asset('storage/' . ltrim($path, '/'));
     }
 }

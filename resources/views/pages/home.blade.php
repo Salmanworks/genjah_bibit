@@ -195,12 +195,11 @@
                     Bibit pilihan terbaik yang paling banyak diminati pelanggan kami
                 </p>
             </div>
-            <a href="{{ route('products.index', ['sort' => 'bestseller']) }}" 
-               class="hidden md:inline-flex items-center gap-8px; padding:14px 28px; background:#3d5c38; color:#ffffff; font-size:14px; font-weight:700; border-radius:50px; text-decoration:none; transition:all 0.3s ease; white-space:nowrap;"
-               style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; background:#3d5c38; color:#ffffff; font-size:14px; font-weight:700; border-radius:50px; text-decoration:none; transition:all 0.3s ease; white-space:nowrap;">
+            <a href="{{ route('products.index', ['sort' => 'bestseller']) }}"
+               class="hidden md:inline-flex shrink-0 items-center gap-2 self-center rounded-full bg-[#3d5c38] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#324a30] hover:shadow-md">
                 Lihat Semua Produk
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
             </a>
         </div>
@@ -213,12 +212,12 @@
         </div>
         
         {{-- Mobile CTA --}}
-        <div class="mt-10 text-center md:hidden">
-            <a href="{{ route('products.index') }}" 
-               style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; background:#3d5c38; color:#ffffff; font-size:14px; font-weight:700; border-radius:50px; text-decoration:none;">
+        <div class="mt-10 flex justify-center md:hidden">
+            <a href="{{ route('products.index') }}"
+               class="inline-flex items-center gap-2 rounded-full bg-[#3d5c38] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#324a30]">
                 Lihat Semua Produk
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
             </a>
         </div>
