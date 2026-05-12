@@ -9,6 +9,7 @@ use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -47,59 +48,84 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,id',
-            'subcategory_id' => 'nullable|exists:subcategories,id',
-            'scientific_name' => 'nullable|string|max:255',
-            'description' => 'required|string',
-            'care_instructions' => 'nullable|string',
-            'price' => 'required|numeric|min:0',
-            'original_price' => 'nullable|numeric|min:0',
-            'stock' => 'required|integer|min:0',
-            'size' => 'nullable|string|max:100',
-            'weight' => 'nullable|string|max:100',
-            'pot_size' => 'nullable|string|max:100',
-            'age_months' => 'nullable|integer|min:0',
-            'origin' => 'nullable|string|max:255',
-            'main_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'is_featured' => 'nullable|boolean',
-            'is_bestseller' => 'nullable|boolean',
-            'is_new_arrival' => 'nullable|boolean',
-            'is_active' => 'nullable|boolean',
-        ]);
+        try {
+            \Log::info('Product Store - Request received', [
+                'name' => $request->name,
+                'category_id' => $request->category_id,
+                'has_main_image' => $request->hasFile('main_image'),
+                'has_gallery' => $request->hasFile('gallery_images'),
+            ]);
 
-        $validated['slug'] = Str::slug($validated['name']);
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'category_id' => 'required|exists:categories,id',
+                'subcategory_id' => 'nullable|exists:subcategories,id',
+                'scientific_name' => 'nullable|string|max:255',
+                'description' => 'required|string',
+                'care_instructions' => 'nullable|string',
+                'price' => 'required|numeric|min:0',
+                'original_price' => 'nullable|numeric|min:0',
+                'stock' => 'required|integer|min:0',
+                'size' => 'nullable|string|max:100',
+                'weight' => 'nullable|string|max:100',
+                'pot_size' => 'nullable|string|max:100',
+                'age_months' => 'nullable|integer|min:0',
+                'origin' => 'nullable|string|max:255',
+                'main_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+                'is_featured' => 'nullable|boolean',
+                'is_bestseller' => 'nullable|boolean',
+                'is_new_arrival' => 'nullable|boolean',
+                'is_active' => 'nullable|boolean',
+            ]);
 
-        // Handle unique slug
-        $originalSlug = $validated['slug'];
-        $count = 1;
-        while (Product::where('slug', $validated['slug'])->exists()) {
-            $validated['slug'] = $originalSlug . '-' . $count++;
-        }
+            \Log::info('Product Store - Validation passed');
 
-        // Handle main image upload
-        if ($request->hasFile('main_image')) {
-            $validated['main_image'] = $request->file('main_image')->store('products', 'public');
-        }
+            $validated['slug'] = Str::slug($validated['name']);
 
-        // Handle gallery images
-        if ($request->hasFile('gallery_images')) {
-            $galleryImages = [];
-            foreach ($request->file('gallery_images') as $image) {
-                $galleryImages[] = $image->store('products/gallery', 'public');
+            // Handle unique slug
+            $originalSlug = $validated['slug'];
+            $count = 1;
+            while (Product::where('slug', $validated['slug'])->exists()) {
+                $validated['slug'] = $originalSlug . '-' . $count++;
             }
-            $validated['gallery_images'] = $galleryImages;
+
+            // Handle main image upload
+            if ($request->hasFile('main_image')) {
+                $validated['main_image'] = $request->file('main_image')->store('products', 'public');
+                \Log::info('Product Store - Main image uploaded', ['path' => $validated['main_image']]);
+                // Copy ke public/storage untuk Windows development
+                $this->copyImageToPublic($validated['main_image']);
+            }
+
+            // Handle gallery images
+            if ($request->hasFile('gallery_images')) {
+                $galleryImages = [];
+                foreach ($request->file('gallery_images') as $image) {
+                    $galleryPath = $image->store('products', 'public');
+                    $galleryImages[] = $galleryPath;
+                    // Copy ke public/storage untuk Windows development
+                    $this->copyImageToPublic($galleryPath);
+                }
+                $validated['gallery_images'] = $galleryImages;
+                \Log::info('Product Store - Gallery images uploaded', ['count' => count($galleryImages)]);
+            }
+
+            $validated['is_featured'] = $request->boolean('is_featured');
+            $validated['is_bestseller'] = $request->boolean('is_bestseller');
+            $validated['is_new_arrival'] = $request->boolean('is_new_arrival');
+            $validated['is_active'] = $request->boolean('is_active', true);
+
+            $product = Product::create($validated);
+            \Log::info('Product Store - Product created', ['id' => $product->id, 'name' => $product->name]);
+
+            return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan!');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            \Log::error('Product Store - Validation failed', ['errors' => $e->errors()]);
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        } catch (\Exception $e) {
+            \Log::error('Product Store - Exception', ['message' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            return redirect()->back()->with('error', 'Gagal menambahkan produk: ' . $e->getMessage())->withInput();
         }
-
-        $validated['is_featured'] = $request->boolean('is_featured');
-        $validated['is_bestseller'] = $request->boolean('is_bestseller');
-        $validated['is_new_arrival'] = $request->boolean('is_new_arrival');
-        $validated['is_active'] = $request->boolean('is_active', true);
-
-        Product::create($validated);
-
-        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
     public function edit(Product $product)
@@ -148,8 +174,11 @@ class ProductController extends Controller
             // Delete old image
             if ($product->main_image && Storage::disk('public')->exists($product->main_image)) {
                 Storage::disk('public')->delete($product->main_image);
+                $this->deleteImageFromPublic($product->main_image);
             }
             $validated['main_image'] = $request->file('main_image')->store('products', 'public');
+            // Copy ke public/storage untuk Windows development
+            $this->copyImageToPublic($validated['main_image']);
         }
 
         // Handle gallery images
@@ -159,12 +188,16 @@ class ProductController extends Controller
                 foreach ($product->gallery_images as $oldImage) {
                     if (Storage::disk('public')->exists($oldImage)) {
                         Storage::disk('public')->delete($oldImage);
+                        $this->deleteImageFromPublic($oldImage);
                     }
                 }
             }
             $galleryImages = [];
             foreach ($request->file('gallery_images') as $image) {
-                $galleryImages[] = $image->store('products/gallery', 'public');
+                $galleryPath = $image->store('products', 'public');
+                $galleryImages[] = $galleryPath;
+                // Copy ke public/storage untuk Windows development
+                $this->copyImageToPublic($galleryPath);
             }
             $validated['gallery_images'] = $galleryImages;
         }
@@ -184,11 +217,13 @@ class ProductController extends Controller
         // Delete images
         if ($product->main_image && Storage::disk('public')->exists($product->main_image)) {
             Storage::disk('public')->delete($product->main_image);
+            $this->deleteImageFromPublic($product->main_image);
         }
         if ($product->gallery_images) {
             foreach ($product->gallery_images as $image) {
                 if (Storage::disk('public')->exists($image)) {
                     Storage::disk('public')->delete($image);
+                    $this->deleteImageFromPublic($image);
                 }
             }
         }
@@ -196,5 +231,35 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil dihapus!');
+    }
+
+    /**
+     * Copy image dari storage ke public/storage untuk Windows development
+     */
+    private function copyImageToPublic($imagePath)
+    {
+        $source = storage_path('app/public/' . $imagePath);
+        $dest = public_path('storage/' . $imagePath);
+
+        if (file_exists($source)) {
+            // Buat folder jika belum ada
+            $destDir = dirname($dest);
+            if (!is_dir($destDir)) {
+                mkdir($destDir, 0755, true);
+            }
+            // Copy file
+            copy($source, $dest);
+        }
+    }
+
+    /**
+     * Delete image dari public/storage
+     */
+    private function deleteImageFromPublic($imagePath)
+    {
+        $publicPath = public_path('storage/' . $imagePath);
+        if (file_exists($publicPath)) {
+            unlink($publicPath);
+        }
     }
 }
