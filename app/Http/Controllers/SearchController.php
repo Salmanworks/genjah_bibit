@@ -21,10 +21,12 @@ class SearchController extends Controller
 
         $products = Product::where('name', 'LIKE', "%{$query}%")
             ->orWhere('description', 'LIKE', "%{$query}%")
+            ->orWhere('scientific_name', 'LIKE', "%{$query}%")
             ->orWhereHas('category', function($q) use ($query) {
                 $q->where('name', 'LIKE', "%{$query}%");
             })
-            ->with(['category', 'images'])
+            ->with('category')
+            ->where('is_active', true)
             ->take(8)
             ->get()
             ->map(function($product) {
@@ -35,7 +37,7 @@ class SearchController extends Controller
                     'price' => $product->price,
                     'formatted_price' => 'Rp ' . number_format($product->price, 0, ',', '.'),
                     'category' => $product->category->name ?? 'Uncategorized',
-                    'image' => $product->images->first()?->image_url ?? asset('images/placeholder.png'),
+                    'image' => $product->image_url,
                     'url' => route('products.show', $product->slug),
                     'stock' => $product->stock,
                     'in_stock' => $product->stock > 0,

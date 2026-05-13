@@ -48,17 +48,19 @@
             <div>
                 <label class="block text-sm font-bold text-white mb-2">Gambar Utama</label>
                 <div class="flex items-start gap-4">
-                    <div id="imagePreview" class="w-48 h-32 rounded-2xl bg-white/5 border-2 border-dashed border-white/20 flex items-center justify-center overflow-hidden">
-                        <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Preview Card (ukuran thumbnail sangat kecil) -->
+                    <div id="imagePreview" class="w-[80px] h-[60px] rounded-lg bg-white/5 border-2 border-dashed border-white/20 flex items-center justify-center overflow-hidden flex-shrink-0">
+                        <svg class="w-5 h-5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
                     </div>
+                    <!-- Upload Button & Info -->
                     <div class="flex-1">
                         <input type="file" name="featured_image" id="imageInput" accept="image/*" class="hidden">
-                        <label for="imageInput" class="inline-block px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl font-semibold cursor-pointer transition-all">
+                        <label for="imageInput" class="inline-block px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-lg font-semibold cursor-pointer transition-all text-sm">
                             Pilih Gambar
                         </label>
-                        <p class="text-xs text-white/40 mt-2">Format: JPG, PNG. Maksimal 2MB. Rekomendasi: 1200x630px</p>
+                        <p class="text-xs text-white/40 mt-2">JPG, PNG • Max 2MB • 1200x630px</p>
                         @error('featured_image')
                             <p class="mt-2 text-sm text-red-400">{{ $message }}</p>
                         @enderror

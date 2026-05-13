@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Search AJAX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .product {
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        .empty {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Search AJAX</h1>
+    <p>Ketik untuk mencari produk (minimum 2 karakter)</p>
+    
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Cari produk...">
+    </div>
+    
+    <div id="loading" class="loading" style="display: none;">
+        Mencari...
+    </div>
+    
+    <div id="results" class="results"></div>
+    
+    <div id="empty" class="empty" style="display: none;">
+        Tidak ada hasil ditemukan
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const resultsDiv = document.getElementById('results');
+        const loadingDiv = document.getElementById('loading');
+        const emptyDiv = document.getElementById('empty');
+        let searchTimeout;
+
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.trim();
+            
+            clearTimeout(searchTimeout);
+            
+            resultsDiv.innerHTML = '';
+            loadingDiv.style.display = 'none';
+            emptyDiv.style.display = 'none';
+            
+            if (query.length < 2) {
+                return;
+            }
+            
+            loadingDiv.style.display = 'block';
+            
+            searchTimeout = setTimeout(() => {
+                performSearch(query);
+            }, 300);
+        });
+
+        function performSearch(query) {
+            fetch(`/api/search?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    loadingDiv.style.display = 'none';
+                    
+                    if (data.success && data.products.length > 0) {
+                        resultsDiv.innerHTML = `
+                            <h3>Ditemukan ${data.count} produk:</h3>
+                            ${data.products.map(product => `
+                                <div class="product">
+                                    <h4>${product.name}</h4>
+                                    <p>Kategori: ${product.category}</p>
+                                    <p>Harga: ${product.formatted_price}</p>
+                                    <p>Stock: ${product.in_stock ? 'Tersedia' : 'Habis'}</p>
+                                    <a href="${product.url}">Lihat Detail</a>
+                                </div>
+                            `).join('')}
+                        `;
+                    } else {
+                        emptyDiv.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Search error:', error);
+                    loadingDiv.style.display = 'none';
+                    emptyDiv.style.display = 'block';
+                    emptyDiv.textContent = 'Terjadi kesalahan: ' + error.message;
+                });
+        }
+    </script>
+</body>
+</html>

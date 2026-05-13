@@ -77,11 +77,27 @@
                 <span class="font-semibold text-base">Testimoni</span>
             </a>
             
-            <a href="{{ route('admin.blogs.index') }}" class="sidebar-link flex items-center gap-4 px-5 py-3 rounded-2xl {{ request()->routeIs('admin.blogs.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
+            <a href="{{ route('admin.blogs.index') }}" class="sidebar-link flex items-center gap-4 px-5 py-3 rounded-2xl {{ request()->routeIs('admin.blogs.*') && !request()->routeIs('admin.blogs.create') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
                 </svg>
                 <span class="font-semibold text-base">Blog & Artikel</span>
+            </a>
+            
+            <!-- Quick Link: Artikel Baru -->
+            <a href="{{ route('admin.blogs.create') }}" class="sidebar-link flex items-center gap-4 px-5 py-3 rounded-2xl {{ request()->routeIs('admin.blogs.create') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                <span class="font-semibold text-base">Artikel Baru</span>
+            </a>
+            
+            <!-- Edit Footer -->
+            <a href="{{ route('admin.settings.footer') }}" class="sidebar-link flex items-center gap-4 px-5 py-3 rounded-2xl {{ request()->routeIs('admin.settings.footer') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+                </svg>
+                <span class="font-semibold text-base">Edit Footer</span>
             </a>
             
             <a href="{{ route('admin.settings.index') }}" class="sidebar-link flex items-center gap-4 px-5 py-3 rounded-2xl {{ request()->routeIs('admin.settings.*') ? 'active' : 'text-lime-100/60 hover:bg-white/5 hover:text-white' }}">

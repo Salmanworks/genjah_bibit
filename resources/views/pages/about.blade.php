@@ -155,7 +155,7 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     /* Background Pattern */
     .history-section::before {
         content: '';
@@ -166,7 +166,7 @@
         background-image: radial-gradient(circle at 2px 2px, rgba(61,92,56,0.05) 1px, transparent 0);
         background-size: 28px 28px;
     }
-    
+
     /* Watermark */
     .history-watermark {
         position: absolute;
@@ -180,7 +180,7 @@
         pointer-events: none;
         user-select: none;
     }
-    
+
     /* Left Accent Line */
     .history-accent-left {
         position: absolute;
@@ -190,36 +190,68 @@
         width: 2px;
         background: linear-gradient(to bottom, #5a7058, rgba(90,112,88,0.2) 50%, transparent);
     }
-    
-    /* Animation */
-    @keyframes history-rise {
-        from { 
-            opacity: 0; 
-            transform: translateY(24px); 
-        }
-        to { 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
+
+    /* Animations */
+    @keyframes history-fade-up {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
     }
-    
+    @keyframes timeline-grow {
+        from { transform: scaleY(0); }
+        to { transform: scaleY(1); }
+    }
+    @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(197, 232, 122, 0.4); }
+        50% { box-shadow: 0 0 0 12px rgba(197, 232, 122, 0); }
+    }
+
     .history-milestone {
-        animation: history-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        animation: history-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
     }
-    
-    .history-milestone:nth-child(1) { animation-delay: 0.1s; }
-    .history-milestone:nth-child(2) { animation-delay: 0.2s; }
-    .history-milestone:nth-child(3) { animation-delay: 0.3s; }
-    .history-milestone:nth-child(4) { animation-delay: 0.4s; }
-    
+    .history-milestone:nth-child(1) { animation-delay: 0.15s; }
+    .history-milestone:nth-child(2) { animation-delay: 0.3s; }
+    .history-milestone:nth-child(3) { animation-delay: 0.45s; }
+    .history-milestone:nth-child(4) { animation-delay: 0.6s; }
+
     /* Card Styles */
     .history-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
     }
     
     .history-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 24px 60px -20px rgba(26, 36, 25, 0.22);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 32px 80px -24px rgba(61, 92, 56, 0.35);
+    }
+    .history-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+        padding: 2px;
+        background: linear-gradient(135deg, rgba(197, 232, 122, 0.3), rgba(61, 92, 56, 0.1));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+    .history-card:hover::before {
+        opacity: 1;
+    }
+    .timeline-line {
+        animation: timeline-grow 1.2s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        animation-delay: 0.3s;
+        transform-origin: top;
+    }
+    .timeline-dot {
+        animation: pulse-glow 2s ease-in-out infinite;
+    }
+    .stat-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .stat-card:hover {
+        transform: translateY(-4px) scale(1.05);
     }
     
     /* Timeline Line */
@@ -308,6 +340,7 @@
         border-radius: 4px;
     }
 </style>
+<<<<<<< HEAD
 <section class="history-section py-20 sm:py-24">
     <div class="history-watermark hidden xl:block">SEJARAH</div>
     <div class="history-accent-left"></div>
@@ -346,6 +379,64 @@
 
                 <blockquote class="history-quote hidden sm:block">
                     <p class="text-[0.95rem] italic text-[rgba(26,36,25,0.6)] leading-[1.75] m-0">
+=======
+<section class="relative overflow-hidden" style="background: linear-gradient(180deg, #f9f7f4 0%, #f2ede6 50%, #ebe5da 100%);">
+    <!-- Decorative Elements -->
+    <div class="absolute inset-0 pointer-events-none opacity-30" style="background-image: radial-gradient(circle at 2px 2px, rgba(61,92,56,0.06) 1.5px, transparent 0); background-size: 32px 32px;"></div>
+    <div class="absolute right-0 top-24 hidden xl:block pointer-events-none select-none" style="font-size: clamp(8rem, 16vw, 14rem); font-weight: 900; line-height: 1; color: rgba(61,92,56,0.025); letter-spacing: -0.05em;">SEJARAH</div>
+    
+    <!-- Gradient Orbs -->
+    <div class="absolute top-20 left-10 w-96 h-96 rounded-full opacity-10 blur-3xl" style="background: radial-gradient(circle, #c5e87a 0%, transparent 70%);"></div>
+    <div class="absolute bottom-20 right-10 w-80 h-80 rounded-full opacity-10 blur-3xl" style="background: radial-gradient(circle, #3d5c38 0%, transparent 70%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-16" style="padding-top: 96px; padding-bottom: 96px;">
+        <div class="grid lg:grid-cols-12 gap-16 lg:gap-16 xl:gap-24 items-start">
+
+            {{-- Kiri: judul + lead + stat ringkas --}}
+            <div class="lg:col-span-5 lg:sticky lg:top-28">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full" style="background: linear-gradient(135deg, rgba(197, 232, 122, 0.15), rgba(61, 92, 56, 0.08)); border: 1px solid rgba(61, 92, 56, 0.15);">
+                    <span style="display: inline-block; width: 8px; height: 8px; background: #3d5c38; border-radius: 50%; animation: pulse-glow 2s ease-in-out infinite;"></span>
+                    <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.25em; color: #3d5c38; text-transform: uppercase;">Perjalanan Kami</span>
+                </div>
+                
+                <!-- Heading -->
+                <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; color: #1a2419; margin: 0 0 16px 0;">
+                    Sejarah<br>
+                    <span style="background: linear-gradient(135deg, #3d5c38 0%, #5a7058 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Toko Kami</span>
+                </h2>
+                
+                <!-- Decorative Line -->
+                <div style="width: 72px; height: 4px; background: linear-gradient(90deg, #5a7058, rgba(197, 232, 122, 0.4)); border-radius: 4px; margin: 24px 0 32px;"></div>
+                
+                <!-- Description -->
+                <p style="font-size: 1.1rem; color: rgba(26, 36, 25, 0.7); line-height: 1.9; margin: 0 0 40px 0; max-width: 480px; font-weight: 400;">
+                    Dari langkah kecil di Mlonggo hingga layanan ke seluruh Indonesia — setiap fase membentuk komitmen kami pada <strong style="color: #3d5c38; font-weight: 600;">bibit sehat</strong> dan hubungan jangka panjang dengan pelanggan.
+                </p>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-3 gap-4 max-w-lg mb-8">
+                    <div class="stat-card text-center rounded-2xl px-4 py-6" style="background: linear-gradient(135deg, #3d5c38 0%, #2d4428 100%); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 12px 32px -16px rgba(61, 92, 56, 0.4);">
+                        <div style="font-size: 2rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.03em;">4+</div>
+                        <div style="font-size: 9px; font-weight: 700; color: rgba(255, 255, 255, 0.65); margin-top: 10px; letter-spacing: 0.15em; text-transform: uppercase;">Tahun</div>
+                    </div>
+                    <div class="stat-card text-center rounded-2xl px-4 py-6" style="background: #ffffff; border: 2px solid rgba(61, 92, 56, 0.12); box-shadow: 0 12px 32px -16px rgba(26, 36, 25, 0.15);">
+                        <div style="font-size: 2rem; font-weight: 900; color: #3d5c38; line-height: 1; letter-spacing: -0.03em;">10K+</div>
+                        <div style="font-size: 9px; font-weight: 700; color: rgba(26, 36, 25, 0.55); margin-top: 10px; letter-spacing: 0.15em; text-transform: uppercase;">Pelanggan</div>
+                    </div>
+                    <div class="stat-card text-center rounded-2xl px-4 py-6" style="background: #ffffff; border: 2px solid rgba(61, 92, 56, 0.12); box-shadow: 0 12px 32px -16px rgba(26, 36, 25, 0.15);">
+                        <div style="font-size: 2rem; font-weight: 900; color: #3d5c38; line-height: 1; letter-spacing: -0.03em;">100%</div>
+                        <div style="font-size: 9px; font-weight: 700; color: rgba(26, 36, 25, 0.55); margin-top: 10px; letter-spacing: 0.15em; text-transform: uppercase;">Fokus</div>
+                    </div>
+                </div>
+
+                <!-- Quote -->
+                <blockquote class="hidden sm:block pl-6 border-l-4 rounded-lg" style="border-color: #c5e87a; background: linear-gradient(135deg, rgba(197, 232, 122, 0.08), rgba(61, 92, 56, 0.03)); padding: 20px 24px; box-shadow: 0 4px 16px -8px rgba(61, 92, 56, 0.1);">
+                    <svg class="w-8 h-8 mb-3 opacity-20" style="color: #3d5c38;" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                    <p style="font-size: 1rem; font-style: italic; color: rgba(26, 36, 25, 0.7); line-height: 1.85; margin: 0; font-weight: 500;">
+>>>>>>> d591c8fbf216da07e5152b21372651d50e29cdf7
                         "{{ setting('store_name', 'Genjah Rumah Bibit') }} — tumbuh bersama petani dan pecinta tanaman Indonesia."
                     </p>
                 </blockquote>
@@ -353,39 +444,49 @@
 
             {{-- Kanan: timeline --}}
             <div class="lg:col-span-7 relative">
+<<<<<<< HEAD
                 <div class="history-timeline-line hidden sm:block"></div>
+=======
+                <!-- Timeline Line -->
+                <div class="timeline-line absolute left-[28px] top-8 bottom-8 w-[3px] rounded-full hidden sm:block" style="background: linear-gradient(180deg, #5a7058 0%, rgba(90, 112, 88, 0.6) 50%, rgba(90, 112, 88, 0.2) 100%);"></div>
+>>>>>>> d591c8fbf216da07e5152b21372651d50e29cdf7
 
                 @php
                     $milestones = [
                         [
                             'year' => '2020',
-                            'title' => 'Awal berdiri',
+                            'title' => 'Awal Berdiri',
                             'body' => 'Toko dimulai dari skala rumahan di Mlonggo, Jepara, fokus pada bibit sayuran dan buah pilihan untuk tetangga dan petani kecil sekitar.',
                             'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>',
+                            'color' => '#c5e87a',
                         ],
                         [
                             'year' => '2021–22',
-                            'title' => 'Memperluas jaringan',
+                            'title' => 'Memperluas Jaringan',
                             'body' => 'Permintaan dari luar kota naik; kami memperketat standar kualitas, kemasan, dan konsultasi agar bibit sampai segar dan terlacak.',
                             'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>',
+                            'color' => '#8bc34a',
                         ],
                         [
                             'year' => '2023',
-                            'title' => 'Go digital',
+                            'title' => 'Go Digital',
                             'body' => 'Katalog dan pemesanan daring memudahkan pelanggan di berbagai wilayah mengakses bibit unggulan tanpa mengorbankan layanan personal.',
                             'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>',
+                            'color' => '#5a7058',
                         ],
                         [
                             'year' => 'Sekarang',
-                            'title' => 'Terus berinovasi',
+                            'title' => 'Terus Berinovasi',
                             'body' => 'Variasi bibit terus ditambah, layanan diperhalus, dan komitmen tetap sama: bibit sehat, terpercaya, dan mendampingi kebun Anda berkembang.',
                             'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
+                            'color' => '#3d5c38',
                         ],
                     ];
                 @endphp
 
                 <div class="flex flex-col gap-0 sm:pl-4">
                     @foreach($milestones as $i => $m)
+<<<<<<< HEAD
                     <div class="history-milestone relative sm:pl-16 pb-14 last:pb-0">
                         <div class="history-icon-badge hidden sm:flex">
                             <svg class="h-5 w-5 flex-shrink-0 text-[#3d5c38]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">{!! $m['icon'] !!}</svg>
@@ -400,6 +501,35 @@
                             </div>
                             <h3 class="mt-1 text-xl font-black tracking-tight sm:text-2xl text-[#1a2419]">{{ $m['title'] }}</h3>
                             <p class="mt-3 text-base leading-relaxed text-[rgba(26,36,25,0.68)] font-normal">{{ $m['body'] }}</p>
+=======
+                    <div class="history-milestone relative sm:pl-20 pb-16 last:pb-0">
+                        <!-- Timeline Dot -->
+                        <div class="timeline-dot hidden sm:flex absolute left-0 top-[24px] z-10 h-14 w-14 items-center justify-center rounded-full border-[3px] shadow-xl" style="background: linear-gradient(145deg, #ffffff, #f9f7f4); border-color: {{ $m['color'] }};">
+                            <svg class="h-6 w-6 shrink-0" style="color: {{ $m['color'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">{!! $m['icon'] !!}</svg>
+                        </div>
+                        
+                        <!-- Card -->
+                        <div class="history-card relative overflow-hidden rounded-2xl border-2 bg-white p-7 sm:p-8" style="border-color: rgba(26, 36, 25, 0.1); box-shadow: 0 20px 60px -28px rgba(26, 36, 25, 0.2);">
+                            <!-- Decorative Corner -->
+                            <div class="absolute right-0 top-0 h-32 w-32 rounded-bl-[100%] opacity-[0.05]" style="background: {{ $m['color'] }};"></div>
+                            
+                            <!-- Year Badge & Mobile Icon -->
+                            <div class="relative flex flex-wrap items-center justify-between gap-4 gap-y-3 mb-5">
+                                <span class="inline-flex items-center rounded-full px-5 py-2 text-xs font-extrabold tracking-widest shadow-md" style="background: linear-gradient(135deg, #1a2419, #2d4428); color: {{ $m['color'] }}; letter-spacing: 0.16em;">{{ $m['year'] }}</span>
+                                <span class="sm:hidden inline-flex h-12 w-12 items-center justify-center rounded-full border-3 shrink-0 shadow-lg" style="border-color: {{ $m['color'] }}; background: #ffffff;">
+                                    <svg class="h-5 w-5" style="color: {{ $m['color'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $m['icon'] !!}</svg>
+                                </span>
+                            </div>
+                            
+                            <!-- Title -->
+                            <h3 class="mt-2 text-2xl font-black tracking-tight sm:text-3xl" style="color: #1a2419; letter-spacing: -0.02em;">{{ $m['title'] }}</h3>
+                            
+                            <!-- Description -->
+                            <p class="mt-4 text-base leading-relaxed" style="color: rgba(26, 36, 25, 0.72); font-weight: 400; line-height: 1.85;">{{ $m['body'] }}</p>
+                            
+                            <!-- Accent Line -->
+                            <div class="mt-5 h-1 w-16 rounded-full" style="background: linear-gradient(90deg, {{ $m['color'] }}, transparent);"></div>
+>>>>>>> d591c8fbf216da07e5152b21372651d50e29cdf7
                         </div>
                     </div>
                     @endforeach
