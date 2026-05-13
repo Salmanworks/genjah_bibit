@@ -41,4 +41,32 @@ class SettingController extends Controller
 
         return redirect()->route('admin.settings.index')->with('success', 'Pengaturan berhasil disimpan!');
     }
+
+    public function footer()
+    {
+        $settings = Setting::all()->pluck('value', 'key')->toArray();
+        return view('admin.settings.footer', compact('settings'));
+    }
+
+    public function updateFooter(Request $request)
+    {
+        $footerSettings = [
+            'footer_about' => $request->input('footer_about', ''),
+            'footer_copyright' => $request->input('footer_copyright', ''),
+            'footer_address' => $request->input('footer_address', ''),
+            'footer_email' => $request->input('footer_email', ''),
+            'footer_phone' => $request->input('footer_phone', ''),
+            'footer_whatsapp' => $request->input('footer_whatsapp', ''),
+            'footer_instagram' => $request->input('footer_instagram', ''),
+            'footer_facebook' => $request->input('footer_facebook', ''),
+            'footer_tiktok' => $request->input('footer_tiktok', ''),
+            'footer_youtube' => $request->input('footer_youtube', ''),
+        ];
+
+        foreach ($footerSettings as $key => $value) {
+            Setting::set($key, $value);
+        }
+
+        return redirect()->route('admin.settings.footer')->with('success', 'Footer berhasil diperbarui!');
+    }
 }

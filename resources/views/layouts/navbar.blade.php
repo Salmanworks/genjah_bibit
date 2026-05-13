@@ -53,13 +53,40 @@
                     </svg>
                 </button>
                 
-                <!-- Wishlist -->
-                <a href="{{ route('wishlist') }}" class="p-2.5 rounded-full bg-emerald-900 text-white hover:bg-pink-500 shadow-sm transition-all duration-300 relative group">
-                    <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                    </svg>
-                    <span id="wishlist-count" class="absolute -top-1 -right-1 w-4 h-4 bg-pink-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center hidden shadow-lg shadow-pink-500/30">0</span>
-                </a>
+                <!-- Language Translate -->
+                <div class="relative language-dropdown">
+                    <button onclick="toggleLanguageMenu()" class="p-2.5 rounded-full bg-emerald-900 text-white hover:bg-lime-500 shadow-sm transition-all duration-300 flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Language Dropdown Menu -->
+                    <div id="language-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-emerald-950/10 overflow-hidden z-50">
+                        <div class="p-2">
+                            <button onclick="translatePage('id')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-emerald-50 transition-colors group">
+                                <span class="text-xl">🇮🇩</span>
+                                <span class="text-sm font-semibold text-emerald-950">Indonesia</span>
+                            </button>
+                            <button onclick="translatePage('en')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-emerald-50 transition-colors group">
+                                <span class="text-xl">🇬🇧</span>
+                                <span class="text-sm font-semibold text-emerald-950">English</span>
+                            </button>
+                            <button onclick="translatePage('zh-CN')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-emerald-50 transition-colors group">
+                                <span class="text-xl">🇨🇳</span>
+                                <span class="text-sm font-semibold text-emerald-950">中文</span>
+                            </button>
+                            <button onclick="translatePage('ja')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-emerald-50 transition-colors group">
+                                <span class="text-xl">🇯🇵</span>
+                                <span class="text-sm font-semibold text-emerald-950">日本語</span>
+                            </button>
+                            <button onclick="translatePage('ko')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-emerald-50 transition-colors group">
+                                <span class="text-xl">🇰🇷</span>
+                                <span class="text-sm font-semibold text-emerald-950">한국어</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 
                 @auth
                 <!-- Admin Link - Hanya untuk user dengan is_admin = true -->
@@ -117,13 +144,6 @@
                                 <span class="text-sm font-semibold text-emerald-950">Pesanan Saya</span>
                             </a>
                             
-                            <a href="{{ route('wishlist') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-emerald-50 transition-colors group">
-                                <svg class="w-5 h-5 text-emerald-900/60 group-hover:text-emerald-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                </svg>
-                                <span class="text-sm font-semibold text-emerald-950">Wishlist</span>
-                            </a>
-                            
                             <div class="my-2 border-t border-emerald-950/10"></div>
                             
                             <form method="POST" action="{{ route('logout') }}">
@@ -160,67 +180,67 @@
         </div>
     </div>
     
-    <!-- Search Modal Pop-up -->
-    <div id="search-modal" class="fixed inset-0 z-[100] hidden">
-        <div class="absolute inset-0 bg-emerald-950/20 backdrop-blur-md transition-opacity" onclick="toggleSearch()"></div>
-        
-        <div class="fixed top-10 left-1/2 -translate-x-1/2 w-[95%] max-w-2xl animate-in slide-in-from-top-4 duration-300">
-            <div class="bg-white shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] border border-emerald-900/5 p-8" style="border-radius: 40px;">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-lg font-black text-emerald-950 uppercase tracking-tight">Cari Bibit</h3>
-                    <button onclick="toggleSearch()" class="p-2 rounded-full hover:bg-emerald-950/5 transition-colors">
-                        <svg class="w-5 h-5 text-emerald-950/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <!-- Search Overlay (Inline on Page) -->
+    <div id="search-overlay" class="hidden fixed top-20 left-0 right-0 z-40 bg-white shadow-xl border-b-2 border-emerald-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="max-w-2xl mx-auto">
+                <!-- Search Header -->
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-semibold text-emerald-900">Cari Bibit</h3>
+                    <button onclick="closeSearch()" class="p-1.5 rounded-full hover:bg-emerald-100 transition-colors">
+                        <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
                 </div>
 
-                <div class="relative mb-6">
+                <!-- Search Input -->
+                <div class="relative mb-3">
                     <input type="text" 
                            id="search-input"
                            placeholder="Mau cari bibit apa hari ini?" 
                            autocomplete="off"
-                           class="w-full px-6 py-4 pr-16 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-950 font-bold placeholder-emerald-950/20 focus:outline-none focus:border-lime-500 focus:ring-4 focus:ring-lime-500/10 transition-all">
-                    <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-950 text-white flex items-center justify-center pointer-events-none">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           class="w-full px-4 py-2.5 pr-12 bg-emerald-50 border-2 border-emerald-300 rounded-xl text-emerald-900 text-sm font-medium placeholder-emerald-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all">
+                    <button type="button" class="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white flex items-center justify-center pointer-events-none transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                         </svg>
                     </button>
                 </div>
 
                 <!-- Search Results -->
-                <div id="search-results" class="hidden mb-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-sm font-bold text-emerald-950">Hasil Pencarian</span>
-                        <span id="result-count" class="text-xs text-emerald-950/50"></span>
+                <div id="search-results" class="hidden mb-3">
+                    <div class="flex items-center justify-between mb-2 px-1">
+                        <span class="text-xs font-semibold text-emerald-900">Hasil Pencarian</span>
+                        <span id="result-count" class="text-xs text-emerald-700"></span>
                     </div>
-                    <div id="results-container" class="space-y-2 max-h-96 overflow-y-auto">
+                    <div id="results-container" class="space-y-1.5 max-h-80 overflow-y-auto">
                         <!-- Results will be inserted here -->
                     </div>
                 </div>
 
                 <!-- Loading State -->
-                <div id="search-loading" class="hidden text-center py-8">
-                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-emerald-950/20 border-t-emerald-950"></div>
-                    <p class="text-sm text-emerald-950/50 mt-3">Mencari...</p>
+                <div id="search-loading" class="hidden text-center py-6">
+                    <div class="inline-block animate-spin rounded-full h-6 w-6 border-3 border-emerald-300 border-t-emerald-700"></div>
+                    <p class="text-xs text-emerald-700 mt-2 font-medium">Mencari...</p>
                 </div>
 
                 <!-- Empty State -->
-                <div id="search-empty" class="hidden text-center py-8">
-                    <svg class="w-16 h-16 mx-auto text-emerald-950/20 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div id="search-empty" class="hidden text-center py-6">
+                    <svg class="w-12 h-12 mx-auto text-emerald-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <p class="text-sm font-bold text-emerald-950/50">Tidak ada hasil ditemukan</p>
+                    <p class="text-xs font-medium text-emerald-700">Tidak ada hasil ditemukan</p>
                 </div>
 
                 <!-- Popular Searches -->
-                <div id="popular-searches" class="space-y-3">
-                    <span class="text-[10px] font-black text-emerald-900/20 uppercase tracking-widest block ml-2">Populer:</span>
-                    <div class="flex flex-wrap gap-2">
-                        <button onclick="quickSearch('durian')" class="px-4 py-2 rounded-full bg-white border border-emerald-900/10 text-emerald-950 font-bold text-[11px] hover:bg-lime-500 hover:border-lime-500 transition-all uppercase tracking-wider">Durian</button>
-                        <button onclick="quickSearch('alpukat')" class="px-4 py-2 rounded-full bg-white border border-emerald-900/10 text-emerald-950 font-bold text-[11px] hover:bg-lime-500 hover:border-lime-500 transition-all uppercase tracking-wider">Alpukat</button>
-                        <button onclick="quickSearch('mangga')" class="px-4 py-2 rounded-full bg-white border border-emerald-900/10 text-emerald-950 font-bold text-[11px] hover:bg-lime-500 hover:border-lime-500 transition-all uppercase tracking-wider">Mangga</button>
-                        <button onclick="quickSearch('jeruk')" class="px-4 py-2 rounded-full bg-white border border-emerald-900/10 text-emerald-950 font-bold text-[11px] hover:bg-lime-500 hover:border-lime-500 transition-all uppercase tracking-wider">Jeruk</button>
+                <div id="popular-searches" class="space-y-2">
+                    <span class="text-[10px] font-semibold text-emerald-700 uppercase tracking-wide block px-1">Populer:</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <button onclick="quickSearch('durian')" class="px-3 py-1.5 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-800 font-medium text-xs hover:bg-emerald-700 hover:text-white hover:border-emerald-700 transition-all">Durian</button>
+                        <button onclick="quickSearch('alpukat')" class="px-3 py-1.5 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-800 font-medium text-xs hover:bg-emerald-700 hover:text-white hover:border-emerald-700 transition-all">Alpukat</button>
+                        <button onclick="quickSearch('mangga')" class="px-3 py-1.5 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-800 font-medium text-xs hover:bg-emerald-700 hover:text-white hover:border-emerald-700 transition-all">Mangga</button>
+                        <button onclick="quickSearch('jeruk')" class="px-3 py-1.5 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-800 font-medium text-xs hover:bg-emerald-700 hover:text-white hover:border-emerald-700 transition-all">Jeruk</button>
                     </div>
                 </div>
             </div>
@@ -293,16 +313,126 @@
     
     window.addEventListener('scroll', updateNavbar);
     
-    // Search toggle
+    // Search toggle - show/hide inline overlay
     function toggleSearch() {
-        const modal = document.getElementById('search-modal');
-        modal.classList.toggle('hidden');
-        if (!modal.classList.contains('hidden')) {
-            const searchInput = document.getElementById('search-input');
-            if (searchInput) {
-                searchInput.focus();
-            }
+        const overlay = document.getElementById('search-overlay');
+        const searchInput = document.getElementById('search-input');
+        
+        overlay.classList.toggle('hidden');
+        
+        if (!overlay.classList.contains('hidden')) {
+            searchInput.focus();
+            // Reset search state
+            document.getElementById('search-results').classList.add('hidden');
+            document.getElementById('search-loading').classList.add('hidden');
+            document.getElementById('search-empty').classList.add('hidden');
+            document.getElementById('popular-searches').classList.remove('hidden');
+            searchInput.value = '';
         }
+    }
+    
+    // Close search overlay
+    function closeSearch() {
+        document.getElementById('search-overlay').classList.add('hidden');
+    }
+    
+    // Search functionality with AJAX
+    let searchTimeout;
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const searchLoading = document.getElementById('search-loading');
+    const searchEmpty = document.getElementById('search-empty');
+    const popularSearches = document.getElementById('popular-searches');
+    const resultsContainer = document.getElementById('results-container');
+    const resultCount = document.getElementById('result-count');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.trim();
+            
+            // Clear previous timeout
+            clearTimeout(searchTimeout);
+            
+            // Hide all states
+            searchResults.classList.add('hidden');
+            searchLoading.classList.add('hidden');
+            searchEmpty.classList.add('hidden');
+            popularSearches.classList.remove('hidden');
+            
+            // If query is empty or too short, show popular searches
+            if (query.length < 2) {
+                return;
+            }
+            
+            // Show loading
+            searchLoading.classList.remove('hidden');
+            popularSearches.classList.add('hidden');
+            
+            // Debounce search
+            searchTimeout = setTimeout(() => {
+                performSearch(query);
+            }, 300);
+        });
+        
+        // Handle Enter key
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = e.target.value.trim();
+                if (query.length >= 2) {
+                    performSearch(query);
+                }
+            }
+        });
+    }
+    
+    function performSearch(query) {
+        fetch(`/api/search?q=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                searchLoading.classList.add('hidden');
+                
+                if (data.success && data.products.length > 0) {
+                    // Show results
+                    searchResults.classList.remove('hidden');
+                    searchEmpty.classList.add('hidden');
+                    popularSearches.classList.add('hidden');
+                    
+                    // Update count
+                    resultCount.textContent = `${data.count} produk ditemukan`;
+                    
+                    // Render results
+                    resultsContainer.innerHTML = data.products.map(product => `
+                        <a href="${product.url}" class="flex items-center gap-3 p-2.5 rounded-lg bg-white hover:bg-emerald-50 transition-colors group border-2 border-emerald-200 hover:border-emerald-400">
+                            <div class="w-12 h-12 rounded-lg overflow-hidden bg-emerald-100 flex-shrink-0 border-2 border-emerald-300">
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-semibold text-emerald-900 text-xs truncate group-hover:text-emerald-700 transition-colors">${product.name}</h4>
+                                <p class="text-[10px] text-emerald-700 truncate">${product.category}</p>
+                                <p class="text-xs font-bold text-emerald-800 mt-0.5">${product.formatted_price}</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                ${product.in_stock 
+                                    ? '<span class="text-[10px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full border border-emerald-300">Tersedia</span>' 
+                                    : '<span class="text-[10px] font-semibold text-red-700 bg-red-100 px-2 py-1 rounded-full border border-red-300">Habis</span>'
+                                }
+                            </div>
+                        </a>
+                    `).join('');
+                } else {
+                    // Show empty state
+                    searchResults.classList.add('hidden');
+                    searchEmpty.classList.remove('hidden');
+                    popularSearches.classList.add('hidden');
+                }
+            })
+            .catch(error => {
+                console.error('Search error:', error);
+                searchLoading.classList.add('hidden');
+                searchEmpty.classList.remove('hidden');
+                popularSearches.classList.add('hidden');
+            });
     }
     
     // Quick search function
@@ -310,8 +440,8 @@
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
             searchInput.value = term;
-            searchInput.dispatchEvent(new Event('input'));
             searchInput.focus();
+            performSearch(term);
         }
     }
     
@@ -328,23 +458,103 @@
         menu.classList.toggle('hidden');
     }
     
-    // Close profile menu when clicking outside
+    // Language menu toggle
+    function toggleLanguageMenu() {
+        const menu = document.getElementById('language-menu');
+        menu.classList.toggle('hidden');
+    }
+    
+    // Translate page function using Google Translate
+    function translatePage(lang) {
+        // Close the language menu
+        document.getElementById('language-menu').classList.add('hidden');
+        
+        // If Indonesian (original language), reload page
+        if (lang === 'id') {
+            // Remove Google Translate cookie and reload
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            window.location.reload();
+            return;
+        }
+        
+        // Set Google Translate cookie
+        document.cookie = `googtrans=/id/${lang}; path=/`;
+        
+        // Check if Google Translate is already loaded
+        if (typeof google !== 'undefined' && google.translate) {
+            // Trigger translation
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = lang;
+                select.dispatchEvent(new Event('change'));
+            }
+        } else {
+            // Load Google Translate script
+            const script = document.createElement('script');
+            script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+            document.body.appendChild(script);
+            
+            // Initialize Google Translate
+            window.googleTranslateElementInit = function() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'id',
+                    includedLanguages: 'en,zh-CN,ja,ko',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    autoDisplay: false
+                }, 'google_translate_element');
+                
+                // Auto-select language after initialization
+                setTimeout(() => {
+                    const select = document.querySelector('.goog-te-combo');
+                    if (select) {
+                        select.value = lang;
+                        select.dispatchEvent(new Event('change'));
+                    }
+                }, 500);
+            };
+        }
+    }
+    
+    // Close profile and language menu when clicking outside
     document.addEventListener('click', function(e) {
         const profileDropdown = document.querySelector('.profile-dropdown');
         const profileMenu = document.getElementById('profile-menu');
+        const languageDropdown = document.querySelector('.language-dropdown');
+        const languageMenu = document.getElementById('language-menu');
         
         if (profileDropdown && !profileDropdown.contains(e.target)) {
             profileMenu?.classList.add('hidden');
         }
+        
+        if (languageDropdown && !languageDropdown.contains(e.target)) {
+            languageMenu?.classList.add('hidden');
+        }
     });
     
-    // ESC key to close search and profile menu
+    // ESC key to close search, profile menu, and language menu
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            document.getElementById('search-modal').classList.add('hidden');
+            document.getElementById('search-overlay').classList.add('hidden');
             document.getElementById('mobile-menu').classList.add('hidden');
             document.getElementById('profile-menu')?.classList.add('hidden');
+            document.getElementById('language-menu')?.classList.add('hidden');
             document.body.classList.remove('overflow-hidden');
         }
     });
 </script>
+
+<!-- Hidden Google Translate Element -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<!-- Hide Google Translate Banner -->
+<style>
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+body {
+    top: 0px !important;
+}
+.goog-te-gadget {
+    display: none !important;
+}
+</style>

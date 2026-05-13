@@ -4,89 +4,94 @@
 
 @section('content')
 
-{{-- PAGE BANNER --}}
-<div data-dark-hero class="relative overflow-hidden" style="background: #3d5c38; padding-top: 80px;">
-    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px;"></div>
-    <div class="absolute pointer-events-none" style="left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, rgba(197,232,122,0.5) 0%, rgba(197,232,122,0.08) 40%, transparent 100%);"></div>
-    <div class="absolute top-0 left-0 right-0" style="height: 2px; background: linear-gradient(90deg, rgba(197,232,122,0.5) 0%, rgba(197,232,122,0.2) 40%, transparent 100%);"></div>
-
-    <div class="relative max-w-7xl mx-auto px-8 sm:px-10 lg:px-14" style="padding-top: 36px; padding-bottom: 44px;">
-        {{-- Breadcrumb --}}
-        <nav class="flex items-center gap-2 mb-8">
-            <a href="{{ route('home') }}" style="font-size: 11px; color: rgba(255,255,255,0.35); text-decoration: none; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;">Beranda</a>
-            <span style="color: rgba(255,255,255,0.2); font-size: 11px; margin: 0 2px;">/</span>
-            <a href="{{ route('blog.index') }}" style="font-size: 11px; color: rgba(255,255,255,0.35); text-decoration: none; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;">Blog</a>
-            <span style="color: rgba(255,255,255,0.2); font-size: 11px; margin: 0 2px;">/</span>
-            <span style="font-size: 11px; color: #c5e87a; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;">{{ $blog->title }}</span>
-        </nav>
-
-        <div class="flex flex-col lg:flex-row lg:items-stretch gap-0">
-            <div class="flex-1 min-w-0 lg:pr-16 lg:border-r" style="border-color: rgba(255,255,255,0.1);">
-                <div class="flex items-center gap-3 mb-5">
-                    <span style="display:inline-block; width:28px; height:2px; background:#c5e87a;"></span>
-                    <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.25em; color: #c5e87a; text-transform: uppercase;">{{ $blog->category }}</span>
-                </div>
-                <h1 style="font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: #ffffff; margin: 0 0 20px 0;">{{ $blog->title }}</h1>
-                <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 20px;"></div>
-                @if($blog->excerpt)
-                <p style="font-size: 0.875rem; color: rgba(255,255,255,0.38); line-height: 1.7; margin: 0; max-width: 480px; font-style: italic;">
-                    "{{ $blog->excerpt }}"
-                </p>
-                @endif
-            </div>
-
-            <div class="hidden lg:flex flex-col justify-center gap-0 flex-shrink-0" style="width: 260px; padding-left: 48px;">
-                <div style="padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                    <div class="flex items-center gap-3 mb-2">
-                        <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        <div style="font-size: 1.5rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.02em;">{{ $blog->reading_time }}</div>
-                    </div>
-                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Menit Baca</div>
-                </div>
-                <div style="padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                    <div class="flex items-center gap-3 mb-2">
-                        <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        <div style="font-size: 0.9rem; font-weight: 700; color: #c5e87a; line-height: 1.3;">{{ $blog->published_at->format('d M Y') }}</div>
-                    </div>
-                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Dipublikasikan</div>
-                </div>
-                <div style="padding: 20px 0;">
-                    <div class="flex items-center gap-3 mb-2">
-                        <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                        <div style="font-size: 1.5rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.02em;">{{ $blog->view_count }}</div>
-                    </div>
-                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Total Views</div>
-                </div>
-            </div>
+{{-- PROFESSIONAL HERO SECTION --}}
+<section class="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-emerald-900 to-emerald-800" style="padding-top: 100px; padding-bottom: 60px;">
+    {{-- Animated Mesh Gradient Background --}}
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="background: 
+            radial-gradient(circle at 20% 50%, rgba(197,232,122,0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(16,185,129,0.3) 0%, transparent 50%);
+            animation: meshMove 15s ease-in-out infinite alternate;">
         </div>
     </div>
 
-    <div style="line-height: 0; display: block; margin-top: 8px;">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 60px;" preserveAspectRatio="none">
-            <path d="M0,60 L0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 Z" fill="#f4f1ea"/>
+    <div class="relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+        {{-- Breadcrumb --}}
+        <nav class="flex items-center gap-3 mb-10">
+            <a href="{{ route('home') }}" class="group flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-xl border border-white/10 hover:border-lime-400/30 transition-all duration-300">
+                <svg class="w-4 h-4 text-lime-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+                <span class="text-sm text-white/80 font-semibold">Home</span>
+            </a>
+            <svg class="w-5 h-5 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <a href="{{ route('blog.index') }}" class="px-4 py-2 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-xl border border-white/10 hover:border-lime-400/30 transition-all duration-300 text-sm text-white/80 font-semibold">Blog</a>
+            <svg class="w-5 h-5 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="px-4 py-2 rounded-2xl bg-lime-400/20 backdrop-blur-xl border border-lime-400/40 text-sm text-lime-300 font-bold truncate max-w-xs">{{ Str::limit($blog->title, 30) }}</span>
+        </nav>
+
+        {{-- Meta Info --}}
+        <div class="flex flex-wrap items-center gap-4 mb-8">
+            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-lime-400/20 backdrop-blur-xl border border-lime-400/40 text-sm text-lime-300 font-bold">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"/></svg>
+                {{ $blog->category }}
+            </span>
+            <span class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-sm text-white/80 font-semibold">
+                <svg class="w-4 h-4 text-lime-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                {{ $blog->reading_time }} Min
+            </span>
+            <span class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-sm text-white/80 font-semibold">
+                <svg class="w-4 h-4 text-lime-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                {{ $blog->published_at->format('d M Y') }}
+            </span>
+            <span class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-sm text-white/80 font-semibold">
+                <svg class="w-4 h-4 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                {{ $blog->view_count }} views
+            </span>
+        </div>
+
+        {{-- Title --}}
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+            {{ $blog->title }}
+        </h1>
+
+        {{-- Excerpt --}}
+        @if($blog->excerpt)
+        <p class="text-xl text-white/70 font-medium leading-relaxed max-w-3xl">
+            {{ $blog->excerpt }}
+        </p>
+        @endif
+    </div>
+
+    {{-- Wave Divider --}}
+    <div class="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-20" preserveAspectRatio="none">
+            <path d="M0,80 L0,40 C360,70 720,10 1080,40 C1440,70 1440,80 1440,80 Z" fill="#ffffff"/>
+            <path d="M0,80 L0,50 C360,65 720,35 1080,50 C1440,65 1440,80 1440,80 Z" fill="#ffffff" opacity="0.5"/>
         </svg>
     </div>
-</div>
+</section>
+
+<style>
+@keyframes meshMove {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, 20px) scale(1.05); }
+}
+</style>
 
 {{-- ── MAIN CONTENT ── --}}
 <div style="background:#f4f1ea; padding-bottom:64px;">
     <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
 
         {{-- Featured image --}}
-        <div style="margin-top:-8px; margin-bottom:36px; border-radius:12px; overflow:hidden; border:1px solid rgba(26,36,25,0.08); background:#ffffff;">
-            <div style="position:relative; aspect-ratio:5/4; overflow:hidden; background:#ffffff;">
-                <div style="position:absolute; inset:0; background:linear-gradient(135deg, #f0fdf4 0%, #ecfccb 100%);"></div>
-                <div style="position:absolute; inset:0; opacity:0.05; background-image:radial-gradient(circle, #059669 1.5px, transparent 1.5px); background-size:24px 24px;"></div>
-                @if($blog->featured_image)
-                    <img src="{{ asset('storage/' . $blog->featured_image) }}"
-                         alt="{{ $blog->title }}"
-                         style="position:relative; width:100%; height:100%; object-fit:cover; display:block;">
-                @else
-                    <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&q=80"
-                         alt="{{ $blog->title }}"
-                         style="width:100%; height:100%; object-fit:cover; display:block;">
-                @endif
-            </div>
+        <div style="margin-top:-8px; margin-bottom:36px; border-radius:10px; overflow:hidden; border:1px solid rgba(26,36,25,0.08); background:#ffffff;">
+            @if($blog->featured_image)
+                <img src="{{ asset('storage/' . $blog->featured_image) }}"
+                     alt="{{ $blog->title }}"
+                     style="width:100%; aspect-ratio:16/7; object-fit:contain; display:block;">
+            @else
+                <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&q=80"
+                     alt="{{ $blog->title }}"
+                     style="width:100%; aspect-ratio:16/7; object-fit:cover; display:block;">
+            @endif
         </div>
 
         {{-- Two-column layout: article + sidebar --}}
@@ -189,23 +194,21 @@
         <div class="grid md:grid-cols-3 gap-5">
             @foreach($relatedBlogs as $related)
             <a href="{{ route('blog.show', $related->slug) }}" class="group block" style="text-decoration:none;">
-                <div style="border-radius:12px; overflow:hidden; background:#ffffff; border:1px solid rgba(26,36,25,0.08);">
-                    <div style="position:relative; aspect-ratio:5/4; overflow:hidden; background:#ffffff;">
-                        <div style="position:absolute; inset:0; background:linear-gradient(135deg, #f0fdf4 0%, #ecfccb 100%);"></div>
-                        <div style="position:absolute; inset:0; opacity:0.05; background-image:radial-gradient(circle, #059669 1.5px, transparent 1.5px); background-size:24px 24px;"></div>
+                <div style="border-radius:10px; overflow:hidden; background:#ffffff; border:1px solid rgba(26,36,25,0.07);">
+                    <div style="aspect-ratio:16/9; overflow:hidden; background:#ffffff;">
                         @if($related->featured_image)
                             <img src="{{ asset('storage/' . $related->featured_image) }}"
                                  alt="{{ $related->title }}"
-                                 style="position:relative; width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease;"
+                                 style="width:100%; height:100%; object-fit:contain; transition:transform 0.4s ease; display:block;"
                                  class="group-hover:scale-105">
                         @else
                             <img src="https://images.unsplash.com/photo-{{ $loop->iteration % 3 == 1 ? '1416879595882-3373a0480b5b' : ($loop->iteration % 3 == 2 ? '1463936575229-25b11c7e5345' : '1501004318641-b39ac6497518') }}?w=400&q=80"
                                  alt="{{ $related->title }}"
-                                 style="width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease;"
+                                 style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; display:block;"
                                  class="group-hover:scale-105">
                         @endif
                     </div>
-                    <div style="padding:16px 18px;">
+                    <div style="padding:14px 16px;">
                         <div style="font-size:10px; font-weight:700; color:#3d5c38; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">{{ $related->category }}</div>
                         <h3 style="font-size:0.875rem; font-weight:700; color:#1a2419; line-height:1.4; margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{{ $related->title }}</h3>
                     </div>
