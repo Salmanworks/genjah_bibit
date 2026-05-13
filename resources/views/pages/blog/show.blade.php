@@ -52,9 +52,15 @@
 
         {{-- Featured image --}}
         <div style="margin-top:-8px; margin-bottom:36px; border-radius:10px; overflow:hidden; border:1px solid rgba(26,36,25,0.08);">
-            <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&q=80"
-                 alt="{{ $blog->title }}"
-                 style="width:100%; aspect-ratio:16/7; object-fit:cover; display:block;">
+            @if($blog->featured_image)
+                <img src="{{ asset('storage/' . $blog->featured_image) }}"
+                     alt="{{ $blog->title }}"
+                     style="width:100%; aspect-ratio:16/7; object-fit:cover; display:block;">
+            @else
+                <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&q=80"
+                     alt="{{ $blog->title }}"
+                     style="width:100%; aspect-ratio:16/7; object-fit:cover; display:block;">
+            @endif
         </div>
 
         {{-- Two-column layout: article + sidebar --}}
@@ -159,10 +165,17 @@
             <a href="{{ route('blog.show', $related->slug) }}" class="group block" style="text-decoration:none;">
                 <div style="border-radius:10px; overflow:hidden; background:#ffffff; border:1px solid rgba(26,36,25,0.07);">
                     <div style="aspect-ratio:16/9; overflow:hidden;">
-                        <img src="https://images.unsplash.com/photo-{{ $loop->iteration % 3 == 1 ? '1416879595882-3373a0480b5b' : ($loop->iteration % 3 == 2 ? '1463936575229-25b11c7e5345' : '1501004318641-b39ac6497518') }}?w=400&q=80"
-                             alt="{{ $related->title }}"
-                             style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; display:block;"
-                             class="group-hover:scale-105">
+                        @if($related->featured_image)
+                            <img src="{{ asset('storage/' . $related->featured_image) }}"
+                                 alt="{{ $related->title }}"
+                                 style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; display:block;"
+                                 class="group-hover:scale-105">
+                        @else
+                            <img src="https://images.unsplash.com/photo-{{ $loop->iteration % 3 == 1 ? '1416879595882-3373a0480b5b' : ($loop->iteration % 3 == 2 ? '1463936575229-25b11c7e5345' : '1501004318641-b39ac6497518') }}?w=400&q=80"
+                                 alt="{{ $related->title }}"
+                                 style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; display:block;"
+                                 class="group-hover:scale-105">
+                        @endif
                     </div>
                     <div style="padding:14px 16px;">
                         <div style="font-size:10px; font-weight:700; color:#3d5c38; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">{{ $related->category }}</div>

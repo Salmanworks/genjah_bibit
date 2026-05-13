@@ -1,4 +1,4 @@
-@extends('layouts.main')
+ @extends('layouts.main')
 
 @section('title', 'Blog - ' . setting('store_name', 'Plant Power'))
 
@@ -63,9 +63,15 @@
 <section class="relative py-12">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <a href="{{ route('blog.show', $featuredBlog->slug) }}" class="group block relative overflow-hidden aspect-[21/9] shadow-2xl border-4 border-white" style="border-radius: 60px;">
-            <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&q=80" 
-                 alt="{{ $featuredBlog->title }}" 
-                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            @if($featuredBlog->featured_image)
+                <img src="{{ asset('storage/' . $featuredBlog->featured_image) }}" 
+                     alt="{{ $featuredBlog->title }}" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            @else
+                <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&q=80" 
+                     alt="{{ $featuredBlog->title }}" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            @endif
             <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/40 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-8 md:p-12">
                 <span class="inline-block px-5 py-2 rounded-full bg-lime-500 text-emerald-950 text-xs font-black uppercase tracking-widest mb-6 shadow-lg shadow-lime-500/20">Sorotan</span>
@@ -98,9 +104,15 @@
             @foreach($blogs as $blog)
             <a href="{{ route('blog.show', $blog->slug) }}" class="group bg-white overflow-hidden shadow-2xl border border-emerald-500/5 hover:border-lime-500/30 transition-all card-hover flex flex-col" style="border-radius: 45px;">
                 <div class="aspect-video overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-{{ $loop->iteration % 5 == 1 ? '1416879595882-3373a0480b5b' : ($loop->iteration % 5 == 2 ? '1463936575229-25b11c7e5345' : ($loop->iteration % 5 == 3 ? '1501004318641-b39ac6497518' : ($loop->iteration % 5 == 4 ? '1518531933807-3b8360c5a59a' : '1459411552884-841db9b3cc2a'))) }}?w=600&q=80" 
-                         alt="{{ $blog->title }}" 
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    @if($blog->featured_image)
+                        <img src="{{ asset('storage/' . $blog->featured_image) }}" 
+                             alt="{{ $blog->title }}" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    @else
+                        <img src="https://images.unsplash.com/photo-{{ $loop->iteration % 5 == 1 ? '1416879595882-3373a0480b5b' : ($loop->iteration % 5 == 2 ? '1463936575229-25b11c7e5345' : ($loop->iteration % 5 == 3 ? '1501004318641-b39ac6497518' : ($loop->iteration % 5 == 4 ? '1518531933807-3b8360c5a59a' : '1459411552884-841db9b3cc2a'))) }}?w=600&q=80" 
+                             alt="{{ $blog->title }}" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    @endif
                     <div class="absolute top-4 left-4">
                         <span class="px-4 py-1.5 rounded-full bg-emerald-950/80 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest shadow-lg">{{ $blog->category }}</span>
                     </div>
