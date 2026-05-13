@@ -147,6 +147,127 @@
     </div>
 </section>
 
+{{-- Sejarah Toko — sunting array $milestones di bawah --}}
+<style>
+    @keyframes history-rise {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .history-milestone {
+        animation: history-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+    .history-milestone:nth-child(1) { animation-delay: 0.1s; }
+    .history-milestone:nth-child(2) { animation-delay: 0.2s; }
+    .history-milestone:nth-child(3) { animation-delay: 0.3s; }
+    .history-milestone:nth-child(4) { animation-delay: 0.4s; }
+    .history-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .history-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 60px -20px rgba(26, 36, 25, 0.22);
+    }
+</style>
+<section class="relative overflow-hidden" style="background:linear-gradient(180deg, #f8f5f0 0%, #f0ebe3 50%, #e8e3d8 100%);">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image:radial-gradient(circle at 2px 2px, rgba(61,92,56,0.05) 1px, transparent 0); background-size:28px 28px;"></div>
+    <div class="absolute right-0 top-32 hidden xl:block pointer-events-none select-none" style="font-size:clamp(7rem, 15vw, 12rem); font-weight:900; line-height:1; color:rgba(61,92,56,0.03); letter-spacing:-0.05em;">SEJARAH</div>
+    <div class="absolute left-0 top-0 bottom-0 w-[2px]" style="background:linear-gradient(to bottom, #5a7058, rgba(90,112,88,0.2) 50%, transparent);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-16" style="padding-top:80px; padding-bottom:88px;">
+        <div class="grid lg:grid-cols-12 gap-16 lg:gap-14 xl:gap-20 items-start">
+
+            {{-- Kiri: judul + lead + stat ringkas --}}
+            <div class="lg:col-span-5 lg:sticky lg:top-32">
+                <div class="flex items-center gap-3 mb-5">
+                    <span style="display:inline-block; width:36px; height:2.5px; background:#3d5c38;"></span>
+                    <span style="font-size:10px; font-weight:800; letter-spacing:0.3em; color:#3d5c38; text-transform:uppercase;">Perjalanan Kami</span>
+                </div>
+                <h2 style="font-size:clamp(2.2rem, 4.2vw, 3rem); font-weight:900; line-height:1.02; letter-spacing:-0.03em; color:#1a2419; margin:0 0 12px 0;">Sejarah<br><span style="color:#3d5c38;">Toko Kami</span></h2>
+                <div style="width:56px; height:3px; background:linear-gradient(90deg, #5a7058, rgba(90,112,88,0.25)); border-radius:2px; margin:20px 0 28px;"></div>
+                <p style="font-size:1.05rem; color:rgba(26,36,25,0.65); line-height:1.85; margin:0 0 32px 0; max-width:440px; font-weight:400;">
+                    Dari langkah kecil di Mlonggo hingga layanan ke seluruh Indonesia — setiap fase membentuk komitmen kami pada bibit sehat dan hubungan jangka panjang dengan pelanggan.
+                </p>
+
+                <div class="grid grid-cols-3 gap-4 max-w-lg">
+                    <div class="text-center rounded-2xl px-3 py-5" style="background:#3d5c38; border:1px solid rgba(255,255,255,0.12); box-shadow:0 8px 24px -12px rgba(61,92,56,0.3);">
+                        <div style="font-size:1.5rem; font-weight:900; color:#c5e87a; line-height:1; letter-spacing:-0.02em;">4+</div>
+                        <div style="font-size:8px; font-weight:700; color:rgba(255,255,255,0.6); margin-top:8px; letter-spacing:0.12em; text-transform:uppercase;">Tahun</div>
+                    </div>
+                    <div class="text-center rounded-2xl px-3 py-5" style="background:#ffffff; border:1px solid rgba(26,36,25,0.1); box-shadow:0 8px 24px -12px rgba(26,36,25,0.1);">
+                        <div style="font-size:1.5rem; font-weight:900; color:#3d5c38; line-height:1; letter-spacing:-0.02em;">10K+</div>
+                        <div style="font-size:8px; font-weight:700; color:rgba(26,36,25,0.5); margin-top:8px; letter-spacing:0.12em; text-transform:uppercase;">Pelanggan</div>
+                    </div>
+                    <div class="text-center rounded-2xl px-3 py-5" style="background:#ffffff; border:1px solid rgba(26,36,25,0.1); box-shadow:0 8px 24px -12px rgba(26,36,25,0.1);">
+                        <div style="font-size:1.5rem; font-weight:900; color:#3d5c38; line-height:1; letter-spacing:-0.02em;">100%</div>
+                        <div style="font-size:8px; font-weight:700; color:rgba(26,36,25,0.5); margin-top:8px; letter-spacing:0.12em; text-transform:uppercase;">Fokus</div>
+                    </div>
+                </div>
+
+                <blockquote class="mt-10 hidden sm:block pl-6 border-l-[3px] rounded-sm" style="border-color:#c5e87a; background:rgba(197,232,122,0.05); padding:16px 20px;">
+                    <p style="font-size:0.95rem; font-style:italic; color:rgba(26,36,25,0.6); line-height:1.75; margin:0; font-weight:400;">
+                        "{{ setting('store_name', 'Genjah Rumah Bibit') }} — tumbuh bersama petani dan pecinta tanaman Indonesia."
+                    </p>
+                </blockquote>
+            </div>
+
+            {{-- Kanan: timeline --}}
+            <div class="lg:col-span-7 relative">
+                <div class="absolute left-[24px] top-4 bottom-4 w-[2.5px] rounded-full hidden sm:block" style="background:linear-gradient(180deg, #5a7058 0%, rgba(90,112,88,0.5) 50%, rgba(90,112,88,0.15) 100%);"></div>
+
+                @php
+                    $milestones = [
+                        [
+                            'year' => '2020',
+                            'title' => 'Awal berdiri',
+                            'body' => 'Toko dimulai dari skala rumahan di Mlonggo, Jepara, fokus pada bibit sayuran dan buah pilihan untuk tetangga dan petani kecil sekitar.',
+                            'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>',
+                        ],
+                        [
+                            'year' => '2021–22',
+                            'title' => 'Memperluas jaringan',
+                            'body' => 'Permintaan dari luar kota naik; kami memperketat standar kualitas, kemasan, dan konsultasi agar bibit sampai segar dan terlacak.',
+                            'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>',
+                        ],
+                        [
+                            'year' => '2023',
+                            'title' => 'Go digital',
+                            'body' => 'Katalog dan pemesanan daring memudahkan pelanggan di berbagai wilayah mengakses bibit unggulan tanpa mengorbankan layanan personal.',
+                            'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>',
+                        ],
+                        [
+                            'year' => 'Sekarang',
+                            'title' => 'Terus berinovasi',
+                            'body' => 'Variasi bibit terus ditambah, layanan diperhalus, dan komitmen tetap sama: bibit sehat, terpercaya, dan mendampingi kebun Anda berkembang.',
+                            'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
+                        ],
+                    ];
+                @endphp
+
+                <div class="flex flex-col gap-0 sm:pl-4">
+                    @foreach($milestones as $i => $m)
+                    <div class="history-milestone relative sm:pl-16 pb-14 last:pb-0">
+                        <div class="hidden sm:flex absolute left-0 top-[20px] z-10 h-12 w-12 items-center justify-center rounded-full border-[3px] shadow-lg" style="background:linear-gradient(145deg, #ffffff, #f8f5f0); border-color:#5a7058;">
+                            <svg class="h-5 w-5 shrink-0" style="color:#3d5c38;" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">{!! $m['icon'] !!}</svg>
+                        </div>
+                        <div class="history-card relative overflow-hidden rounded-2xl border bg-white p-6 sm:p-7 sm:pl-8" style="border-color:rgba(26,36,25,0.08); box-shadow:0 16px 48px -24px rgba(26,36,25,0.16);">
+                            <div class="absolute right-0 top-0 h-28 w-28 rounded-bl-[100%] opacity-[0.06]" style="background:#3d5c38;"></div>
+                            <div class="relative flex flex-wrap items-start justify-between gap-4 gap-y-2 mb-4">
+                                <span class="inline-flex items-center rounded-full px-4 py-1.5 text-[11px] font-extrabold tracking-widest" style="background:#1a2419; color:#c5e87a; letter-spacing:0.14em;">{{ $m['year'] }}</span>
+                                <span class="sm:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border-2 shrink-0" style="border-color:#5a7058; background:#ffffff;">
+                                    <svg class="h-4.5 w-4.5" style="color:#3d5c38;" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $m['icon'] !!}</svg>
+                                </span>
+                            </div>
+                            <h3 class="mt-1 text-xl font-black tracking-tight sm:text-2xl" style="color:#1a2419;">{{ $m['title'] }}</h3>
+                            <p class="mt-3 text-base leading-relaxed" style="color:rgba(26,36,25,0.68); font-weight:400;">{{ $m['body'] }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Vision Mission -->
 <section class="relative overflow-hidden" style="background:#3d5c38;">
 

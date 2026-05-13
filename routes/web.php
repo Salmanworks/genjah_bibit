@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pesanan', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/produk/{product}/pesan', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/pesanan', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/pesanan/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit');
+    Route::patch('/pesanan/{order}', [OrderController::class, 'update'])->name('orders.update');
     Route::get('/pesanan/{order}', [OrderController::class, 'show'])->name('orders.show');
     Route::patch('/pesanan/{order}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
 });

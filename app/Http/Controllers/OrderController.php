@@ -61,6 +61,63 @@ class OrderController extends Controller
         return view('orders.show', compact('order'));
     }
 
+    public function edit(Order $order)
+    {
+        if ($order->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        if ($order->status !== 'pending') {
+            return redirect()->route('orders.show', $order)
+                ->with('error', 'Hanya pesanan berstatus Menunggu yang dapat diubah.');
+        }
+
+        $order->load('product');
+
+        return view('orders.edit', compact('order'));
+    }
+
+    public function update(Request $request, Order $order)
+    {
+        if ($order->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        if ($order->status !== 'pending') {
+            return redirect()->route('orders.show', $order)
+                ->with('error', 'Hanya pesanan berstatus Menunggu yang dapat diubah.');
+        }
+
+        $order->load('product');
+        $product = $order->product;
+
+        $validated = $request->validate([
+            'quantity' => 'required|integer|min:1',
+            'shipping_address' => 'required|string|max:500',
+            'phone' => 'required|string|max:20',
+            'notes' => 'nullable|string|max:1000',
+        ]);
+
+        if ($validated['quantity'] > $product->stock) {
+            return back()
+                ->withErrors(['quantity' => 'Jumlah melebihi stok saat ini (' . $product->stock . ' unit).'])
+                ->withInput();
+        }
+
+        $totalPrice = $product->price * $validated['quantity'];
+
+        $order->update([
+            'quantity' => $validated['quantity'],
+            'total_price' => $totalPrice,
+            'shipping_address' => $validated['shipping_address'],
+            'phone' => $validated['phone'],
+            'notes' => $validated['notes'] ?? null,
+        ]);
+
+        return redirect()->route('orders.index')
+            ->with('success', 'Data pesanan diperbarui. Total mengikuti harga produk terkini.');
+    }
+
     public function cancel(Order $order)
     {
         if ($order->user_id !== Auth::id()) {

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -64,6 +65,8 @@ class BlogController extends Controller
         // Upload featured image
         if ($request->hasFile('featured_image')) {
             $validated['featured_image'] = $request->file('featured_image')->store('blogs', 'public');
+            // Copy ke public/storage untuk Windows development
+            $this->copyImageToPublic($validated['featured_image']);
         }
         
         // Convert tags string to array
@@ -113,8 +116,11 @@ class BlogController extends Controller
         if ($request->hasFile('featured_image')) {
             if ($blog->featured_image) {
                 Storage::disk('public')->delete($blog->featured_image);
+                $this->deleteImageFromPublic($blog->featured_image);
             }
             $validated['featured_image'] = $request->file('featured_image')->store('blogs', 'public');
+            // Copy ke public/storage untuk Windows development
+            $this->copyImageToPublic($validated['featured_image']);
         }
         
         // Convert tags string to array
@@ -138,17 +144,49 @@ class BlogController extends Controller
         // Delete images
         if ($blog->featured_image) {
             Storage::disk('public')->delete($blog->featured_image);
+            $this->deleteImageFromPublic($blog->featured_image);
         }
-        
+
         if ($blog->gallery_images) {
             foreach ($blog->gallery_images as $image) {
                 Storage::disk('public')->delete($image);
+                $this->deleteImageFromPublic($image);
             }
         }
-        
+
         $blog->delete();
-        
+
         return redirect()->route('admin.blogs.index')
                          ->with('success', 'Blog berhasil dihapus!');
+    }
+
+    /**
+     * Copy image dari storage ke public/storage untuk Windows development
+     */
+    private function copyImageToPublic($imagePath)
+    {
+        $source = storage_path('app/public/' . $imagePath);
+        $dest = public_path('storage/' . $imagePath);
+
+        if (file_exists($source)) {
+            // Buat folder jika belum ada
+            $destDir = dirname($dest);
+            if (!is_dir($destDir)) {
+                mkdir($destDir, 0755, true);
+            }
+            // Copy file
+            copy($source, $dest);
+        }
+    }
+
+    /**
+     * Delete image dari public/storage
+     */
+    private function deleteImageFromPublic($imagePath)
+    {
+        $publicPath = public_path('storage/' . $imagePath);
+        if (file_exists($publicPath)) {
+            unlink($publicPath);
+        }
     }
 }
