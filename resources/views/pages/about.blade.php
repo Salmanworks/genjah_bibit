@@ -149,62 +149,203 @@
 
 {{-- Sejarah Toko — sunting array $milestones di bawah --}}
 <style>
-    @keyframes history-rise {
-        from { opacity: 0; transform: translateY(24px); }
-        to { opacity: 1; transform: translateY(0); }
+    /* Section Container */
+    .history-section {
+        background: linear-gradient(180deg, #f8f5f0 0%, #f0ebe3 50%, #e8e3d8 100%);
+        position: relative;
+        overflow: hidden;
     }
+    
+    /* Background Pattern */
+    .history-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.4;
+        background-image: radial-gradient(circle at 2px 2px, rgba(61,92,56,0.05) 1px, transparent 0);
+        background-size: 28px 28px;
+    }
+    
+    /* Watermark */
+    .history-watermark {
+        position: absolute;
+        right: 0;
+        top: 32px;
+        font-size: clamp(7rem, 15vw, 12rem);
+        font-weight: 900;
+        line-height: 1;
+        color: rgba(61,92,56,0.03);
+        letter-spacing: -0.05em;
+        pointer-events: none;
+        user-select: none;
+    }
+    
+    /* Left Accent Line */
+    .history-accent-left {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #5a7058, rgba(90,112,88,0.2) 50%, transparent);
+    }
+    
+    /* Animation */
+    @keyframes history-rise {
+        from { 
+            opacity: 0; 
+            transform: translateY(24px); 
+        }
+        to { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+    }
+    
     .history-milestone {
         animation: history-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
     }
+    
     .history-milestone:nth-child(1) { animation-delay: 0.1s; }
     .history-milestone:nth-child(2) { animation-delay: 0.2s; }
     .history-milestone:nth-child(3) { animation-delay: 0.3s; }
     .history-milestone:nth-child(4) { animation-delay: 0.4s; }
+    
+    /* Card Styles */
     .history-card {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    
     .history-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 24px 60px -20px rgba(26, 36, 25, 0.22);
     }
+    
+    /* Timeline Line */
+    .history-timeline-line {
+        position: absolute;
+        left: 24px;
+        top: 16px;
+        bottom: 16px;
+        width: 2.5px;
+        border-radius: 9999px;
+        background: linear-gradient(180deg, #5a7058 0%, rgba(90,112,88,0.5) 50%, rgba(90,112,88,0.15) 100%);
+    }
+    
+    /* Icon Badge */
+    .history-icon-badge {
+        position: absolute;
+        left: 0;
+        top: 20px;
+        z-index: 10;
+        height: 48px;
+        width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        border: 3px solid #5a7058;
+        background: linear-gradient(145deg, #ffffff, #f8f5f0);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Year Badge */
+    .history-year-badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 9999px;
+        padding: 6px 16px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        background: #1a2419;
+        color: #c5e87a;
+    }
+    
+    /* Card Accent */
+    .history-card-accent {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 112px;
+        width: 112px;
+        border-bottom-left-radius: 100%;
+        opacity: 0.06;
+        background: #3d5c38;
+    }
+    
+    /* Stat Cards */
+    .history-stat-card {
+        text-align: center;
+        border-radius: 16px;
+        padding: 20px 12px;
+        transition: all 0.3s ease;
+    }
+    
+    .history-stat-card:hover {
+        transform: translateY(-2px);
+    }
+    
+    .history-stat-card.primary {
+        background: #3d5c38;
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: 0 8px 24px -12px rgba(61,92,56,0.3);
+    }
+    
+    .history-stat-card.secondary {
+        background: #ffffff;
+        border: 1px solid rgba(26,36,25,0.1);
+        box-shadow: 0 8px 24px -12px rgba(26,36,25,0.1);
+    }
+    
+    /* Quote Block */
+    .history-quote {
+        border-left: 3px solid #c5e87a;
+        background: rgba(197,232,122,0.05);
+        padding: 16px 20px;
+        border-radius: 4px;
+    }
 </style>
-<section class="relative overflow-hidden" style="background:linear-gradient(180deg, #f8f5f0 0%, #f0ebe3 50%, #e8e3d8 100%);">
-    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image:radial-gradient(circle at 2px 2px, rgba(61,92,56,0.05) 1px, transparent 0); background-size:28px 28px;"></div>
-    <div class="absolute right-0 top-32 hidden xl:block pointer-events-none select-none" style="font-size:clamp(7rem, 15vw, 12rem); font-weight:900; line-height:1; color:rgba(61,92,56,0.03); letter-spacing:-0.05em;">SEJARAH</div>
-    <div class="absolute left-0 top-0 bottom-0 w-[2px]" style="background:linear-gradient(to bottom, #5a7058, rgba(90,112,88,0.2) 50%, transparent);"></div>
+<section class="history-section py-20 sm:py-24">
+    <div class="history-watermark hidden xl:block">SEJARAH</div>
+    <div class="history-accent-left"></div>
 
-    <div class="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-16" style="padding-top:80px; padding-bottom:88px;">
+    <div class="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
         <div class="grid lg:grid-cols-12 gap-16 lg:gap-14 xl:gap-20 items-start">
 
             {{-- Kiri: judul + lead + stat ringkas --}}
             <div class="lg:col-span-5 lg:sticky lg:top-32">
                 <div class="flex items-center gap-3 mb-5">
-                    <span style="display:inline-block; width:36px; height:2.5px; background:#3d5c38;"></span>
-                    <span style="font-size:10px; font-weight:800; letter-spacing:0.3em; color:#3d5c38; text-transform:uppercase;">Perjalanan Kami</span>
+                    <span class="w-9 h-0.5 bg-[#3d5c38]"></span>
+                    <span class="text-[10px] font-extrabold tracking-[0.3em] text-[#3d5c38] uppercase">Perjalanan Kami</span>
                 </div>
-                <h2 style="font-size:clamp(2.2rem, 4.2vw, 3rem); font-weight:900; line-height:1.02; letter-spacing:-0.03em; color:#1a2419; margin:0 0 12px 0;">Sejarah<br><span style="color:#3d5c38;">Toko Kami</span></h2>
-                <div style="width:56px; height:3px; background:linear-gradient(90deg, #5a7058, rgba(90,112,88,0.25)); border-radius:2px; margin:20px 0 28px;"></div>
-                <p style="font-size:1.05rem; color:rgba(26,36,25,0.65); line-height:1.85; margin:0 0 32px 0; max-width:440px; font-weight:400;">
+                <h2 class="text-[clamp(2.2rem,4.2vw,3rem)] font-black leading-[1.02] tracking-tight text-[#1a2419] mb-3">
+                    Sejarah<br><span class="text-[#3d5c38]">Toko Kami</span>
+                </h2>
+                <div class="w-14 h-0.5 bg-gradient-to-r from-[#5a7058] to-[rgba(90,112,88,0.25)] rounded-full mb-7"></div>
+                <p class="text-[1.05rem] leading-[1.85] text-[rgba(26,36,25,0.65)] max-w-[440px] mb-8">
                     Dari langkah kecil di Mlonggo hingga layanan ke seluruh Indonesia — setiap fase membentuk komitmen kami pada bibit sehat dan hubungan jangka panjang dengan pelanggan.
                 </p>
 
-                <div class="grid grid-cols-3 gap-4 max-w-lg">
-                    <div class="text-center rounded-2xl px-3 py-5" style="background:#3d5c38; border:1px solid rgba(255,255,255,0.12); box-shadow:0 8px 24px -12px rgba(61,92,56,0.3);">
-                        <div style="font-size:1.5rem; font-weight:900; color:#c5e87a; line-height:1; letter-spacing:-0.02em;">4+</div>
-                        <div style="font-size:8px; font-weight:700; color:rgba(255,255,255,0.6); margin-top:8px; letter-spacing:0.12em; text-transform:uppercase;">Tahun</div>
+                <div class="grid grid-cols-3 gap-4 max-w-lg mb-10">
+                    <div class="history-stat-card primary">
+                        <div class="text-[1.5rem] font-black text-[#c5e87a] leading-none tracking-tight">4+</div>
+                        <div class="text-[8px] font-bold text-[rgba(255,255,255,0.6)] mt-2 tracking-[0.12em] uppercase">Tahun</div>
                     </div>
-                    <div class="text-center rounded-2xl px-3 py-5" style="background:#ffffff; border:1px solid rgba(26,36,25,0.1); box-shadow:0 8px 24px -12px rgba(26,36,25,0.1);">
-                        <div style="font-size:1.5rem; font-weight:900; color:#3d5c38; line-height:1; letter-spacing:-0.02em;">10K+</div>
-                        <div style="font-size:8px; font-weight:700; color:rgba(26,36,25,0.5); margin-top:8px; letter-spacing:0.12em; text-transform:uppercase;">Pelanggan</div>
+                    <div class="history-stat-card secondary">
+                        <div class="text-[1.5rem] font-black text-[#3d5c38] leading-none tracking-tight">10K+</div>
+                        <div class="text-[8px] font-bold text-[rgba(26,36,25,0.5)] mt-2 tracking-[0.12em] uppercase">Pelanggan</div>
                     </div>
-                    <div class="text-center rounded-2xl px-3 py-5" style="background:#ffffff; border:1px solid rgba(26,36,25,0.1); box-shadow:0 8px 24px -12px rgba(26,36,25,0.1);">
-                        <div style="font-size:1.5rem; font-weight:900; color:#3d5c38; line-height:1; letter-spacing:-0.02em;">100%</div>
-                        <div style="font-size:8px; font-weight:700; color:rgba(26,36,25,0.5); margin-top:8px; letter-spacing:0.12em; text-transform:uppercase;">Fokus</div>
+                    <div class="history-stat-card secondary">
+                        <div class="text-[1.5rem] font-black text-[#3d5c38] leading-none tracking-tight">100%</div>
+                        <div class="text-[8px] font-bold text-[rgba(26,36,25,0.5)] mt-2 tracking-[0.12em] uppercase">Fokus</div>
                     </div>
                 </div>
 
-                <blockquote class="mt-10 hidden sm:block pl-6 border-l-[3px] rounded-sm" style="border-color:#c5e87a; background:rgba(197,232,122,0.05); padding:16px 20px;">
-                    <p style="font-size:0.95rem; font-style:italic; color:rgba(26,36,25,0.6); line-height:1.75; margin:0; font-weight:400;">
+                <blockquote class="history-quote hidden sm:block">
+                    <p class="text-[0.95rem] italic text-[rgba(26,36,25,0.6)] leading-[1.75] m-0">
                         "{{ setting('store_name', 'Genjah Rumah Bibit') }} — tumbuh bersama petani dan pecinta tanaman Indonesia."
                     </p>
                 </blockquote>
@@ -212,7 +353,7 @@
 
             {{-- Kanan: timeline --}}
             <div class="lg:col-span-7 relative">
-                <div class="absolute left-[24px] top-4 bottom-4 w-[2.5px] rounded-full hidden sm:block" style="background:linear-gradient(180deg, #5a7058 0%, rgba(90,112,88,0.5) 50%, rgba(90,112,88,0.15) 100%);"></div>
+                <div class="history-timeline-line hidden sm:block"></div>
 
                 @php
                     $milestones = [
@@ -246,19 +387,19 @@
                 <div class="flex flex-col gap-0 sm:pl-4">
                     @foreach($milestones as $i => $m)
                     <div class="history-milestone relative sm:pl-16 pb-14 last:pb-0">
-                        <div class="hidden sm:flex absolute left-0 top-[20px] z-10 h-12 w-12 items-center justify-center rounded-full border-[3px] shadow-lg" style="background:linear-gradient(145deg, #ffffff, #f8f5f0); border-color:#5a7058;">
-                            <svg class="h-5 w-5 shrink-0" style="color:#3d5c38;" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">{!! $m['icon'] !!}</svg>
+                        <div class="history-icon-badge hidden sm:flex">
+                            <svg class="h-5 w-5 flex-shrink-0 text-[#3d5c38]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">{!! $m['icon'] !!}</svg>
                         </div>
-                        <div class="history-card relative overflow-hidden rounded-2xl border bg-white p-6 sm:p-7 sm:pl-8" style="border-color:rgba(26,36,25,0.08); box-shadow:0 16px 48px -24px rgba(26,36,25,0.16);">
-                            <div class="absolute right-0 top-0 h-28 w-28 rounded-bl-[100%] opacity-[0.06]" style="background:#3d5c38;"></div>
+                        <div class="history-card relative overflow-hidden rounded-2xl border bg-white p-6 sm:p-7 sm:pl-8 border-[rgba(26,36,25,0.08)] shadow-[0_16px_48px_-24px_rgba(26,36,25,0.16)]">
+                            <div class="history-card-accent"></div>
                             <div class="relative flex flex-wrap items-start justify-between gap-4 gap-y-2 mb-4">
-                                <span class="inline-flex items-center rounded-full px-4 py-1.5 text-[11px] font-extrabold tracking-widest" style="background:#1a2419; color:#c5e87a; letter-spacing:0.14em;">{{ $m['year'] }}</span>
-                                <span class="sm:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border-2 shrink-0" style="border-color:#5a7058; background:#ffffff;">
-                                    <svg class="h-4.5 w-4.5" style="color:#3d5c38;" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $m['icon'] !!}</svg>
+                                <span class="history-year-badge">{{ $m['year'] }}</span>
+                                <span class="sm:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border-2 flex-shrink-0 border-[#5a7058] bg-white">
+                                    <svg class="h-4.5 w-4.5 text-[#3d5c38]" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $m['icon'] !!}</svg>
                                 </span>
                             </div>
-                            <h3 class="mt-1 text-xl font-black tracking-tight sm:text-2xl" style="color:#1a2419;">{{ $m['title'] }}</h3>
-                            <p class="mt-3 text-base leading-relaxed" style="color:rgba(26,36,25,0.68); font-weight:400;">{{ $m['body'] }}</p>
+                            <h3 class="mt-1 text-xl font-black tracking-tight sm:text-2xl text-[#1a2419]">{{ $m['title'] }}</h3>
+                            <p class="mt-3 text-base leading-relaxed text-[rgba(26,36,25,0.68)] font-normal">{{ $m['body'] }}</p>
                         </div>
                     </div>
                     @endforeach
