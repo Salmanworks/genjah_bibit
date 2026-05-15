@@ -41,16 +41,16 @@
                     <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">WhatsApp</div>
                 </div>
                 <div style="padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                    <div class="flex items-center gap-3 mb-2">
+                    <div style="display:flex; align-items:flex-start; gap:12px; flex-wrap:wrap;">
                         <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        <div style="font-size: 0.85rem; font-weight: 700; color: #c5e87a; line-height: 1.3; word-break: break-all;">{{ setting('email', 'genjahrumahbibit@gmail.com') }}</div>
+                        <div style="min-width:0; font-size: 0.85rem; font-weight: 700; color: #c5e87a; line-height: 1.3; word-break: break-all; overflow-wrap: break-word;">{{ setting('email', 'genjahrumahbibit@gmail.com') }}</div>
                     </div>
                     <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Email</div>
                 </div>
                 <div style="padding: 20px 0;">
                     <div class="flex items-center gap-3 mb-2">
                         <svg width="16" height="16" fill="none" stroke="rgba(197,232,122,0.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        <div style="font-size: 1.1rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.02em;">08.00 â€“ 17.00</div>
+                        <div style="font-size: 1.1rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.02em;">08.00-17.00</div>
                     </div>
                     <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase;">Jam Operasional WIB</div>
                 </div>
@@ -81,31 +81,33 @@
                     </div>
                 </div>
             </a>
-            <a href="mailto:{{ setting('email', 'genjahrumahbibit@gmail.com') }}" style="text-decoration:none; display:block;">
-                <div style="padding:24px 22px; background:#ffffff; border:1px solid rgba(26,36,25,0.08); border-radius:10px; display:flex; align-items:flex-start; gap:14px;">
+            <a href="mailto:{{ setting('email', 'genjahrumahbibit@gmail.com') }}" target="_blank" style="text-decoration:none; display:block;">
+                <div style="padding:24px 22px; background:#ffffff; border:1px solid rgba(26,36,25,0.08); border-radius:10px; display:flex; align-items:flex-start; gap:14px; flex-wrap:wrap;">
                     <div style="width:42px; height:42px; border-radius:8px; background:#3d5c38; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
                         <svg width="19" height="19" fill="none" stroke="#c5e87a" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                     </div>
-                    <div style="min-width:0;">
+                    <div style="min-width:0; max-width:100%;">
                         <div style="font-size:10px; font-weight:800; letter-spacing:0.15em; color:rgba(26,36,25,0.4); text-transform:uppercase; margin-bottom:3px;">Email</div>
-                        <div style="font-size:0.875rem; font-weight:800; color:#1a2419; margin-bottom:2px; word-break:break-all;">{{ setting('email', 'genjahrumahbibit@gmail.com') }}</div>
+                        <div style="font-size:0.875rem; font-weight:800; color:#1a2419; margin-bottom:2px; word-break:break-all; overflow-wrap:break-word;">{{ setting('email', 'genjahrumahbibit@gmail.com') }}</div>
                         <div style="font-size:11px; color:rgba(26,36,25,0.4);">Kirim pertanyaan kapan saja</div>
                     </div>
                 </div>
             </a>
-            <div style="padding:24px 22px; background:#ffffff; border:1px solid rgba(26,36,25,0.08); border-radius:10px; display:flex; align-items:flex-start; gap:14px;">
-                <div style="width:42px; height:42px; border-radius:8px; background:#3d5c38; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                    <svg width="19" height="19" fill="none" stroke="#c5e87a" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
-                <div>
-                    <div style="font-size:10px; font-weight:800; letter-spacing:0.15em; color:rgba(26,36,25,0.4); text-transform:uppercase; margin-bottom:3px;">Lokasi</div>
-                    <div style="font-size:0.9375rem; font-weight:800; color:#1a2419; margin-bottom:4px;">Mlonggo, Jepara, Jateng</div>
-                    <div style="display:inline-flex; align-items:center; gap:5px;">
-                        <span style="width:6px; height:6px; border-radius:50%; background:#3d5c38; display:inline-block;"></span>
-                        <span style="font-size:11px; color:#3d5c38; font-weight:600;">Buka 08.00-17.00 WIB</span>
+            <a href="https://maps.google.com/maps?q=Genjah+Rumah+Bibit,+DK+Tlingsing,+Jambu+Timur,+Mlonggo,+Jepara" target="_blank" style="text-decoration:none; display:block;">
+                <div style="padding:24px 22px; background:#ffffff; border:1px solid rgba(26,36,25,0.08); border-radius:10px; display:flex; align-items:flex-start; gap:14px;">
+                    <div style="width:42px; height:42px; border-radius:8px; background:#3d5c38; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <svg width="19" height="19" fill="none" stroke="#c5e87a" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <div>
+                        <div style="font-size:10px; font-weight:800; letter-spacing:0.15em; color:rgba(26,36,25,0.4); text-transform:uppercase; margin-bottom:3px;">Lokasi</div>
+                        <div style="font-size:0.9375rem; font-weight:800; color:#1a2419; margin-bottom:4px;">Mlonggo, Jepara, Jateng</div>
+                        <div style="display:inline-flex; align-items:center; gap:5px;">
+                            <span style="width:6px; height:6px; border-radius:50%; background:#3d5c38; display:inline-block;"></span>
+                            <span style="font-size:11px; color:#3d5c38; font-weight:600;">Buka 08.00-17.00 WIB</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </section>
@@ -120,10 +122,10 @@
                     <span style="font-size:10px; font-weight:800; letter-spacing:0.2em; color:#5a7058; text-transform:uppercase;">Kirim Pesan</span>
                 </div>
                 <h3 style="font-size:1.3rem; font-weight:900; color:#1a2419; letter-spacing:-0.03em; margin:0 0 22px 0;">Ada yang ingin <span style="color:#3d5c38;">ditanyakan?</span></h3>
-                <form action="#" method="POST">
+                <form action="{{ route('contact.submit') }}" method="POST">
                     @csrf
                     <div style="display:flex; flex-direction:column; gap:13px;">
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                        <div style="display:grid; grid-template-columns:1fr; gap:10px;" class="md:grid-cols-2">
                             <div>
                                 <label style="display:block; font-size:10px; font-weight:700; letter-spacing:0.1em; color:rgba(26,36,25,0.5); text-transform:uppercase; margin-bottom:5px;">Nama</label>
                                 <input type="text" name="name" required placeholder="Nama lengkap" style="width:100%; padding:9px 12px; background:#f4f1ea; border:1px solid rgba(26,36,25,0.1); border-radius:6px; font-size:0.875rem; color:#1a2419; outline:none; box-sizing:border-box; font-family:inherit;">

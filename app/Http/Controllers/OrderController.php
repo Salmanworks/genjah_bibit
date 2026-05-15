@@ -48,8 +48,20 @@ class OrderController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->route('orders.show', $order)
-            ->with('success', 'Pesanan berhasil dibuat! Silakan tunggu konfirmasi dari kami.');
+        $customerName = Auth::user()->name ?? 'Pelanggan';
+        $whatsappMessage = "Pesanan Baru dari Website Genjah Rumah Bibit" . PHP_EOL . PHP_EOL;
+        $whatsappMessage .= "Nama: {$customerName}" . PHP_EOL;
+        $whatsappMessage .= "Produk: {$product->name}" . PHP_EOL;
+        $whatsappMessage .= "Jumlah: {$validated['quantity']} unit" . PHP_EOL;
+        $whatsappMessage .= "Total Harga: " . format_price($totalPrice) . PHP_EOL;
+        $whatsappMessage .= "Alamat Kirim: {$validated['shipping_address']}" . PHP_EOL;
+        $whatsappMessage .= "No. WhatsApp: {$validated['phone']}" . PHP_EOL;
+        if (!empty($validated['notes'])) {
+            $whatsappMessage .= "Catatan: {$validated['notes']}" . PHP_EOL;
+        }
+        $whatsappMessage .= PHP_EOL . "Mohon konfirmasi pesanan ini.";
+
+        return redirect()->away(whatsapp_link($whatsappMessage));
     }
 
     public function show(Order $order)
