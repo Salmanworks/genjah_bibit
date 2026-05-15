@@ -40,14 +40,14 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'price' => 'decimal:2',
+        'price'          => 'decimal:2',
         'original_price' => 'decimal:2',
-        'rating' => 'decimal:1',
+        'rating'         => 'decimal:1',
         'gallery_images' => 'array',
-        'is_featured' => 'boolean',
-        'is_bestseller' => 'boolean',
+        'is_featured'    => 'boolean',
+        'is_bestseller'  => 'boolean',
         'is_new_arrival' => 'boolean',
-        'is_active' => 'boolean',
+        'is_active'      => 'boolean',
     ];
 
     public function category(): BelongsTo
@@ -95,6 +95,7 @@ class Product extends Model
         if ($this->original_price && $this->original_price > $this->price) {
             return round((($this->original_price - $this->price) / $this->original_price) * 100);
         }
+
         return null;
     }
 
@@ -118,9 +119,11 @@ class Product extends Model
     public function getImageUrlAttribute(): string
     {
         $path = $this->main_image;
+
         if (! $path) {
             return 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=800&q=80';
         }
+
         if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
             return $path;
         }

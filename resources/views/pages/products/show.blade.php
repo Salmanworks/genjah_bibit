@@ -27,7 +27,7 @@
             <!-- Image Gallery -->
             <div class="space-y-4">
                 <div class="aspect-square rounded-[40px] overflow-hidden bg-white/20 border border-white/30 backdrop-blur-sm shadow-xl">
-                    <img id="main-image" src="{{ $product->image_url ?? 'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=800&q=80' }}" 
+                    <img id="main-image" src="{{ $product->image_url ?? asset('images/default-product.jpg') }}" 
                          alt="{{ $product->name }}" 
                          class="w-full h-full object-cover">
                 </div>

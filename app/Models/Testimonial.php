@@ -21,7 +21,7 @@ class Testimonial extends Model
     ];
 
     protected $casts = [
-        'rating' => 'decimal:1',
+        'rating'    => 'decimal:1',
         'is_active' => 'boolean',
     ];
 
@@ -37,16 +37,18 @@ class Testimonial extends Model
 
     public function getStarRatingAttribute(): string
     {
-        $fullStars = floor($this->rating);
-        $halfStar = ($this->rating - $fullStars) >= 0.5;
+        $fullStars  = floor($this->rating);
+        $halfStar   = ($this->rating - $fullStars) >= 0.5;
         $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
-        
+
         $stars = str_repeat('★', $fullStars);
+
         if ($halfStar) {
             $stars .= '½';
         }
+
         $stars .= str_repeat('☆', $emptyStars);
-        
+
         return $stars;
     }
 }

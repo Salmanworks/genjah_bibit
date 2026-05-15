@@ -11,25 +11,23 @@ class BlogController extends Controller
         $blogs = Blog::published()
             ->latest('published_at')
             ->paginate(9);
-        
+
         $featuredBlog = Blog::published()
             ->featured()
             ->latest()
             ->first();
-        
+
         return view('pages.blog.index', compact('blogs', 'featuredBlog'));
     }
-    
+
     public function show($slug)
     {
         $blog = Blog::published()
             ->where('slug', $slug)
             ->firstOrFail();
-        
-        // Increment view count
+
         $blog->increment('view_count');
-        
-        // Related blogs
+
         $relatedBlogs = Blog::published()
             ->where('id', '!=', $blog->id)
             ->where(function ($query) use ($blog) {
@@ -45,7 +43,7 @@ class BlogController extends Controller
             ->latest()
             ->take(3)
             ->get();
-        
+
         return view('pages.blog.show', compact('blog', 'relatedBlogs'));
     }
 }

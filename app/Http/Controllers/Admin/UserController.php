@@ -41,8 +41,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8',
             'is_admin' => 'nullable|boolean',
         ]);
@@ -62,7 +62,6 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        // Prevent deleting own account
         if ($user->id === auth()->id()) {
             return redirect()->route('admin.users.index')->with('error', 'Anda tidak bisa menghapus akun sendiri!');
         }

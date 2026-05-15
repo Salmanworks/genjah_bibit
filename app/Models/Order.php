@@ -38,11 +38,11 @@ class Order extends Model
     public function getStatusLabelAttribute(): string
     {
         $labels = [
-            'pending' => 'Menunggu',
+            'pending'    => 'Menunggu',
             'processing' => 'Diproses',
-            'shipped' => 'Dikirim',
-            'delivered' => 'Diterima',
-            'cancelled' => 'Dibatalkan',
+            'shipped'    => 'Dikirim',
+            'delivered'  => 'Diterima',
+            'cancelled'  => 'Dibatalkan',
         ];
 
         return $labels[$this->status] ?? $this->status;
@@ -51,11 +51,11 @@ class Order extends Model
     public function getStatusColorAttribute(): string
     {
         $colors = [
-            'pending' => 'yellow',
+            'pending'    => 'yellow',
             'processing' => 'blue',
-            'shipped' => 'purple',
-            'delivered' => 'green',
-            'cancelled' => 'red',
+            'shipped'    => 'purple',
+            'delivered'  => 'green',
+            'cancelled'  => 'red',
         ];
 
         return $colors[$this->status] ?? 'gray';

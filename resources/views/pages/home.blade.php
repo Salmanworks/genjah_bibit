@@ -444,13 +444,17 @@
 
                     {{-- Image — fixed height, not aspect-ratio based --}}
                     <div style="height:160px; overflow:hidden; flex-shrink:0;">
-                        @php
-                            $photos = ['1416879595882-3373a0480b5b','1463936575229-25b11c7e5345','1501004318641-b39ac6497518','1518531933807-3b8360c5a59a','1459411552884-841db9b3cc2a'];
-                        @endphp
-                        <img src="https://images.unsplash.com/photo-{{ $photos[$loop->index % count($photos)] }}?w=500&q=75"
-                             alt="{{ $blog->title }}"
-                             style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; display:block;"
-                             class="group-hover:scale-105">
+                        @if($blog->featured_image)
+                            <img src="{{ asset('storage/' . $blog->featured_image) }}"
+                                 alt="{{ $blog->title }}"
+                                 style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; display:block;"
+                                 class="group-hover:scale-105">
+                        @else
+                            <img src="{{ asset('images/default-blog.jpg') }}"
+                                 alt="{{ $blog->title }}"
+                                 style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; display:block;"
+                                 class="group-hover:scale-105">
+                        @endif
                     </div>
 
                     {{-- Content --}}

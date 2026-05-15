@@ -28,10 +28,10 @@ class Blog extends Model
 
     protected $casts = [
         'gallery_images' => 'array',
-        'tags' => 'array',
-        'is_published' => 'boolean',
-        'is_featured' => 'boolean',
-        'published_at' => 'datetime',
+        'tags'           => 'array',
+        'is_published'   => 'boolean',
+        'is_featured'    => 'boolean',
+        'published_at'   => 'datetime',
     ];
 
     public function author(): BelongsTo
@@ -42,8 +42,8 @@ class Blog extends Model
     public function scopePublished($query)
     {
         return $query->where('is_published', true)
-                      ->whereNotNull('published_at')
-                      ->where('published_at', '<=', now());
+                     ->whereNotNull('published_at')
+                     ->where('published_at', '<=', now());
     }
 
     public function scopeFeatured($query)
@@ -54,6 +54,7 @@ class Blog extends Model
     public function getReadingTimeAttribute(): int
     {
         $words = str_word_count(strip_tags($this->content));
+
         return max(1, ceil($words / 200));
     }
 }

@@ -116,12 +116,82 @@
                 <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.222-4.032c1.504.893 3.12 1.362 4.776 1.363 5.31 0 9.632-4.321 9.635-9.632.001-2.572-1.001-4.991-2.823-6.813-1.822-1.823-4.242-2.826-6.815-2.827-5.311 0-9.632 4.322-9.635 9.634-.001 1.765.483 3.484 1.397 4.999l-1.066 3.891 3.991-1.047zm11.377-7.462c-.312-.156-1.848-.912-2.134-1.017-.286-.105-.494-.156-.703.156-.208.312-.806 1.017-1.008 1.24-.201.222-.403.251-.715.095-.312-.156-1.318-.485-2.51-1.548-.928-.827-1.553-1.849-1.735-2.161-.182-.312-.019-.481.137-.636.141-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.703-1.693-.962-2.316-.252-.605-.51-.523-.703-.533-.182-.008-.39-.01-.598-.01s-.546.078-.832.39c-.286.312-1.092 1.067-1.092 2.6s1.118 3.017 1.274 3.225c.156.208 2.201 3.361 5.332 4.712.745.321 1.326.512 1.778.656.748.238 1.429.205 1.967.125.6-.089 1.848-.755 2.107-1.484.259-.729.259-1.354.182-1.484-.077-.13-.285-.208-.597-.364z"/></svg>
                 </div>
-                <h3 class="text-xl font-black mb-2">Konfirmasi Sekarang</h3>
-                <p class="text-lime-100/60 text-sm mb-8 leading-relaxed">Hubungi pelanggan untuk detail pengiriman dan verifikasi pembayaran.</p>
-                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $order->phone) }}?text=Halo%20{{ urlencode($order->user?->name) }},%20saya%20dari%20Genjah%20Rumah%20Bibit%20ingin%20mengonfirmasi%20pesanan%20Anda%20{{ urlencode($order->product?->name) }}." target="_blank" class="flex items-center justify-center gap-3 w-full py-4 bg-white text-lime-600 rounded-2xl hover:bg-lime-50 transition-all font-black shadow-xl">
-                    Kirim Pesan WhatsApp
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <h3 class="text-xl font-black mb-2">Konfirmasi Pesanan</h3>
+                <p class="text-lime-100/60 text-sm mb-6 leading-relaxed">Pilih cara mengirim pesan ke pelanggan:</p>
+                
+                <!-- WhatsApp Web Button -->
+                <button onclick="openWhatsAppWeb()" class="flex items-center justify-center gap-3 w-full py-4 bg-white text-lime-600 rounded-2xl hover:bg-lime-50 transition-all font-black shadow-xl mb-3">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.222-4.032c1.504.893 3.12 1.362 4.776 1.363 5.31 0 9.632-4.321 9.635-9.632.001-2.572-1.001-4.991-2.823-6.813-1.822-1.823-4.242-2.826-6.815-2.827-5.311 0-9.632 4.322-9.635 9.634-.001 1.765.483 3.484 1.397 4.999l-1.066 3.891 3.991-1.047zm11.377-7.462c-.312-.156-1.848-.912-2.134-1.017-.286-.105-.494-.156-.703.156-.208.312-.806 1.017-1.008 1.24-.201.222-.403.251-.715.095-.312-.156-1.318-.485-2.51-1.548-.928-.827-1.553-1.849-1.735-2.161-.182-.312-.019-.481.137-.636.141-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.703-1.693-.962-2.316-.252-.605-.51-.523-.703-.533-.182-.008-.39-.01-.598-.01s-.546.078-.832.39c-.286.312-1.092 1.067-1.092 2.6s1.118 3.017 1.274 3.225c.156.208 2.201 3.361 5.332 4.712.745.321 1.326.512 1.778.656.748.238 1.429.205 1.967.125.6-.089 1.848-.755 2.107-1.484.259-.729.259-1.354.182-1.484-.077-.13-.285-.208-.597-.364z"/></svg>
+                    WhatsApp Web (Browser)
+                </button>
+
+                <!-- WhatsApp Desktop/Mobile Button -->
+                <a href="https://api.whatsapp.com/send?phone={{ preg_replace('/[^0-9]/', '', $order->phone) }}&text={{ urlencode("Halo Kak " . $order->user?->name . ",\n\nSaya dari *Genjah Rumah Bibit* ingin mengonfirmasi pesanan Anda:\n\n*Produk:* " . $order->product?->name . "\n*Jumlah:* " . $order->quantity . " pcs\n*Total:* Rp " . number_format($order->total_price, 0, ',', '.') . "\n\nMohon konfirmasi alamat pengiriman dan metode pembayaran Anda.\n\nTerima kasih! 🌱") }}" target="_blank" class="flex items-center justify-center gap-3 w-full py-4 bg-lime-500 text-white rounded-2xl hover:bg-lime-600 transition-all font-bold shadow-xl mb-3">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.222-4.032c1.504.893 3.12 1.362 4.776 1.363 5.31 0 9.632-4.321 9.635-9.632.001-2.572-1.001-4.991-2.823-6.813-1.822-1.823-4.242-2.826-6.815-2.827-5.311 0-9.632 4.322-9.635 9.634-.001 1.765.483 3.484 1.397 4.999l-1.066 3.891 3.991-1.047zm11.377-7.462c-.312-.156-1.848-.912-2.134-1.017-.286-.105-.494-.156-.703.156-.208.312-.806 1.017-1.008 1.24-.201.222-.403.251-.715.095-.312-.156-1.318-.485-2.51-1.548-.928-.827-1.553-1.849-1.735-2.161-.182-.312-.019-.481.137-.636.141-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.703-1.693-.962-2.316-.252-.605-.51-.523-.703-.533-.182-.008-.39-.01-.598-.01s-.546.078-.832.39c-.286.312-1.092 1.067-1.092 2.6s1.118 3.017 1.274 3.225c.156.208 2.201 3.361 5.332 4.712.745.321 1.326.512 1.778.656.748.238 1.429.205 1.967.125.6-.089 1.848-.755 2.107-1.484.259-.729.259-1.354.182-1.484-.077-.13-.285-.208-.597-.364z"/></svg>
+                    WhatsApp Desktop/Mobile
                 </a>
+
+                <!-- Copy Message Button -->
+                <button onclick="copyMessage()" class="flex items-center justify-center gap-3 w-full py-3 bg-white/20 text-white rounded-2xl hover:bg-white/30 transition-all font-bold border-2 border-white/30">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    Copy Pesan
+                </button>
+
+                <!-- Hidden textarea for copy -->
+                <textarea id="waMessage" style="position: absolute; left: -9999px;">Halo Kak {{ $order->user?->name }},
+
+Saya dari *Genjah Rumah Bibit* ingin mengonfirmasi pesanan Anda:
+
+*Produk:* {{ $order->product?->name }}
+*Jumlah:* {{ $order->quantity }} pcs
+*Total:* Rp {{ number_format($order->total_price, 0, ',', '.') }}
+
+Mohon konfirmasi alamat pengiriman dan metode pembayaran Anda.
+
+Terima kasih! 🌱</textarea>
+
+                <script>
+                function openWhatsAppWeb() {
+                    const phone = '{{ preg_replace('/[^0-9]/', '', $order->phone) }}';
+                    const message = `Halo Kak {{ $order->user?->name }},
+
+Saya dari *Genjah Rumah Bibit* ingin mengonfirmasi pesanan Anda:
+
+*Produk:* {{ $order->product?->name }}
+*Jumlah:* {{ $order->quantity }} pcs
+*Total:* Rp {{ number_format($order->total_price, 0, ',', '.') }}
+
+Mohon konfirmasi alamat pengiriman dan metode pembayaran Anda.
+
+Terima kasih! 🌱`;
+
+                    // Encode message for URL
+                    const encodedMessage = encodeURIComponent(message);
+                    
+                    // Force open in browser (not WhatsApp Desktop)
+                    const url = `https://web.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
+                    
+                    // Open in new window
+                    window.open(url, '_blank', 'width=1000,height=800');
+                }
+
+                function copyMessage() {
+                    const textarea = document.getElementById('waMessage');
+                    textarea.select();
+                    document.execCommand('copy');
+                    
+                    // Show notification
+                    const btn = event.target.closest('button');
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Tersalin!';
+                    btn.classList.add('bg-white/40');
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.classList.remove('bg-white/40');
+                    }, 2000);
+                }
+                </script>
             </div>
         </div>
     </div>

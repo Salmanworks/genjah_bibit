@@ -11,28 +11,29 @@ class SettingController extends Controller
     public function index()
     {
         $settings = Setting::all()->pluck('value', 'key')->toArray();
+
         return view('admin.settings.index', compact('settings'));
     }
 
     public function update(Request $request)
     {
         $settingsData = [
-            'store_name' => $request->input('store_name', 'Genjah Rumah Bibit'),
-            'store_tagline' => $request->input('store_tagline', ''),
+            'store_name'        => $request->input('store_name', 'Genjah Rumah Bibit'),
+            'store_tagline'     => $request->input('store_tagline', ''),
             'store_description' => $request->input('store_description', ''),
-            'store_email' => $request->input('store_email', ''),
-            'store_phone' => $request->input('store_phone', ''),
-            'whatsapp_number' => $request->input('whatsapp_number', ''),
-            'whatsapp_message' => $request->input('whatsapp_message', ''),
-            'store_address' => $request->input('store_address', ''),
-            'store_city' => $request->input('store_city', ''),
-            'store_province' => $request->input('store_province', ''),
-            'instagram_url' => $request->input('instagram_url', ''),
-            'facebook_url' => $request->input('facebook_url', ''),
-            'tiktok_url' => $request->input('tiktok_url', ''),
-            'youtube_url' => $request->input('youtube_url', ''),
-            'shipping_info' => $request->input('shipping_info', ''),
-            'return_policy' => $request->input('return_policy', ''),
+            'store_email'       => $request->input('store_email', ''),
+            'store_phone'       => $request->input('store_phone', ''),
+            'whatsapp_number'   => $request->input('whatsapp_number', ''),
+            'whatsapp_message'  => $request->input('whatsapp_message', ''),
+            'store_address'     => $request->input('store_address', ''),
+            'store_city'        => $request->input('store_city', ''),
+            'store_province'    => $request->input('store_province', ''),
+            'instagram_url'     => $request->input('instagram_url', ''),
+            'facebook_url'      => $request->input('facebook_url', ''),
+            'tiktok_url'        => $request->input('tiktok_url', ''),
+            'youtube_url'       => $request->input('youtube_url', ''),
+            'shipping_info'     => $request->input('shipping_info', ''),
+            'return_policy'     => $request->input('return_policy', ''),
         ];
 
         foreach ($settingsData as $key => $value) {
@@ -45,22 +46,23 @@ class SettingController extends Controller
     public function footer()
     {
         $settings = Setting::all()->pluck('value', 'key')->toArray();
+
         return view('admin.settings.footer', compact('settings'));
     }
 
     public function updateFooter(Request $request)
     {
         $footerSettings = [
-            'footer_about' => $request->input('footer_about', ''),
+            'footer_about'     => $request->input('footer_about', ''),
             'footer_copyright' => $request->input('footer_copyright', ''),
-            'footer_address' => $request->input('footer_address', ''),
-            'footer_email' => $request->input('footer_email', ''),
-            'footer_phone' => $request->input('footer_phone', ''),
-            'footer_whatsapp' => $request->input('footer_whatsapp', ''),
+            'footer_address'   => $request->input('footer_address', ''),
+            'footer_email'     => $request->input('footer_email', ''),
+            'footer_phone'     => $request->input('footer_phone', ''),
+            'footer_whatsapp'  => $request->input('footer_whatsapp', ''),
             'footer_instagram' => $request->input('footer_instagram', ''),
-            'footer_facebook' => $request->input('footer_facebook', ''),
-            'footer_tiktok' => $request->input('footer_tiktok', ''),
-            'footer_youtube' => $request->input('footer_youtube', ''),
+            'footer_facebook'  => $request->input('footer_facebook', ''),
+            'footer_tiktok'    => $request->input('footer_tiktok', ''),
+            'footer_youtube'   => $request->input('footer_youtube', ''),
         ];
 
         foreach ($footerSettings as $key => $value) {

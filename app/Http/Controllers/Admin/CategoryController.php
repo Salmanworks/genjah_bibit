@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
     public function index()
     {
         $categories = Category::withCount('products')->ordered()->paginate(15);
+
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -24,18 +25,18 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name'        => 'required|string|max:255',
             'description' => 'nullable|string',
-            'icon' => 'nullable|string|max:100',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'sort_order' => 'nullable|integer|min:0',
-            'is_active' => 'nullable|boolean',
+            'icon'        => 'nullable|string|max:100',
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'sort_order'  => 'nullable|integer|min:0',
+            'is_active'   => 'nullable|boolean',
         ]);
 
         $validated['slug'] = Str::slug($validated['name']);
 
         $originalSlug = $validated['slug'];
-        $count = 1;
+        $count        = 1;
         while (Category::where('slug', $validated['slug'])->exists()) {
             $validated['slug'] = $originalSlug . '-' . $count++;
         }
@@ -44,7 +45,7 @@ class CategoryController extends Controller
             $validated['image'] = $request->file('image')->store('categories', 'public');
         }
 
-        $validated['is_active'] = $request->boolean('is_active', true);
+        $validated['is_active']  = $request->boolean('is_active', true);
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
 
         Category::create($validated);
@@ -60,18 +61,18 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name'        => 'required|string|max:255',
             'description' => 'nullable|string',
-            'icon' => 'nullable|string|max:100',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'sort_order' => 'nullable|integer|min:0',
-            'is_active' => 'nullable|boolean',
+            'icon'        => 'nullable|string|max:100',
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'sort_order'  => 'nullable|integer|min:0',
+            'is_active'   => 'nullable|boolean',
         ]);
 
         if ($category->name !== $validated['name']) {
             $validated['slug'] = Str::slug($validated['name']);
-            $originalSlug = $validated['slug'];
-            $count = 1;
+            $originalSlug      = $validated['slug'];
+            $count             = 1;
             while (Category::where('slug', $validated['slug'])->where('id', '!=', $category->id)->exists()) {
                 $validated['slug'] = $originalSlug . '-' . $count++;
             }
@@ -84,7 +85,7 @@ class CategoryController extends Controller
             $validated['image'] = $request->file('image')->store('categories', 'public');
         }
 
-        $validated['is_active'] = $request->boolean('is_active', true);
+        $validated['is_active']  = $request->boolean('is_active', true);
         $validated['sort_order'] = $validated['sort_order'] ?? 0;
 
         $category->update($validated);
@@ -95,7 +96,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         if ($category->products()->count() > 0) {
-            return redirect()->route('admin.categories.index')->with('error', 'Kategori tidak bisa dihapus karena masih memiliki produk!');
+            return redirect()->route('admin.categories.index')
+                ->with('error', 'Kategori tidak bisa dihapus karena masih memiliki produk!');
         }
 
         if ($category->image && Storage::disk('public')->exists($category->image)) {

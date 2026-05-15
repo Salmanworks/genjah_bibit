@@ -131,189 +131,131 @@
     </div>
 </section>
 
-<!-- SEJARAH TOKO - TOTAL REDESIGN: HORIZONTAL SCROLL TIMELINE -->
+<!-- SEJARAH TOKO - TOTAL REDESIGN -->
 <section class="relative z-10" style="background: #3d5c38; padding: 96px 0 120px; overflow: hidden;">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 pointer-events-none opacity-20 z-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(197,232,122,0.15) 1.5px, transparent 0); background-size: 40px 40px;"></div>
-    
-    <!-- Animated Gradient Orbs -->
-    <div class="absolute top-20 left-10 w-96 h-96 rounded-full opacity-10 blur-3xl" style="background: radial-gradient(circle, #c5e87a 0%, transparent 70%); animation: float 20s ease-in-out infinite;"></div>
-    <div class="absolute bottom-20 right-10 w-96 h-96 rounded-full opacity-10 blur-3xl" style="background: radial-gradient(circle, #8bc34a 0%, transparent 70%); animation: float 25s ease-in-out infinite reverse;"></div>
+    <div class="absolute inset-0 pointer-events-none opacity-30 z-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(61,92,56,0.06) 1.5px, transparent 0); background-size: 32px 32px;"></div>
+    <div class="absolute right-0 top-24 hidden xl:block pointer-events-none select-none z-0" style="font-size: clamp(8rem, 16vw, 14rem); font-weight: 900; line-height: 1; color: rgba(61,92,56,0.025); letter-spacing: -0.05em;">SEJARAH</div>
 
     <div class="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 z-10">
-        
-        <!-- Header Section -->
-        <div class="text-center mb-20">
-            <div class="inline-flex items-center gap-3 mb-6 px-5 py-2.5 rounded-full" style="background: rgba(197, 232, 122, 0.15); border: 2px solid rgba(197, 232, 122, 0.3); backdrop-filter: blur(10px);">
-                <span style="display: inline-block; width: 10px; height: 10px; background: #c5e87a; border-radius: 50%; animation: pulse 2s ease-in-out infinite;"></span>
-                <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.25em; color: #c5e87a; text-transform: uppercase;">Perjalanan Kami</span>
-            </div>
+        <div class="grid lg:grid-cols-12 gap-16 lg:gap-16 xl:gap-24 items-start">
 
-            <h2 style="font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; line-height: 1; letter-spacing: -0.04em; color: #ffffff; margin: 0 0 20px 0; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-                Sejarah <span style="color: #c5e87a;">Toko Kami</span>
-            </h2>
-
-            <p style="font-size: 1.125rem; color: rgba(255, 255, 255, 0.7); line-height: 1.8; margin: 0 auto; max-width: 600px; font-weight: 400;">
-                Dari langkah kecil di Mlonggo hingga layanan ke seluruh Indonesia
-            </p>
-
-            <!-- Stats Row -->
-            <div class="flex flex-wrap justify-center gap-8 mt-12">
-                <div class="text-center">
-                    <div style="font-size: 3rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.03em;">4+</div>
-                    <div style="font-size: 11px; font-weight: 700; color: rgba(255, 255, 255, 0.5); margin-top: 8px; letter-spacing: 0.15em; text-transform: uppercase;">Tahun Berdiri</div>
+            <div class="lg:col-span-5 lg:sticky lg:top-28">
+                <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full" style="background: linear-gradient(135deg, rgba(197, 232, 122, 0.15), rgba(61, 92, 56, 0.08)); border: 1px solid rgba(61, 92, 56, 0.15);">
+                    <span style="display: inline-block; width: 8px; height: 8px; background: #3d5c38; border-radius: 50%;"></span>
+                    <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.25em; color: #3d5c38; text-transform: uppercase;">Perjalanan Kami</span>
                 </div>
-                <div class="text-center">
-                    <div style="font-size: 3rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.03em;">10K+</div>
-                    <div style="font-size: 11px; font-weight: 700; color: rgba(255, 255, 255, 0.5); margin-top: 8px; letter-spacing: 0.15em; text-transform: uppercase;">Pelanggan Puas</div>
-                </div>
-                <div class="text-center">
-                    <div style="font-size: 3rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.03em;">100%</div>
-                    <div style="font-size: 11px; font-weight: 700; color: rgba(255, 255, 255, 0.5); margin-top: 8px; letter-spacing: 0.15em; text-transform: uppercase;">Fokus Kualitas</div>
-                </div>
-            </div>
-        </div>
 
-        @php
-            $milestones = [
-                [
-                    'year' => '2020',
-                    'title' => 'Awal Berdiri',
-                    'body' => 'Toko dimulai dari skala rumahan di Mlonggo, Jepara, fokus pada bibit sayuran dan buah pilihan untuk tetangga dan petani kecil sekitar.',
-                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>',
-                    'color' => '#c5e87a',
-                    'bgGradient' => 'linear-gradient(135deg, rgba(197,232,122,0.15) 0%, rgba(197,232,122,0.05) 100%)',
-                ],
-                [
-                    'year' => '2021–22',
-                    'title' => 'Memperluas Jaringan',
-                    'body' => 'Permintaan dari luar kota naik; kami memperketat standar kualitas, kemasan, dan konsultasi agar bibit sampai segar dan terlacak.',
-                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>',
-                    'color' => '#8bc34a',
-                    'bgGradient' => 'linear-gradient(135deg, rgba(139,195,74,0.15) 0%, rgba(139,195,74,0.05) 100%)',
-                ],
-                [
-                    'year' => '2023',
-                    'title' => 'Go Digital',
-                    'body' => 'Katalog dan pemesanan daring memudahkan pelanggan di berbagai wilayah mengakses bibit unggulan tanpa mengorbankan layanan personal.',
-                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>',
-                    'color' => '#5a7058',
-                    'bgGradient' => 'linear-gradient(135deg, rgba(90,112,88,0.15) 0%, rgba(90,112,88,0.05) 100%)',
-                ],
-                [
-                    'year' => 'Sekarang',
-                    'title' => 'Terus Berinovasi',
-                    'body' => 'Variasi bibit terus ditambah, layanan diperhalus, dan komitmen tetap sama: bibit sehat, terpercaya, dan mendampingi kebun Anda berkembang.',
-                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
-                    'color' => '#3d5c38',
-                    'bgGradient' => 'linear-gradient(135deg, rgba(61,92,56,0.25) 0%, rgba(61,92,56,0.08) 100%)',
-                ],
-            ];
-        @endphp
+                <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; color: #1a2419; margin: 0 0 16px 0;">
+                    Sejarah<br>
+                    <span style="background: linear-gradient(135deg, #3d5c38 0%, #5a7058 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Toko Kami</span>
+                </h2>
 
-        <!-- Horizontal Timeline -->
-        <div class="relative mt-16">
-            <!-- Timeline Line (Horizontal) -->
-            <div class="hidden lg:block absolute top-[120px] left-0 right-0 h-1 rounded-full" style="background: linear-gradient(90deg, rgba(197,232,122,0.3) 0%, rgba(197,232,122,0.6) 50%, rgba(197,232,122,0.3) 100%);"></div>
+                <div style="width: 72px; height: 4px; background: linear-gradient(90deg, #5a7058, rgba(197, 232, 122, 0.4)); border-radius: 4px; margin: 24px 0 32px;"></div>
 
-            <!-- Timeline Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-                @foreach($milestones as $index => $m)
-                <div class="timeline-card-modern relative" style="animation: fadeInUp 0.8s ease-out {{ $index * 0.15 }}s backwards;">
-                    
-                    <!-- Connection Dot (on timeline line) -->
-                    <div class="hidden lg:flex absolute left-1/2 top-[120px] -translate-x-1/2 z-20 w-16 h-16 items-center justify-center rounded-full border-4 shadow-2xl" style="background: #3d5c38; border-color: {{ $m['color'] }};">
-                        <svg class="w-7 h-7" style="color: {{ $m['color'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $m['icon'] !!}</svg>
-                    </div>
-
-                    <!-- Card Content -->
-                    <div class="relative rounded-2xl p-8 h-full" style="background: {{ $m['bgGradient'] }}; border: 2px solid {{ $m['color'] }}40; backdrop-filter: blur(10px); box-shadow: 0 20px 60px -20px rgba(0,0,0,0.4); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
-                        
-                        <!-- Decorative Corner Glow -->
-                        <div class="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-20 blur-2xl pointer-events-none" style="background: {{ $m['color'] }};"></div>
-                        
-                        <!-- Year Badge -->
-                        <div class="relative inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(0,0,0,0.3); border: 1px solid {{ $m['color'] }}60;">
-                            <span style="font-size: 14px; font-weight: 900; color: {{ $m['color'] }}; letter-spacing: 0.1em;">{{ $m['year'] }}</span>
-                        </div>
-
-                        <!-- Mobile Icon -->
-                        <div class="lg:hidden flex w-14 h-14 items-center justify-center rounded-full mb-5 border-3 shadow-lg" style="border-color: {{ $m['color'] }}; background: rgba(0,0,0,0.2);">
-                            <svg class="w-6 h-6" style="color: {{ $m['color'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $m['icon'] !!}</svg>
-                        </div>
-
-                        <!-- Title -->
-                        <h3 class="text-2xl font-black mb-4" style="color: #ffffff; letter-spacing: -0.02em; line-height: 1.2;">{{ $m['title'] }}</h3>
-
-                        <!-- Divider -->
-                        <div class="w-12 h-1 rounded-full mb-5" style="background: {{ $m['color'] }};"></div>
-
-                        <!-- Description -->
-                        <p class="text-sm leading-relaxed" style="color: rgba(255, 255, 255, 0.75); font-weight: 400; line-height: 1.7;">{{ $m['body'] }}</p>
-
-                        <!-- Number Badge -->
-                        <div class="absolute bottom-6 right-6 w-12 h-12 flex items-center justify-center rounded-full" style="background: rgba(0,0,0,0.3); border: 2px solid {{ $m['color'] }}40;">
-                            <span style="font-size: 18px; font-weight: 900; color: {{ $m['color'] }};">{{ $index + 1 }}</span>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-
-        <!-- Quote Section -->
-        <div class="mt-20 text-center">
-            <div class="inline-block max-w-3xl px-8 py-10 rounded-2xl relative" style="background: rgba(0,0,0,0.2); border: 2px solid rgba(197,232,122,0.2); backdrop-filter: blur(10px);">
-                <svg class="w-12 h-12 mx-auto mb-5 opacity-30" style="color: #c5e87a;" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-                <p style="font-size: 1.5rem; font-style: italic; color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin: 0; font-weight: 500;">
-                    "{{ setting('store_name', 'Genjah Rumah Bibit') }} — tumbuh bersama petani dan pecinta tanaman Indonesia."
+                <p style="font-size: 1.1rem; color: rgba(26, 36, 25, 0.7); line-height: 1.9; margin: 0 0 40px 0; max-width: 480px; font-weight: 400;">
+                    Dari langkah kecil di Mlonggo hingga layanan ke seluruh Indonesia — setiap fase membentuk komitmen kami pada <strong style="color: #3d5c38; font-weight: 600;">bibit sehat</strong> dan hubungan jangka panjang dengan pelanggan.
                 </p>
+
+                <div class="grid grid-cols-3 gap-4 max-w-lg mb-8">
+                    <div class="stat-card text-center rounded-2xl px-4 py-6" style="background: linear-gradient(135deg, #3d5c38 0%, #2d4428 100%); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 12px 32px -16px rgba(61, 92, 56, 0.4);">
+                        <div style="font-size: 2rem; font-weight: 900; color: #c5e87a; line-height: 1; letter-spacing: -0.03em;">4+</div>
+                        <div style="font-size: 9px; font-weight: 700; color: rgba(255, 255, 255, 0.65); margin-top: 10px; letter-spacing: 0.15em; text-transform: uppercase;">Tahun</div>
+                    </div>
+                    <div class="stat-card text-center rounded-2xl px-4 py-6" style="background: #ffffff; border: 2px solid rgba(61, 92, 56, 0.12); box-shadow: 0 12px 32px -16px rgba(26, 36, 25, 0.15);">
+                        <div style="font-size: 2rem; font-weight: 900; color: #3d5c38; line-height: 1; letter-spacing: -0.03em;">10K+</div>
+                        <div style="font-size: 9px; font-weight: 700; color: rgba(26, 36, 25, 0.55); margin-top: 10px; letter-spacing: 0.15em; text-transform: uppercase;">Pelanggan</div>
+                    </div>
+                    <div class="stat-card text-center rounded-2xl px-4 py-6" style="background: #ffffff; border: 2px solid rgba(61, 92, 56, 0.12); box-shadow: 0 12px 32px -16px rgba(26, 36, 25, 0.15);">
+                        <div style="font-size: 2rem; font-weight: 900; color: #3d5c38; line-height: 1; letter-spacing: -0.03em;">100%</div>
+                        <div style="font-size: 9px; font-weight: 700; color: rgba(26, 36, 25, 0.55); margin-top: 10px; letter-spacing: 0.15em; text-transform: uppercase;">Fokus</div>
+                    </div>
+                </div>
+
+                <blockquote class="hidden sm:block pl-6 border-l-4 rounded-lg" style="border-color: #c5e87a; background: linear-gradient(135deg, rgba(197, 232, 122, 0.08), rgba(61, 92, 56, 0.03)); padding: 20px 24px; box-shadow: 0 4px 16px -8px rgba(61, 92, 56, 0.1);">
+                    <svg class="w-8 h-8 mb-3 opacity-20" style="color: #3d5c38;" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                    <p style="font-size: 1rem; font-style: italic; color: rgba(26, 36, 25, 0.7); line-height: 1.85; margin: 0; font-weight: 500;">
+                        "{{ setting('store_name', 'Genjah Rumah Bibit') }} — tumbuh bersama petani dan pecinta tanaman Indonesia."
+                    </p>
+                </blockquote>
+            </div>
+
+            {{-- Kanan: timeline --}}
+            <div class="lg:col-span-7 relative">
+                <!-- Timeline Line -->
+                <div class="timeline-line absolute left-[28px] top-8 bottom-8 w-[3px] rounded-full hidden sm:block" style="background: linear-gradient(180deg, #5a7058 0%, rgba(90, 112, 88, 0.6) 50%, rgba(90, 112, 88, 0.2) 100%);"></div>
+
+                @php
+                    $milestones = [
+                        [
+                            'year' => '2020',
+                            'title' => 'Awal Berdiri',
+                            'body' => 'Toko dimulai dari skala rumahan di Mlonggo, Jepara, fokus pada bibit sayuran dan buah pilihan untuk tetangga dan petani kecil sekitar.',
+                            'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>',
+                            'color' => '#c5e87a',
+                        ],
+                        [
+                            'year' => '2021–22',
+                            'title' => 'Memperluas Jaringan',
+                            'body' => 'Permintaan dari luar kota naik; kami memperketat standar kualitas, kemasan, dan konsultasi agar bibit sampai segar dan terlacak.',
+                            'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>',
+                            'color' => '#8bc34a',
+                        ],
+                        [
+                            'year' => '2023',
+                            'title' => 'Go Digital',
+                            'body' => 'Katalog dan pemesanan daring memudahkan pelanggan di berbagai wilayah mengakses bibit unggulan tanpa mengorbankan layanan personal.',
+                            'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>',
+                            'color' => '#5a7058',
+                        ],
+                        [
+                            'year' => 'Sekarang',
+                            'title' => 'Terus Berinovasi',
+                            'body' => 'Variasi bibit terus ditambah, layanan diperhalus, dan komitmen tetap sama: bibit sehat, terpercaya, dan mendampingi kebun Anda berkembang.',
+                            'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
+                            'color' => '#3d5c38',
+                        ],
+                    ];
+                @endphp
+
+                <div class="flex flex-col gap-0 sm:pl-4">
+                    @foreach($milestones as $i => $m)
+                    <div class="history-milestone relative sm:pl-20 pb-16 last:pb-0">
+                        <!-- Timeline Dot -->
+                        <div class="timeline-dot hidden sm:flex absolute left-0 top-[24px] z-10 h-14 w-14 items-center justify-center rounded-full border-[3px] shadow-xl" style="background: linear-gradient(145deg, #ffffff, #f9f7f4); border-color: {{ $m['color'] }};">
+                            <svg class="h-6 w-6 shrink-0" style="color: {{ $m['color'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">{!! $m['icon'] !!}</svg>
+                        </div>
+                        
+                        <!-- Card -->
+                        <div class="history-card relative overflow-hidden rounded-2xl border-2 bg-white p-7 sm:p-8" style="border-color: rgba(26, 36, 25, 0.1); box-shadow: 0 20px 60px -28px rgba(26, 36, 25, 0.2);">
+                            <!-- Decorative Corner -->
+                            <div class="absolute right-0 top-0 h-32 w-32 rounded-bl-[100%] opacity-[0.05]" style="background: {{ $m['color'] }};"></div>
+                            
+                            <!-- Year Badge & Mobile Icon -->
+                            <div class="relative flex flex-wrap items-center justify-between gap-4 gap-y-3 mb-5">
+                                <span class="inline-flex items-center rounded-full px-5 py-2 text-xs font-extrabold tracking-widest shadow-md" style="background: linear-gradient(135deg, #1a2419, #2d4428); color: {{ $m['color'] }}; letter-spacing: 0.16em;">{{ $m['year'] }}</span>
+                                <span class="sm:hidden inline-flex h-12 w-12 items-center justify-center rounded-full border-3 shrink-0 shadow-lg" style="border-color: {{ $m['color'] }}; background: #ffffff;">
+                                    <svg class="h-5 w-5" style="color: {{ $m['color'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $m['icon'] !!}</svg>
+                                </span>
+                            </div>
+                            
+                            <!-- Title -->
+                            <h3 class="mt-2 text-2xl font-black tracking-tight sm:text-3xl" style="color: #1a2419; letter-spacing: -0.02em;">{{ $m['title'] }}</h3>
+                            
+                            <!-- Description -->
+                            <p class="mt-4 text-base leading-relaxed" style="color: rgba(26, 36, 25, 0.72); font-weight: 400; line-height: 1.85;">{{ $m['body'] }}</p>
+                            
+                            <!-- Accent Line -->
+                            <div class="mt-5 h-1 w-16 rounded-full" style="background: linear-gradient(90deg, {{ $m['color'] }}, transparent);"></div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
-
     </div>
 </section>
-
-<style>
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.6;
-        transform: scale(1.2);
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translate(0, 0);
-    }
-    50% {
-        transform: translate(30px, -30px);
-    }
-}
-
-.timeline-card-modern:hover > div {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
-}
-</style>
-
 
 <!-- VISION & MISSION -->
 <section class="relative overflow-hidden" style="background:#3d5c38;">

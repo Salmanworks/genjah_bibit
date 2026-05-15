@@ -27,25 +27,25 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'quantity' => 'required|integer|min:1',
+            'product_id'       => 'required|exists:products,id',
+            'quantity'         => 'required|integer|min:1',
             'shipping_address' => 'required|string|max:500',
-            'phone' => 'required|string|max:20',
-            'notes' => 'nullable|string|max:1000',
+            'phone'            => 'required|string|max:20',
+            'notes'            => 'nullable|string|max:1000',
         ]);
 
-        $product = Product::findOrFail($validated['product_id']);
+        $product    = Product::findOrFail($validated['product_id']);
         $totalPrice = $product->price * $validated['quantity'];
 
         $order = Order::create([
-            'user_id' => Auth::id(),
-            'product_id' => $validated['product_id'],
-            'quantity' => $validated['quantity'],
-            'total_price' => $totalPrice,
+            'user_id'          => Auth::id(),
+            'product_id'       => $validated['product_id'],
+            'quantity'         => $validated['quantity'],
+            'total_price'      => $totalPrice,
             'shipping_address' => $validated['shipping_address'],
-            'phone' => $validated['phone'],
-            'notes' => $validated['notes'],
-            'status' => 'pending',
+            'phone'            => $validated['phone'],
+            'notes'            => $validated['notes'],
+            'status'           => 'pending',
         ]);
 
         return redirect()->route('orders.show', $order)
@@ -92,10 +92,10 @@ class OrderController extends Controller
         $product = $order->product;
 
         $validated = $request->validate([
-            'quantity' => 'required|integer|min:1',
+            'quantity'         => 'required|integer|min:1',
             'shipping_address' => 'required|string|max:500',
-            'phone' => 'required|string|max:20',
-            'notes' => 'nullable|string|max:1000',
+            'phone'            => 'required|string|max:20',
+            'notes'            => 'nullable|string|max:1000',
         ]);
 
         if ($validated['quantity'] > $product->stock) {
@@ -107,11 +107,11 @@ class OrderController extends Controller
         $totalPrice = $product->price * $validated['quantity'];
 
         $order->update([
-            'quantity' => $validated['quantity'],
-            'total_price' => $totalPrice,
+            'quantity'         => $validated['quantity'],
+            'total_price'      => $totalPrice,
             'shipping_address' => $validated['shipping_address'],
-            'phone' => $validated['phone'],
-            'notes' => $validated['notes'] ?? null,
+            'phone'            => $validated['phone'],
+            'notes'            => $validated['notes'] ?? null,
         ]);
 
         return redirect()->route('orders.index')

@@ -65,9 +65,15 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($categories as $category)
             <a href="{{ route('categories.show', $category->slug) }}" class="group relative overflow-hidden rounded-2xl aspect-[4/3] card-hover border border-emerald-900/10">
-                <img src="https://images.unsplash.com/photo-{{ $loop->iteration % 6 == 1 ? '1459411552884-841db9b3cc2a' : ($loop->iteration % 6 == 2 ? '1466692476868-0e96c3e6a5ce' : ($loop->iteration % 6 == 3 ? '1518531933807-3b8360c5a59a' : ($loop->iteration % 6 == 4 ? '1477554193778-1894d0b3dd95' : ($loop->iteration % 6 == 5 ? '1501004318641-b39ac6497518' : '1416879595882-3373a0480b5b')))) }}?w=600&q=80" 
-                     alt="{{ $category->name }}" 
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 mix-blend-overlay">
+                @if($category->image)
+                    <img src="{{ asset('storage/' . $category->image) }}" 
+                         alt="{{ $category->name }}" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 mix-blend-overlay">
+                @else
+                    <img src="{{ asset('images/default-category.jpg') }}" 
+                         alt="{{ $category->name }}" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 mix-blend-overlay">
+                @endif
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-0"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
                     <h3 class="text-xl font-bold text-white mb-2 transition-colors drop-shadow-md">{{ $category->name }}</h3>
