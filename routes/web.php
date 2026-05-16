@@ -60,6 +60,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
     Route::get('settings/footer', [SettingController::class, 'footer'])->name('settings.footer');
     Route::post('settings/footer', [SettingController::class, 'updateFooter'])->name('settings.footer.update');
+    Route::get('settings/about', [SettingController::class, 'about'])->name('settings.about');
+    Route::post('settings/about', [SettingController::class, 'updateAbout'])->name('settings.about.update');
 });
 
 Route::get('/masuk', [\App\Http\Controllers\Auth\LoginController::class, 'create'])->name('login');

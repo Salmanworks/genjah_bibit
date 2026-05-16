@@ -76,16 +76,15 @@
                     <span style="font-size:10px; font-weight:800; letter-spacing:0.25em; color:#5a7058; text-transform:uppercase;">Tentang Kami</span>
                 </div>
 
-                <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.75rem); font-weight:900; line-height:1.05; letter-spacing:-0.03em; color:#1a2419; margin:0 0 6px 0;">Dedikasi Untuk</h2>
-                <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.75rem); font-weight:900; line-height:1.05; letter-spacing:-0.03em; color:#3d5c38; margin:0 0 20px 0;">Kebun Impian Anda</h2>
+                <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.75rem); font-weight:900; line-height:1.05; letter-spacing:-0.03em; color:#1a2419; margin:0 0 6px 0;">{{ setting('about_title', 'Tentang Kami') }}</h2>
+                <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.75rem); font-weight:900; line-height:1.05; letter-spacing:-0.03em; color:#3d5c38; margin:0 0 20px 0;">{{ setting('about_subtitle', 'Dedikasi Untuk Kebun Impian Anda') }}</h2>
                 <div style="width:48px; height:3px; background:linear-gradient(90deg, #5a7058, rgba(90,112,88,0.2)); border-radius:2px; margin-bottom:24px;"></div>
 
                 <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
-                    <p style="font-size:0.9375rem; color:rgba(26,36,25,0.65); line-height:1.8; margin:0;">
-                        Genjah Rumah Bibit adalah pusat bibit tanaman berkualitas yang berdiri sejak tahun 2020. Kami lahir dari kecintaan terhadap alam dan keinginan untuk membantu masyarakat memiliki sumber pangan mandiri.
-                    </p>
-                    <p style="font-size:0.9375rem; color:rgba(26,36,25,0.65); line-height:1.8; margin:0;">
-                        Dengan pengalaman lebih dari 4 tahun, kami telah melayani ribuan pelanggan di seluruh Indonesia. Setiap bibit yang kami jual telah melalui seleksi ketat dan perawatan optimal oleh tim ahli kami.
+                    <p style="font-size:0.9375rem; color:rgba(26,36,25,0.65); line-height:1.8; margin:0; white-space: pre-line;">
+                        {{ setting('about_description', 'Genjah Rumah Bibit adalah pusat bibit tanaman berkualitas yang berdiri sejak tahun 2020. Kami lahir dari kecintaan terhadap alam dan keinginan untuk membantu masyarakat memiliki sumber pangan mandiri.
+
+Dengan pengalaman lebih dari 4 tahun, kami telah melayani ribuan pelanggan di seluruh Indonesia. Setiap bibit yang kami jual telah melalui seleksi ketat dan perawatan optimal oleh tim ahli kami.') }}
                     </p>
                 </div>
 
@@ -101,7 +100,10 @@
 
             <div class="relative">
                 <div style="position:relative; border-radius:12px; overflow:hidden; border:1px solid rgba(26,36,25,0.1); box-shadow: 0 16px 48px -24px rgba(26,36,25,0.2);">
-                    <img src="{{ asset('images/nature1.png') }}" alt="Toko Genjah Rumah Bibit" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;">
+                    @php
+                        $aboutImageUrl = setting('about_image') ? asset('storage/' . setting('about_image')) : asset('images/nature1.png');
+                    @endphp
+                    <img src="{{ $aboutImageUrl }}" alt="Toko Genjah Rumah Bibit" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;">
                     <div style="position:absolute; bottom:0; left:0; right:0; height:40%; background:linear-gradient(to top, rgba(26,36,25,0.5), transparent); pointer-events:none;"></div>
 
                     <div style="position:absolute; bottom:16px; left:16px; display:flex; align-items:center; gap:10px; padding:10px 14px; background:rgba(255,255,255,0.95); border-radius:8px; border:1px solid rgba(26,36,25,0.08); box-shadow: 0 8px 24px -12px rgba(26,36,25,0.2);">
@@ -268,7 +270,7 @@
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                 </svg>
                 <p style="font-size: 1.5rem; font-style: italic; color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin: 0; font-weight: 500;">
-                    "{{ setting('store_name', 'Genjah Rumah Bibit') }} — tumbuh bersama petani dan pecinta tanaman Indonesia."
+                    "{{ setting('about_quote', 'Genjah Rumah Bibit — tumbuh bersama petani dan pecinta tanaman Indonesia.') }}"
                 </p>
             </div>
         </div>

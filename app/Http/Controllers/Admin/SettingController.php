@@ -71,4 +71,36 @@ class SettingController extends Controller
 
         return redirect()->route('admin.settings.footer')->with('success', 'Footer berhasil diperbarui!');
     }
+
+    public function about()
+    {
+        $settings = Setting::all()->pluck('value', 'key')->toArray();
+
+        return view('admin.settings.about', compact('settings'));
+    }
+
+    public function updateAbout(Request $request)
+    {
+        $request->validate([
+            'about_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
+
+        $aboutSettings = [
+            'about_title'       => $request->input('about_title', 'Tentang Kami'),
+            'about_subtitle'    => $request->input('about_subtitle', 'Dedikasi Untuk Kebun Impian Anda'),
+            'about_description' => $request->input('about_description', ''),
+            'about_quote'       => $request->input('about_quote', ''),
+        ];
+
+        if ($request->hasFile('about_image')) {
+            $imagePath = $request->file('about_image')->store('settings', 'public');
+            $aboutSettings['about_image'] = $imagePath;
+        }
+
+        foreach ($aboutSettings as $key => $value) {
+            Setting::set($key, $value);
+        }
+
+        return redirect()->route('admin.settings.about')->with('success', 'Tentang Kami berhasil diperbarui!');
+    }
 }
